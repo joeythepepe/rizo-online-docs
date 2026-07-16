@@ -13,6 +13,7 @@ pnpm dev
 
 - **Dev server:** Vite on the default port (usually `http://localhost:5173`)
 - **Typecheck:** `pnpm typecheck`
+- **Print class denylist:** `pnpm check:print-classes`
 - **Production build:** `pnpm build`
 - **Preview build:** `pnpm preview`
 
@@ -21,6 +22,8 @@ pnpm dev
 Templates must use the frozen tokens only (defined in `tailwind.config.ts` and `src/design-tokens/print.css`).
 
 ### Colors
+
+Use **frozen colors only** in print templates — do not use default Tailwind palette utilities (`text-gray-*`, `bg-blue-*`, etc.).
 
 | Token | Hex | Utilities |
 |-------|-----|-----------|
@@ -52,7 +55,7 @@ Page size utilities: `w-a4` (210mm), `h-a4` (297mm). CSS shell: `.a4-page`, `.a4
 
 ## Forbidden utilities in print templates
 
-**Do not use** the following in print templates (`src/templates/**`), print routes (`/print/*`), or on `.a4-page` content:
+**Do not use** the following in print templates (`src/templates/**`), print shell components (`src/components/**`), print routes (`/print/*`), or on `.a4-page` content:
 
 | Forbidden | Reason |
 |-----------|--------|
@@ -61,23 +64,31 @@ Page size utilities: `w-a4` (210mm), `h-a4` (297mm). CSS shell: `.a4-page`, `.a4
 | `font-semibold` / `font-weight: 600` | No SemiBold face shipped; would faux-bold in PDF |
 | `min-h-screen`, `h-screen`, arbitrary `vh` for page height | Page height is fixed 297mm via `.a4-page` |
 | Non-`mm-*` spacing for template layout | Use frozen `mm-*` scale only |
+| Default Tailwind palette (`text-gray-*`, `bg-blue-*`, …) | Use frozen colors only |
 
 Shadows and decorative chrome **are** allowed on gallery/screen routes (`/`, `/p/*`) outside the A4 page frame — not inside print roots.
+
+**Enforcement (lightweight):** `pnpm check:print-classes` runs `scripts/check-print-classes.sh`, which greps `src/templates/**` and `src/components/**` for breakpoints, `font-semibold`, shadows/rings/gradients/blur, and `min-h-screen` / `h-screen` / `vh`. (Dirs may be empty until later PRs; the script still exits 0.)
 
 ## Project layout (PR 1)
 
 ```text
 ├── DESIGN.md                 # Full design document
 ├── package.json
+├── pnpm-lock.yaml
 ├── tsconfig.json
+├── tsconfig.node.json        # Vite / Tailwind tooling TS config
 ├── vite.config.ts
 ├── tailwind.config.ts        # Frozen color / type / mm-* tokens
 ├── postcss.config.js
 ├── index.html
+├── scripts/
+│   └── check-print-classes.sh
 ├── src/
 │   ├── main.tsx
 │   ├── App.tsx               # Token smoke demo
 │   ├── index.css             # Tailwind layers
+│   ├── vite-env.d.ts
 │   └── design-tokens/
 │       └── print.css         # @page A4 + .a4-page shell
 └── README.md

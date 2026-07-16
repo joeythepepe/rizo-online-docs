@@ -10,7 +10,7 @@ export default function App() {
       </p>
 
       <div className="a4-page bg-paper text-ink font-sans" data-page="a4">
-        <div className="flex h-full min-h-0 flex-col p-mm-14 box-border">
+        <div className="a4-safe flex h-full min-h-0 flex-col">
           <p className="text-print-label text-ink-secondary">服务方案</p>
           <p className="text-print-en-label mt-mm-1 text-ink-tertiary">
             Service package
@@ -45,6 +45,13 @@ export default function App() {
             </p>
             <p className="text-print-en-meta mt-mm-1 text-ink-tertiary">
               Meta EN sample
+            </p>
+          </div>
+
+          {/* Exercises p-mm-14 utility (page inset is .a4-safe; this is spacing token only) */}
+          <div className="mt-mm-4 border border-rule p-mm-14">
+            <p className="text-print-meta text-ink-tertiary">
+              p-mm-14 spacing token sample
             </p>
           </div>
         </div>

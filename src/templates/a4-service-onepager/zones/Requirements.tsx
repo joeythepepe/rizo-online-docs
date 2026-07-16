@@ -1,0 +1,73 @@
+import type { ListItem, BiString } from "../../../content/types";
+import { BILINGUAL_CHROME } from "../../../content/defaults/bilingual";
+import { BiText } from "../../../components/BiText";
+import { SectionLabel } from "../../../components/SectionLabel";
+import { SoftPanel } from "../../../components/SoftPanel";
+
+export interface RequirementsProps {
+  title?: BiString;
+  intro?: BiString;
+  items: ListItem[];
+  /** SoftPanel on by default per design (softPanelOn: requirements) */
+  softPanel?: boolean;
+  compact?: boolean;
+  /** Accent digits when SoftPanel has no accent bar */
+  accentNumbers?: boolean;
+}
+
+function RequirementsBody({
+  title,
+  intro,
+  items,
+  compact,
+  accentNumbers = true,
+}: Omit<RequirementsProps, "softPanel">) {
+  const sectionTitle = title ?? BILINGUAL_CHROME.requirementsSection;
+  const listGap = compact ? "gap-mm-2" : "gap-mm-4";
+  const bodyRole = compact ? "body-sm" : "body";
+
+  return (
+    <>
+      <SectionLabel value={sectionTitle} />
+      {intro ? <BiText value={intro} role={bodyRole} className="mt-mm-4" /> : null}
+      <ol className={`mt-mm-4 flex list-none flex-col ${listGap} p-0`}>
+        {items.map((item, index) => (
+          <li key={item.id} className="flex gap-mm-4">
+            <span
+              className={`text-print-body shrink-0 tabular-nums ${
+                accentNumbers ? "text-accent" : "text-ink"
+              }`}
+              aria-hidden
+            >
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <div className="min-w-0">
+              <BiText value={item.label} role={bodyRole} />
+              {item.detail ? (
+                <BiText value={item.detail} role="meta" className="mt-mm-1" />
+              ) : null}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </>
+  );
+}
+
+/**
+ * Client requirements — priority flex consumer; SoftPanel default.
+ */
+export function Requirements({
+  softPanel = true,
+  ...rest
+}: RequirementsProps) {
+  const body = <RequirementsBody {...rest} />;
+  if (softPanel) {
+    return (
+      <section className="min-h-0 flex-1">
+        <SoftPanel className="h-full">{body}</SoftPanel>
+      </section>
+    );
+  }
+  return <section className="min-h-0 flex-1">{body}</section>;
+}

@@ -1,61 +1,146 @@
-import { A4Page } from "./components/A4Page";
+import { BrowserRouter, Link, Navigate, Route, Routes, useParams } from "react-router-dom";
+import { listProductIds, loadProduct } from "./content/loadProduct";
+import { ServiceOnePager } from "./templates/a4-service-onepager/ServiceOnePager";
 
-/**
- * Token + font smoke demo — verifies frozen print classes and Noto SC faces.
- * Full templates / routes land in later PRs.
- */
-export default function App() {
+function GalleryPage() {
+  const ids = listProductIds();
+
   return (
     <div className="min-h-screen bg-[#e8e8ed] p-8">
-      <p className="no-print mb-4 text-sm text-ink-secondary">
-        Print token smoke demo (screen chrome only) · Noto Sans SC 400/500/700
-      </p>
-
-      <A4Page>
-        <p className="text-print-label text-ink-secondary">服务方案</p>
-        <p className="text-print-en-label mt-mm-1 text-ink-tertiary">
-          Service package
+      <header className="no-print mb-8 max-w-4xl">
+        <h1 className="text-2xl font-bold text-ink">Service one-pagers</h1>
+        <p className="mt-2 text-sm text-ink-secondary">
+          Gallery · open preview or chrome-less print route
         </p>
+      </header>
 
-        <h1 className="text-print-display mt-mm-4">英国本科申请一站式服务</h1>
-        <p className="text-print-en-display mt-mm-1 text-ink-secondary">
-          UK Undergraduate Application Package
-        </p>
+      <ul className="grid max-w-4xl list-none gap-4 p-0 sm:grid-cols-2">
+        {ids.map((id) => {
+          let titleZh = id;
+          let titleEn = "";
+          try {
+            const p = loadProduct(id);
+            titleZh = p.product.name.zh;
+            titleEn = p.product.name.en;
+          } catch {
+            /* keep id */
+          }
+          return (
+            <li
+              key={id}
+              className="rounded-lg border border-rule bg-paper p-5 shadow-sm"
+            >
+              <p className="text-base font-medium text-ink">{titleZh}</p>
+              {titleEn ? (
+                <p className="mt-1 text-sm text-ink-secondary">{titleEn}</p>
+              ) : null}
+              <p className="mt-2 font-mono text-xs text-ink-tertiary">{id}</p>
+              <div className="mt-4 flex flex-wrap gap-3 text-sm">
+                <Link
+                  className="text-accent underline-offset-2 hover:underline"
+                  to={`/p/${id}`}
+                >
+                  Preview
+                </Link>
+                <Link
+                  className="text-accent underline-offset-2 hover:underline"
+                  to={`/print/${id}`}
+                >
+                  Print
+                </Link>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
 
-        <div className="mt-mm-12 border-t border-rule pt-mm-4">
-          <h2 className="text-print-title">目标客户</h2>
-          <p className="text-print-en-title mt-mm-1 text-ink-secondary">
-            Target customer
-          </p>
-          <p className="text-print-body mt-mm-4">
-            计划申请英国本科的高中生及家长，需要选校定位与材料指导。
-          </p>
-          <p className="text-print-en-body mt-mm-1 text-ink-secondary">
-            High-school students and parents applying to UK undergraduate
-            programs.
-          </p>
-        </div>
-
-        <div className="mt-mm-8 rounded-none bg-soft p-mm-8">
-          <p className="text-print-body-sm">
-            Compact body token sample ·{" "}
-            <span className="text-accent">accent</span>
-          </p>
-          <p className="text-print-meta mt-mm-2 text-ink-tertiary">
-            Meta · v0.1 token scaffold · font weights 400 / 500 / 700
-          </p>
-          <p className="text-print-en-meta mt-mm-1 text-ink-tertiary">
-            Meta EN sample
-          </p>
-        </div>
-
-        {/* Exercises p-mm-14 utility (page inset is .a4-safe; this is spacing token only) */}
-        <div className="mt-mm-4 border border-rule p-mm-14">
-          <p className="text-print-meta text-ink-tertiary">
-            p-mm-14 spacing token sample
-          </p>
-        </div>
-      </A4Page>
+      {ids.length === 0 ? (
+        <p className="text-sm text-ink-secondary">No products found.</p>
+      ) : null}
     </div>
+  );
+}
+
+function ProductPreviewPage() {
+  const { id } = useParams<{ id: string }>();
+  if (!id) return <Navigate to="/" replace />;
+
+  let content;
+  try {
+    content = loadProduct(id);
+  } catch (err) {
+    return (
+      <div className="min-h-screen bg-[#e8e8ed] p-8">
+        <p className="text-ink">Unknown product: {id}</p>
+        <Link className="mt-4 inline-block text-accent" to="/">
+          ← Gallery
+        </Link>
+        <pre className="mt-4 text-xs text-ink-secondary">
+          {err instanceof Error ? err.message : String(err)}
+        </pre>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#e8e8ed] py-8">
+      <div className="no-print mx-auto mb-6 flex max-w-[210mm] items-center justify-between px-4">
+        <div>
+          <Link className="text-sm text-accent" to="/">
+            ← Gallery
+          </Link>
+          <p className="mt-1 text-xs text-ink-tertiary">
+            Preview · {id} ·{" "}
+            <Link className="text-accent" to={`/print/${id}`}>
+              open print route
+            </Link>
+          </p>
+        </div>
+      </div>
+      <div className="mx-auto w-a4 shadow-lg">
+        <ServiceOnePager content={content} />
+      </div>
+    </div>
+  );
+}
+
+/**
+ * Chrome-less print root — no nav, no page shadow (export / designer print).
+ */
+function ProductPrintPage() {
+  const { id } = useParams<{ id: string }>();
+  if (!id) return <Navigate to="/" replace />;
+
+  let content;
+  try {
+    content = loadProduct(id);
+  } catch (err) {
+    return (
+      <div className="bg-paper p-mm-14 text-ink">
+        <p>Unknown product: {id}</p>
+        <pre className="mt-mm-4 text-print-meta text-ink-secondary">
+          {err instanceof Error ? err.message : String(err)}
+        </pre>
+      </div>
+    );
+  }
+
+  return (
+    <div className="bg-paper">
+      <ServiceOnePager content={content} />
+    </div>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<GalleryPage />} />
+        <Route path="/p/:id" element={<ProductPreviewPage />} />
+        <Route path="/print/:id" element={<ProductPrintPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }

@@ -14,6 +14,7 @@ pnpm dev
 - **Dev server:** Vite on the default port (usually `http://localhost:5173`)
 - **Typecheck:** `pnpm typecheck`
 - **Print class denylist:** `pnpm check:print-classes`
+- **Font subset (Noto SC):** `pnpm fonts:subset` — see [fonts/README.md](./fonts/README.md)
 - **Production build:** `pnpm build`
 - **Preview build:** `pnpm preview`
 
@@ -70,7 +71,7 @@ Shadows and decorative chrome **are** allowed on gallery/screen routes (`/`, `/p
 
 **Enforcement (lightweight):** `pnpm check:print-classes` runs `scripts/check-print-classes.sh`, which greps `src/templates/**` and `src/components/**` for breakpoints, `font-semibold`, shadows/rings/gradients/blur, and `min-h-screen` / `h-screen` / `vh`. (Dirs may be empty until later PRs; the script still exits 0.)
 
-## Project layout (PR 1)
+## Project layout
 
 ```text
 ├── DESIGN.md                 # Full design document
@@ -82,19 +83,29 @@ Shadows and decorative chrome **are** allowed on gallery/screen routes (`/`, `/p
 ├── tailwind.config.ts        # Frozen color / type / mm-* tokens
 ├── postcss.config.js
 ├── index.html
+├── fonts/
+│   ├── README.md             # OFL license + re-subset docs
+│   ├── charset/              # GB2312-plus inventory for pyftsubset
+│   └── subset/               # Committed Noto SC WOFF2 (400/500/700)
+├── public/
+│   └── fonts/                # Vite-served copies of subset WOFF2
 ├── scripts/
-│   └── check-print-classes.sh
+│   ├── check-print-classes.sh
+│   └── fonts-subset.sh       # pnpm fonts:subset
 ├── src/
 │   ├── main.tsx
-│   ├── App.tsx               # Token smoke demo
+│   ├── App.tsx               # A4Page + token/font smoke demo
 │   ├── index.css             # Tailwind layers
 │   ├── vite-env.d.ts
+│   ├── components/
+│   │   └── A4Page.tsx        # 210×297 + 14 mm safe area shell
 │   └── design-tokens/
+│       ├── fonts.css         # @font-face Noto Sans SC
 │       └── print.css         # @page A4 + .a4-page shell
 └── README.md
 ```
 
-Later PRs add fonts, content schema, templates, routes, and PDF export.
+Later PRs add content schema, templates, routes, and PDF export.
 
 ## License
 

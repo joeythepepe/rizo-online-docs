@@ -8,7 +8,8 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
-    "check:print-classes": "bash scripts/check-print-classes.sh"
+    "check:print-classes": "bash scripts/check-print-classes.sh",
+    "fonts:subset": "bash scripts/fonts-subset.sh"
   },
   "dependencies": {
     "react": "^18.3.1",

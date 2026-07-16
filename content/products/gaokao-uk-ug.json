@@ -2,23 +2,23 @@
   "templateId": "a4-service-onepager-v1",
   "locale": "zh-CN",
   "meta": {
-    "documentTitle": "英本冲刺计划-服务说明",
+    "documentTitle": "高考通英本-服务说明",
     "version": "2026.07",
     "cycleLabel": "2026 秋季入学",
     "priceBand": "面议",
     "confidential": false
   },
   "product": {
-    "name": "英本冲刺计划",
-    "categoryLabel": "本科申请服务",
-    "tagline": "面向冲刺 G5 / 罗素集团的系统化申请方案"
+    "name": "高考通英本",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考成绩申请英国本科的系统方案"
   },
   "targetCustomer": {
-    "summary": "成绩优异、目标英国本科、需要结构化时间线与文书指导的高中生及家长。",
+    "summary": "以高考或同等成绩冲刺英国本科的高三/复读生及家长，关注G5与罗素集团。",
     "segments": [
-      "高二–高三",
-      "A-Level/国际课程",
-      "冲刺顶尖院校"
+      "高三/复读",
+      "冲刺英本",
+      "G5/罗素"
     ]
   },
   "deliverables": {

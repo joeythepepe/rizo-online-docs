@@ -50,38 +50,38 @@ async function measureOverflow(
 }
 
 test.describe("print screenshot smoke", () => {
-  test("example-uk-ug A4 renders Chinese content without overflow", async ({
+  test("gaokao-uk-ug A4 renders Chinese content without overflow", async ({
     page,
   }) => {
-    await page.goto("/print/example-uk-ug");
+    await page.goto("/print/gaokao-uk-ug");
     await waitForPrintReady(page);
 
     const a4 = page.locator("[data-page=a4]");
     await expect(a4).toBeVisible();
 
     // Chinese product name (CN-only documents)
-    await expect(a4.getByText("英本冲刺计划").first()).toBeVisible();
+    await expect(a4.getByText("高考通英本").first()).toBeVisible();
     await expect(a4.getByText("UK Undergraduate Sprint")).toHaveCount(0);
 
     // Density attribute present (normal for example product)
     await expect(page.locator("[data-density=normal]").first()).toBeVisible();
 
     mkdirSync(SMOKE_OUT, { recursive: true });
-    const shotPath = join(SMOKE_OUT, "example-uk-ug.png");
+    const shotPath = join(SMOKE_OUT, "gaokao-uk-ug.png");
     await a4.screenshot({ path: shotPath });
     expect(existsSync(shotPath), `smoke PNG missing: ${shotPath}`).toBe(true);
 
     const measure = await measureOverflow(page);
     expect(
       measure.overflows,
-      `example-uk-ug should fit A4 (deltaMm=${measure.deltaMm.toFixed(3)}, worst=${measure.worstSelector})`,
+      `gaokao-uk-ug should fit A4 (deltaMm=${measure.deltaMm.toFixed(3)}, worst=${measure.worstSelector})`,
     ).toBe(false);
   });
 
-  test("example-uk-ug?density=compact applies compact tokens", async ({
+  test("gaokao-uk-ug?density=compact applies compact tokens", async ({
     page,
   }) => {
-    await page.goto("/print/example-uk-ug?density=compact");
+    await page.goto("/print/gaokao-uk-ug?density=compact");
     await waitForPrintReady(page);
 
     const a4 = page.locator("[data-page=a4]");
@@ -99,7 +99,7 @@ test.describe("print screenshot smoke", () => {
     await expect(a4.locator(".p-mm-4").first()).toBeVisible();
 
     mkdirSync(SMOKE_OUT, { recursive: true });
-    const shotPath = join(SMOKE_OUT, "example-uk-ug-compact.png");
+    const shotPath = join(SMOKE_OUT, "gaokao-uk-ug-compact.png");
     await a4.screenshot({ path: shotPath });
     expect(existsSync(shotPath), `smoke PNG missing: ${shotPath}`).toBe(true);
 
@@ -107,7 +107,7 @@ test.describe("print screenshot smoke", () => {
     const measure = await measureOverflow(page);
     expect(
       measure.overflows,
-      `example-uk-ug compact should fit A4 (deltaMm=${measure.deltaMm.toFixed(3)}, worst=${measure.worstSelector})`,
+      `gaokao-uk-ug compact should fit A4 (deltaMm=${measure.deltaMm.toFixed(3)}, worst=${measure.worstSelector})`,
     ).toBe(false);
   });
 });

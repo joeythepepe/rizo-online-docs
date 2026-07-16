@@ -51,15 +51,15 @@ async function main() {
     );
 
     const example = JSON.parse(
-      readFileSync(join(root, "content/products/example-uk-ug.json"), "utf8"),
+      readFileSync(join(root, "content/products/gaokao-uk-ug.json"), "utf8"),
     );
     const brand = JSON.parse(
       readFileSync(join(root, "content/brand/default.json"), "utf8"),
     );
 
     const ids = listProductIds();
-    if (!ids.includes("example-uk-ug")) {
-      fail(`listProductIds missing example-uk-ug, got ${JSON.stringify(ids)}`);
+    if (!ids.includes("gaokao-uk-ug")) {
+      fail(`listProductIds missing gaokao-uk-ug, got ${JSON.stringify(ids)}`);
     }
     if (!ids.includes("gaokao-hk-ug")) {
       fail(`listProductIds missing gaokao-hk-ug, got ${JSON.stringify(ids)}`);
@@ -85,8 +85,8 @@ async function main() {
     }
     ok("loadProduct('_template') rejected");
 
-    const loaded = loadProduct("example-uk-ug");
-    if (loaded.product.name !== "英本冲刺计划") {
+    const loaded = loadProduct("gaokao-uk-ug");
+    if (loaded.product.name !== "高考通英本") {
       fail("loadProduct example name mismatch");
     }
     if (loaded.meta.disclaimer !== BILINGUAL_CHROME.disclaimer) {
@@ -101,7 +101,7 @@ async function main() {
     if (loaded.requirements.title !== "客户需具备") {
       fail("loadProduct missing requirements chrome default");
     }
-    ok("loadProduct('example-uk-ug') applies chrome defaults");
+    ok("loadProduct('gaokao-uk-ug') applies chrome defaults");
 
     const brandDefaults = getBrandDefaults();
     const noBrand = structuredClone(example);
@@ -123,13 +123,13 @@ async function main() {
     ok("mergeZhString product wins / fallback works");
 
     const parsedExample = parseProduct(example);
-    ok("example-uk-ug parses");
+    ok("gaokao-uk-ug parses");
     if (parsedExample.layout?.variant !== "split") {
       fail(
-        `example-uk-ug must use layout.variant=split, got ${JSON.stringify(parsedExample.layout)}`,
+        `gaokao-uk-ug must use layout.variant=split, got ${JSON.stringify(parsedExample.layout)}`,
       );
     }
-    ok("example-uk-ug uses split layout");
+    ok("gaokao-uk-ug uses split layout");
 
     for (const id of [
       "gaokao-hk-ug",

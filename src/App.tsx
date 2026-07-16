@@ -46,8 +46,6 @@ function GalleryPage() {
     [allCards, pathway],
   );
 
-  const activeMeta = EXAM_PATHWAYS.find((p) => p.id === pathway);
-
   return (
     <div className="min-h-screen bg-[#e8e8ed] p-8">
       <header className="no-print mb-6 max-w-5xl">
@@ -89,15 +87,6 @@ function GalleryPage() {
             );
           })}
         </div>
-        {activeMeta ? (
-          <p className="mt-3 text-sm text-ink-secondary">
-            {activeMeta.description}
-            <span className="text-ink-tertiary">
-              {" "}
-              · 下方为「{activeMeta.label}通【国家】」服务
-            </span>
-          </p>
-        ) : null}
       </section>
 
       <ul className="grid max-w-5xl list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">

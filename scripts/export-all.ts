@@ -1,6 +1,5 @@
 /**
  * Export every product under content/products/*.json (skips _-prefixed).
- * Skips `fixture-overflow*` by default (intentional fail); include with --force.
  *
  * Usage:
  *   bun run export:all
@@ -24,9 +23,7 @@ function parseFlags(argv: string[]) {
 
 async function main() {
   const flags = parseFlags(process.argv.slice(2));
-  const ids = listProductIdsFromFs(ROOT).filter(
-    (id) => flags.force || !id.startsWith("fixture-overflow"),
-  );
+  const ids = listProductIdsFromFs(ROOT);
 
   if (ids.length === 0) {
     console.error("No products found under content/products/");

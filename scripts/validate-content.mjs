@@ -216,21 +216,6 @@ async function main() {
     }
     ok("requirements.mandatory defaults to true");
 
-    const overflowCompactRaw = JSON.parse(
-      readFileSync(
-        join(root, "content/products/fixture-overflow-compact.json"),
-        "utf8",
-      ),
-    );
-    const overflowCompactParse = safeParseProduct(overflowCompactRaw);
-    if (!overflowCompactParse.success) {
-      fail(`fixture-overflow-compact failed: ${overflowCompactParse.error}`);
-    }
-    if (overflowCompactParse.data.layout?.density !== "compact") {
-      fail("fixture-overflow-compact density must be compact");
-    }
-    ok("fixture-overflow-compact.json parses with density=compact");
-
     const bare = structuredClone(example);
     delete bare.meta.disclaimer;
     const withChrome = applyChromeDefaults(parseProduct(bare));

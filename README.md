@@ -95,25 +95,6 @@ Pipeline: Zod-validate `content/products/<id>.json` (same `mergeProductContent` 
 
 **Metadata note:** pdf-lib overwrites the PDF **Producer** field on every `save()` with its own banner (`pdf-lib (https://github.com/Hopding/pdf-lib)`). The export tool stamps **Creator** (and document title) instead — trust Creator for tool identity.
 
-### Overflow fixtures (must exit non-zero)
-
-| Product id | Role |
-|------------|------|
-| `fixture-overflow` | Starts at `density: normal`. Export should compact-retry once, still overflow, exit 1, write `output/failures/fixture-overflow.png`. |
-| `fixture-overflow-compact` | JSON already sets `density: compact` (first paint is compact CSS). Still over-long → exit 1 + failure PNG. Compact is **not** a free pass. CLI may re-open with `?density=compact` after a measure fail, but there is **no denser-than-compact** third step. |
-
-```bash
-bun run export:pdf --product fixture-overflow
-# → exit 1, screenshot under output/failures/
-
-bun run export:pdf --product fixture-overflow-compact
-# → exit 1 (product already compact; still too long)
-```
-
-`bun run export:all` skips any id matching `fixture-overflow*` unless `--force`.
-
-Overflow fixtures are **manual** gate checks (`bun run export:pdf --product …`); smoke tests cover the happy path only. `bun run validate:content` Zod-parses both fixtures and asserts compact density on the second.
-
 ### Screenshot smoke
 
 ```bash
@@ -121,7 +102,7 @@ bun run test:smoke
 # or: bun run build && bunx playwright test
 ```
 
-Happy path: `/print/example-uk-ug` shows CN+EN, measures no overflow, writes `output/smoke/example-uk-ug.png` (human-review artifact, not visual-diff baseline). Compact path (`?density=compact`) asserts `data-density=compact`, `text-print-body-sm` / SoftPanel padding classes, no overflow, and `output/smoke/example-uk-ug-compact.png`.
+Happy path: `/print/example-uk-ug` shows Chinese content, measures no overflow, writes `output/smoke/example-uk-ug.png` (human-review artifact, not visual-diff baseline). Compact path (`?density=compact`) asserts `data-density=compact`, `text-print-body-sm` / SoftPanel padding classes, no overflow, and `output/smoke/example-uk-ug-compact.png`.
 
 ### Debug print issues
 
@@ -148,13 +129,13 @@ Set `layout.density: "compact"` in product JSON, or let export promote via `?den
 
 **Author tips to stay on one A4:**
 
-1. Prefer short EN (scan lines, not full translation). Long EN is the main overflow risk.
-2. Keep deliverables ≤4 and requirements ≤5 when bilingual + details are on.
+1. Keep Chinese copy concise; long lists are the main overflow risk.
+2. Keep deliverables ≤4 and requirements ≤5 when details are on.
 3. Omit `item.detail` unless essential; details use meta type but still cost height.
 4. Drop `highlights` / set `showHighlights: false` before cutting core lists.
-5. Set `layout.density: "compact"` proactively for dense bilingual products.
+5. Set `layout.density: "compact"` proactively for dense products.
 6. Preview `/print/<id>?density=compact` before export; do not rely on silent clip.
-7. Compact still fails if content is too long — see `fixture-overflow-compact`.
+7. Compact still fails if content is too long — shorten copy or drop optional blocks.
 
 ### Layout variant (`stack` | `split`)
 
@@ -217,7 +198,7 @@ Accent color defaults to `#0071E3` (`brand.accentColor`) until brand confirms. C
 ├── index.html
 ├── content/
 │   ├── brand/default.json
-│   └── products/             # example-uk-ug, example-uk-ug-split, fixture-overflow*
+│   └── products/             # service one-pager JSON (gaokao-*, example-*)
 ├── e2e/                      # Playwright screenshot smoke
 ├── fonts/
 │   ├── README.md             # OFL license + re-subset docs

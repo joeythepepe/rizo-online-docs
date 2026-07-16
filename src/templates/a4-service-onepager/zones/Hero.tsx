@@ -19,7 +19,7 @@ export function Hero({ product, compact = false }: HeroProps) {
     : "h-[9mm] w-auto";
 
   return (
-    <section className="max-h-[54mm] shrink-0 overflow-hidden">
+    <section className="shrink-0 overflow-visible">
       {product.categoryLabel ? (
         <BiText value={product.categoryLabel} role="label" />
       ) : null}

@@ -16,7 +16,7 @@ export interface TimelineProps {
 }
 
 /**
- * Optional timeline zone (mutually exclusive with highlights) — max 28 mm.
+ * Optional timeline zone (mutually exclusive with highlights).
  */
 export function Timeline({ title, steps, compact = false }: TimelineProps) {
   if (!steps.length) return null;
@@ -27,7 +27,7 @@ export function Timeline({ title, steps, compact = false }: TimelineProps) {
   const numCls = compact ? "text-print-body-sm" : "text-print-body";
 
   return (
-    <section className="max-h-[28mm] shrink-0 overflow-hidden">
+    <section className="shrink-0 overflow-visible">
       <SectionLabel value={sectionTitle} />
       <ol className={`mt-mm-2 flex list-none flex-col ${listGap} p-0`}>
         {steps.map((step, index) => (

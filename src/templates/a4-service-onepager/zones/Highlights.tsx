@@ -10,24 +10,32 @@ export interface HighlightsProps {
 
 /**
  * Optional highlights zone — Chinese-only bullet items.
+ * No overflow-hidden / max-height: clipping was cutting CJK glyph tops
+ * (e.g. 「欧盟」looked like 「欧明」). Page-level overflow is measured at export.
+ * Cap visible items at 3 to keep A4 fit after training bullets were added.
  */
 export function Highlights({ title, items, compact = false }: HighlightsProps) {
   if (!items.length) return null;
 
   const sectionTitle = title ?? BILINGUAL_CHROME.highlights;
   const listGap = compact ? "gap-mm-1" : "gap-mm-2";
-  const textCls = compact ? "text-print-body-sm" : "text-print-body";
+  // Slightly smaller type reduces risk of bottom-of-page crop
+  const textCls = "text-print-body-sm";
+  const visible = items.slice(0, 3);
 
   return (
-    <section className="max-h-[36mm] shrink-0 overflow-hidden">
+    <section className="shrink-0 overflow-visible">
       <SectionLabel value={sectionTitle} />
       <ul className={`mt-mm-2 flex list-none flex-col ${listGap} p-0`}>
-        {items.map((item, i) => (
-          <li key={i} className="flex gap-mm-2">
-            <span className={`${textCls} text-accent shrink-0`} aria-hidden>
+        {visible.map((item, i) => (
+          <li key={i} className="flex items-start gap-mm-2">
+            <span
+              className={`${textCls} text-accent shrink-0 leading-[1.5]`}
+              aria-hidden
+            >
               ·
             </span>
-            <p className={`${textCls} text-ink min-w-0`}>{item}</p>
+            <p className={`${textCls} text-ink min-w-0 leading-[1.5]`}>{item}</p>
           </li>
         ))}
       </ul>

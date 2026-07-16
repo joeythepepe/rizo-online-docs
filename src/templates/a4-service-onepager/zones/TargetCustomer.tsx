@@ -11,7 +11,8 @@ export interface TargetCustomerProps {
 }
 
 /**
- * Target customer max 52 mm: section title, summary, optional CN chips.
+ * Target customer: section title, summary, optional CN chips.
+ * No overflow-hidden — silent clipping was cropping CJK glyphs.
  */
 export function TargetCustomer({ data, compact = false }: TargetCustomerProps) {
   const title = data.title ?? BILINGUAL_CHROME.targetSection;
@@ -22,7 +23,7 @@ export function TargetCustomer({ data, compact = false }: TargetCustomerProps) {
   const stackMt = compact ? "mt-mm-2" : "mt-mm-4";
 
   return (
-    <section className="max-h-[52mm] shrink-0 overflow-hidden">
+    <section className="shrink-0 overflow-visible">
       <SectionLabel value={title} />
       <BiText value={data.summary} role={bodyRole} className={stackMt} />
 

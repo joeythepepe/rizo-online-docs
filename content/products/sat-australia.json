@@ -13,7 +13,17 @@
     "categoryLabel": "SAT本科出海",
     "tagline": "SAT/美高路径申请澳大利亚本科",
     "countryCode": "AU",
-    "pathway": "sat"
+    "pathway": "sat",
+    "pros": [
+      "可用SAT/美高背景申澳本",
+      "八大品牌与实践专业强",
+      "宜居"
+    ],
+    "cons": [
+      "费用高、距离远",
+      "各校对SAT要求不一需核对",
+      "热门专业门槛高"
+    ]
   },
   "targetCustomer": {
     "summary": "以SAT等高中背景申请澳本的学生。",

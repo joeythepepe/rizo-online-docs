@@ -13,7 +13,17 @@
     "categoryLabel": "SAT本科出海",
     "tagline": "SAT/美高背景申请英国本科或预科",
     "countryCode": "GB",
-    "pathway": "sat"
+    "pathway": "sat",
+    "pros": [
+      "部分英本接受SAT/美高组合",
+      "可作多国申请的标化底座",
+      "研究型大学资源强"
+    ],
+    "cons": [
+      "英本更偏好A-Level体系",
+      "常需预科或额外资格解释",
+      "费用高"
+    ]
   },
   "targetCustomer": {
     "summary": "美高或国际课程学生以SAT等申请英本。",

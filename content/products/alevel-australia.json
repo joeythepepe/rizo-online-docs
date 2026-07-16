@@ -13,7 +13,17 @@
     "categoryLabel": "A-Level本科出海",
     "tagline": "A-Level申请澳本八大或预科",
     "countryCode": "AU",
-    "pathway": "alevel"
+    "pathway": "alevel",
+    "pros": [
+      "A-Level与澳本对标清晰",
+      "八大认可度高，预科可兜底",
+      "专业实践导向强"
+    ],
+    "cons": [
+      "费用高",
+      "距离远",
+      "热门专业分数与英语双高"
+    ]
   },
   "targetCustomer": {
     "summary": "以A-Level冲击澳大利亚本科的学生及家长。",

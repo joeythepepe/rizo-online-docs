@@ -13,7 +13,17 @@
     "categoryLabel": "A-Level本科出海",
     "tagline": "A-Level申请加拿大本科与桥梁课程",
     "countryCode": "CA",
-    "pathway": "alevel"
+    "pathway": "alevel",
+    "pros": [
+      "加本广泛认可A-Level",
+      "可直录或桥梁，容错较好",
+      "教育质量稳定"
+    ],
+    "cons": [
+      "顶尖校竞争仍在",
+      "英语要求明确",
+      "部分省份/专业规则差异大"
+    ]
   },
   "targetCustomer": {
     "summary": "以A-Level申请加本的国际课程学生及家长。",

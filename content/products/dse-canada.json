@@ -13,7 +13,17 @@
     "categoryLabel": "DSE本科出海",
     "tagline": "DSE成绩申请加拿大本科与桥梁课程",
     "countryCode": "CA",
-    "pathway": "dse"
+    "pathway": "dse",
+    "pros": [
+      "加本认可DSE，桥梁路径可兜底",
+      "教育稳定，长期居留规划友好",
+      "英语环境好"
+    ],
+    "cons": [
+      "顶尖校要求不低",
+      "气候与地域适应成本",
+      "部分专业竞争激烈"
+    ]
   },
   "targetCustomer": {
     "summary": "以DSE申请加拿大本科或桥梁/国际大一的学生。",

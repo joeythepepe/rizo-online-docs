@@ -13,7 +13,17 @@
     "categoryLabel": "A-Level本科出海",
     "tagline": "A-Level成绩申请美国本科综合评估",
     "countryCode": "US",
-    "pathway": "alevel"
+    "pathway": "alevel",
+    "pros": [
+      "A-Level成绩受美本认可",
+      "可叠加SAT/活动做综合包装",
+      "专业选择极广"
+    ],
+    "cons": [
+      "美本不只看成绩，文书活动关键",
+      "申请成本高、周期长",
+      "与英本时间线并行压力大"
+    ]
   },
   "targetCustomer": {
     "summary": "以A-Level为主申请美本、可叠加SAT/活动的学生。",

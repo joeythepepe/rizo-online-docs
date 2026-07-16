@@ -13,7 +13,17 @@
     "categoryLabel": "DSE本科出海",
     "tagline": "DSE成绩申请英国本科与预科路径",
     "countryCode": "GB",
-    "pathway": "dse"
+    "pathway": "dse",
+    "pros": [
+      "DSE被英本广泛认可",
+      "可与A-Level对照评估，路径清晰",
+      "专业选择与研究资源丰富"
+    ],
+    "cons": [
+      "顶尖校条件仍严，英语要求高",
+      "费用高，预科可能增加一年成本",
+      "预估分与最终分落差有风险"
+    ]
   },
   "targetCustomer": {
     "summary": "以DSE申请英国本科（含预科衔接）的中五至中六学生。",

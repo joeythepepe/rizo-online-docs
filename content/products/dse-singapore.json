@@ -13,7 +13,17 @@
     "categoryLabel": "DSE本科出海",
     "tagline": "DSE成绩申请新加坡公立/私立本科",
     "countryCode": "SG",
-    "pathway": "dse"
+    "pathway": "dse",
+    "pros": [
+      "亚洲顶尖教育，英语授课",
+      "与香港距离近，文化适应快",
+      "就业网络与区域枢纽优势"
+    ],
+    "cons": [
+      "录取竞争极强",
+      "生活成本高",
+      "容错空间小，等级要求硬"
+    ]
   },
   "targetCustomer": {
     "summary": "以DSE申请新加坡本科的中六学生及家长。",

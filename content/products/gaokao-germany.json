@@ -13,7 +13,17 @@
     "categoryLabel": "高考本科出海",
     "tagline": "高考过线+APS/语言申请德国本科",
     "countryCode": "DE",
-    "pathway": "gaokao"
+    "pathway": "gaokao",
+    "pros": [
+      "公立学费优势明显，工科实力强",
+      "学历含金量高，制造业/科研口碑好",
+      "德/英授双轨可选"
+    ],
+    "cons": [
+      "APS/审核与材料周期长",
+      "德语门槛高，准备投入大",
+      "高考资格线不达标则路径受限"
+    ]
   },
   "targetCustomer": {
     "summary": "目标德国公立本科，可投入德语或选择英授项目的学生。",

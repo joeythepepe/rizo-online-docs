@@ -13,7 +13,17 @@
     "categoryLabel": "DSE本科出海",
     "tagline": "DSE叠加标化与背景申请美国本科",
     "countryCode": "US",
-    "pathway": "dse"
+    "pathway": "dse",
+    "pros": [
+      "美本综合评估，DSE可作主成绩",
+      "专业与校园资源极丰富",
+      "可并行SAT提升竞争力"
+    ],
+    "cons": [
+      "仅DSE往往不够，需活动文书托福",
+      "申请复杂、费用与不确定性高",
+      "竞争全球化，名校录取难"
+    ]
   },
   "targetCustomer": {
     "summary": "以DSE为主、辅以SAT/托福等申请美本的学生及家长。",

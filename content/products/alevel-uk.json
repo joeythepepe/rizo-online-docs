@@ -13,7 +13,17 @@
     "categoryLabel": "A-Level本科出海",
     "tagline": "A-Level预估分/实考分申请英国本科",
     "countryCode": "GB",
-    "pathway": "alevel"
+    "pathway": "alevel",
+    "pros": [
+      "与英本招生体系最契合",
+      "预估分拿条件录取路径成熟",
+      "专业细分深、学制相对短"
+    ],
+    "cons": [
+      "顶尖校预估分与实考压力大",
+      "学费生活费高",
+      "面试/笔试专业额外要求多"
+    ]
   },
   "targetCustomer": {
     "summary": "以A-Level冲击英国本科（含G5/罗素）的学生及家长。",

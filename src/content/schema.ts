@@ -81,6 +81,9 @@ export const productSchema = z
         .transform((s) => s.toUpperCase())
         .optional(),
       pathway: z.enum(["gaokao", "dse", "alevel", "sat"]).optional(),
+      /** 优势 / 劣势小介绍（标题下） */
+      pros: z.array(zhStringMax(36)).min(1).max(3).optional(),
+      cons: z.array(zhStringMax(36)).min(1).max(3).optional(),
     }),
     targetCustomer: z.object({
       title: zhStringSchema.optional(),

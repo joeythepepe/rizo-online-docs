@@ -13,7 +13,17 @@
     "categoryLabel": "DSE本科出海",
     "tagline": "DSE成绩通过JUPAS/非联招申请港本",
     "countryCode": "HK",
-    "pathway": "dse"
+    "pathway": "dse",
+    "pros": [
+      "本地体系最匹配，JUPAS路径成熟",
+      "离家近、文化语言适应成本低",
+      "港校国际认可度高"
+    ],
+    "cons": [
+      "港八大分数/等级要求极高",
+      "热门专业竞争白热化",
+      "自资院校费用与认可度需甄别"
+    ]
   },
   "targetCustomer": {
     "summary": "以DSE冲击港八大或自资院校的中五至中六学生及家长。",

@@ -13,7 +13,17 @@
     "categoryLabel": "SAT本科出海",
     "tagline": "SAT成绩申请加拿大本科",
     "countryCode": "CA",
-    "pathway": "sat"
+    "pathway": "sat",
+    "pros": [
+      "SAT可增强加本申请材料",
+      "教育稳定，移民规划友好",
+      "英语环境好"
+    ],
+    "cons": [
+      "并非所有专业唯分数论",
+      "顶尖校仍看综合背景",
+      "气候与地域适应成本"
+    ]
   },
   "targetCustomer": {
     "summary": "以SAT及高中成绩申请加本的学生。",

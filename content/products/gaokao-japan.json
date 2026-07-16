@@ -13,7 +13,17 @@
     "categoryLabel": "高考本科出海",
     "tagline": "高考后赴日语言+EJU/英语项目升学",
     "countryCode": "JP",
-    "pathway": "gaokao"
+    "pathway": "gaokao",
+    "pros": [
+      "院校层次丰富，理工文管均可选",
+      "费用相对英美更可控",
+      "亚洲文化近，距离与时差友好"
+    ],
+    "cons": [
+      "日语是核心门槛，周期较长",
+      "名校考试/EJU路径不轻松",
+      "英授项目选择相对有限"
+    ]
   },
   "targetCustomer": {
     "summary": "高考后计划赴日读本科，可接受语言学校或英授项目的学生。",

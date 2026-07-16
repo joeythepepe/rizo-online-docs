@@ -13,7 +13,17 @@
     "categoryLabel": "高考本科出海",
     "tagline": "高考分直录八大或预科衔接澳本",
     "countryCode": "AU",
-    "pathway": "gaokao"
+    "pathway": "gaokao",
+    "pros": [
+      "高考直录线公开透明",
+      "教育质量高、专业实践导向强",
+      "环境宜居，八大品牌认可度高"
+    ],
+    "cons": [
+      "学费生活费高",
+      "热门专业竞争与英语要求不低",
+      "地理位置远，回家成本高"
+    ]
   },
   "targetCustomer": {
     "summary": "以高考成绩申请澳大利亚本科或 foundation 的学生与家长。",

@@ -13,7 +13,17 @@
     "categoryLabel": "A-Level本科出海",
     "tagline": "A-Level申请荷兰英授本科",
     "countryCode": "NL",
-    "pathway": "alevel"
+    "pathway": "alevel",
+    "pros": [
+      "英授本科多，A-Level对接顺",
+      "欧洲跳板与国际化强",
+      "部分学费相对英美友好"
+    ],
+    "cons": [
+      "住房紧张、生活成本不低",
+      "专业先修科目要求严格",
+      "小语种环境需适应"
+    ]
   },
   "targetCustomer": {
     "summary": "以A-Level申请荷兰英授本科学位的学生。",

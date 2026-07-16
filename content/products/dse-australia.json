@@ -13,7 +13,17 @@
     "categoryLabel": "DSE本科出海",
     "tagline": "DSE申请澳大利亚本科或预科",
     "countryCode": "AU",
-    "pathway": "dse"
+    "pathway": "dse",
+    "pros": [
+      "DSE换算清晰，八大认可度高",
+      "专业实践强，就业导向明确",
+      "生活环境宜居"
+    ],
+    "cons": [
+      "费用高，热门专业门槛不低",
+      "距离远",
+      "英语与总分双重要求"
+    ]
   },
   "targetCustomer": {
     "summary": "以DSE冲击澳本八大或 foundation 的学生及家长。",

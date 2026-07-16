@@ -13,7 +13,17 @@
     "categoryLabel": "SAT本科出海",
     "tagline": "SAT/美高路径申请美国本科",
     "countryCode": "US",
-    "pathway": "sat"
+    "pathway": "sat",
+    "pros": [
+      "与美本评估体系最匹配",
+      "标化可量化竞争力",
+      "名校与专业选择全球领先"
+    ],
+    "cons": [
+      "SAT只是一环，文书活动同样关键",
+      "竞争全球顶尖，不确定性高",
+      "费用与签证因素需综合评估"
+    ]
   },
   "targetCustomer": {
     "summary": "以SAT及美高/国际课程背景申请美本的学生及家长。",

@@ -13,7 +13,17 @@
     "categoryLabel": "A-Level本科出海",
     "tagline": "A-Level成绩申请香港院校本科",
     "countryCode": "HK",
-    "pathway": "alevel"
+    "pathway": "alevel",
+    "pros": [
+      "国际课程背景受港校欢迎",
+      "英语授课衔接顺畅",
+      "离家近"
+    ],
+    "cons": [
+      "港八大对A-Level条件不低",
+      "热门专业竞争强",
+      "部分专业仍要面试"
+    ]
   },
   "targetCustomer": {
     "summary": "以A-Level申请港八大或自资院校的国际课程学生。",

@@ -79,6 +79,10 @@ export interface ServiceOnePagerContent {
      * 考生路线：gaokao 高考 | dse 香港DSE | alevel 英国高考 | sat 美国高考
      */
     pathway?: ExamPathway;
+    /** 路径优势（标题下展示，建议 2 条） */
+    pros?: ZhString[];
+    /** 路径劣势/风险（标题下展示，建议 2 条） */
+    cons?: ZhString[];
   };
   targetCustomer: TargetCustomer;
   deliverables: {

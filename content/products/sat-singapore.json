@@ -13,7 +13,17 @@
     "categoryLabel": "SAT本科出海",
     "tagline": "SAT成绩申请新加坡本科",
     "countryCode": "SG",
-    "pathway": "sat"
+    "pathway": "sat",
+    "pros": [
+      "新国认可国际标化背景",
+      "英语环境与学术强度高",
+      "亚洲枢纽优势"
+    ],
+    "cons": [
+      "录取极竞争",
+      "生活成本高",
+      "仅靠SAT不够，综合材料关键"
+    ]
   },
   "targetCustomer": {
     "summary": "以SAT等标化申请新加坡本科的学生。",

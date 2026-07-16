@@ -13,7 +13,17 @@
     "categoryLabel": "高考本科出海",
     "tagline": "高考成绩结合韩语申请韩国本科",
     "countryCode": "KR",
-    "pathway": "gaokao"
+    "pathway": "gaokao",
+    "pros": [
+      "距离近、入学批次与衔接灵活",
+      "韩流与产业实习机会吸引人",
+      "语学院升学路径成熟"
+    ],
+    "cons": [
+      "韩语能力要求高，准备周期长",
+      "首尔名校竞争激烈",
+      "学历与专业认可需按目标甄选"
+    ]
   },
   "targetCustomer": {
     "summary": "希望赴韩读本科，可参加语学院或TOPIK备考的高三/毕业学生。",

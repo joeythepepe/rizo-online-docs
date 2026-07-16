@@ -13,7 +13,17 @@
     "categoryLabel": "A-Level本科出海",
     "tagline": "A-Level成绩申请新加坡本科",
     "countryCode": "SG",
-    "pathway": "alevel"
+    "pathway": "alevel",
+    "pros": [
+      "英式课程背景匹配新国招生",
+      "英语环境与学术节奏接近",
+      "区域就业枢纽"
+    ],
+    "cons": [
+      "名校极卷",
+      "生活成本高",
+      "容错空间小"
+    ]
   },
   "targetCustomer": {
     "summary": "以A-Level申请新加坡公立/私立本科的学生。",

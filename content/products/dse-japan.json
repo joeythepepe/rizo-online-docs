@@ -13,7 +13,17 @@
     "categoryLabel": "DSE本科出海",
     "tagline": "DSE后赴日语言/英授项目升学",
     "countryCode": "JP",
-    "pathway": "dse"
+    "pathway": "dse",
+    "pros": [
+      "可衔接语校/英授，路径灵活",
+      "费用相对可控，距离友好",
+      "院校选择面广"
+    ],
+    "cons": [
+      "日语是额外门槛",
+      "DSE直录日本名校案例有限",
+      "英授项目数量相对少"
+    ]
   },
   "targetCustomer": {
     "summary": "DSE体系学生计划赴日读本科，可语校或英授。",

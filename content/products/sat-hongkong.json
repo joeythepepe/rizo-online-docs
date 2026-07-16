@@ -13,7 +13,17 @@
     "categoryLabel": "SAT本科出海",
     "tagline": "SAT/国际课程申请香港本科",
     "countryCode": "HK",
-    "pathway": "sat"
+    "pathway": "sat",
+    "pros": [
+      "港校接受国际/SAT路径",
+      "离家近、英语授课",
+      "大湾区联动"
+    ],
+    "cons": [
+      "名校条件不低",
+      "与本地DSE/JUPAS路径不同需规划",
+      "热门专业竞争强"
+    ]
   },
   "targetCustomer": {
     "summary": "以SAT等国际路径申请港本的学生。",

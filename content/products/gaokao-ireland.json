@@ -11,7 +11,8 @@
   "product": {
     "name": "高考通爱尔兰",
     "categoryLabel": "高考本科出海",
-    "tagline": "高考+英语申请爱尔兰本科与预科"
+    "tagline": "高考+英语申请爱尔兰本科与预科",
+    "countryCode": "IE"
   },
   "targetCustomer": {
     "summary": "希望英语国家留学、关注爱尔兰本科或预科的学生与家长。",

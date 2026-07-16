@@ -64,6 +64,11 @@ export interface ServiceOnePagerContent {
     name: ZhString;
     categoryLabel?: ZhString;
     tagline?: ZhString;
+    /**
+     * ISO 3166-1 alpha-2 country/region code for flag badge
+     * (e.g. HK, GB, US). Rendered via country-flag-icons.
+     */
+    countryCode?: string;
   };
   targetCustomer: TargetCustomer;
   deliverables: {

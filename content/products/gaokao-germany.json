@@ -11,7 +11,8 @@
   "product": {
     "name": "高考通德国",
     "categoryLabel": "高考本科出海",
-    "tagline": "高考过线+APS/语言申请德国本科"
+    "tagline": "高考过线+APS/语言申请德国本科",
+    "countryCode": "DE"
   },
   "targetCustomer": {
     "summary": "目标德国公立本科，可投入德语或选择英授项目的学生。",

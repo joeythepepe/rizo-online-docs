@@ -73,6 +73,13 @@ export const productSchema = z
       name: productNameSchema,
       categoryLabel: zhStringSchema.optional(),
       tagline: zhStringMax(40).optional(),
+      /** ISO 3166-1 alpha-2, e.g. HK / GB / US */
+      countryCode: z
+        .string()
+        .trim()
+        .regex(/^[A-Za-z]{2}$/, "countryCode must be ISO alpha-2")
+        .transform((s) => s.toUpperCase())
+        .optional(),
     }),
     targetCustomer: z.object({
       title: zhStringSchema.optional(),

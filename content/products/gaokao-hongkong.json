@@ -11,7 +11,8 @@
   "product": {
     "name": "高考通香港",
     "categoryLabel": "高考本科出海",
-    "tagline": "高考成绩申请香港院校本科（含港八大）"
+    "tagline": "高考成绩申请香港院校本科（含港八大）",
+    "countryCode": "HK"
   },
   "targetCustomer": {
     "summary": "以高考成绩申请香港本科的高三/复读生及家长，关注港八大与自资院校。",

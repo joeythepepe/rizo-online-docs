@@ -1,5 +1,6 @@
 import type { ServiceOnePagerContent } from "../../../content/types";
 import { BiText } from "../../../components/BiText";
+import { CountryFlag } from "../../../components/CountryFlag";
 
 export interface HeroProps {
   product: ServiceOnePagerContent["product"];
@@ -8,12 +9,14 @@ export interface HeroProps {
 }
 
 /**
- * Hero max 54 mm: category, Chinese product name, optional tagline.
- * cycle/price live in Footer only.
+ * Hero: category, Chinese product name + country flag, optional tagline.
  */
 export function Hero({ product, compact = false }: HeroProps) {
   const stackMt = compact ? "mt-mm-1" : "mt-mm-2";
   const taglineRole = compact ? "body-sm" : "body";
+  const flagClass = compact
+    ? "h-[7mm] w-auto"
+    : "h-[9mm] w-auto";
 
   return (
     <section className="max-h-[54mm] shrink-0 overflow-hidden">
@@ -21,11 +24,16 @@ export function Hero({ product, compact = false }: HeroProps) {
         <BiText value={product.categoryLabel} role="label" />
       ) : null}
 
-      <BiText
-        value={product.name}
-        role="display"
-        className={product.categoryLabel ? stackMt : undefined}
-      />
+      <div
+        className={`flex items-center gap-mm-4 ${
+          product.categoryLabel ? stackMt : ""
+        }`.trim()}
+      >
+        {product.countryCode ? (
+          <CountryFlag code={product.countryCode} className={flagClass} />
+        ) : null}
+        <BiText value={product.name} role="display" className="min-w-0" />
+      </div>
 
       {product.tagline ? (
         <BiText

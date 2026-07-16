@@ -11,7 +11,8 @@
   "product": {
     "name": "高考通荷兰",
     "categoryLabel": "高考本科出海",
-    "tagline": "高考+英语申请荷兰英授本科学位"
+    "tagline": "高考+英语申请荷兰英授本科学位",
+    "countryCode": "NL"
   },
   "targetCustomer": {
     "summary": "目标荷兰英授本科，接受预科或直接入学评估的学生与家长。",

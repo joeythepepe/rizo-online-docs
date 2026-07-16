@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import { listProductIds, loadProduct } from "./content/loadProduct";
 import type { ServiceOnePagerContent } from "./content/types";
+import { CountryFlag } from "./components/CountryFlag";
 import { ServiceOnePager } from "./templates/a4-service-onepager/ServiceOnePager";
 
 function GalleryPage() {
@@ -17,18 +18,20 @@ function GalleryPage() {
   return (
     <div className="min-h-screen bg-[#e8e8ed] p-8">
       <header className="no-print mb-8 max-w-4xl">
-        <h1 className="text-2xl font-bold text-ink">Service one-pagers</h1>
+        <h1 className="text-2xl font-bold text-ink">高考通 · 服务一页纸</h1>
         <p className="mt-2 text-sm text-ink-secondary">
-          Gallery · open preview or chrome-less print route
+          预览 / 打印路由 · 各国本科申请服务说明
         </p>
       </header>
 
       <ul className="grid max-w-4xl list-none gap-4 p-0 sm:grid-cols-2">
         {ids.map((id) => {
           let titleZh = id;
+          let countryCode: string | undefined;
           try {
             const p = loadProduct(id);
             titleZh = p.product.name;
+            countryCode = p.product.countryCode;
           } catch {
             /* keep id */
           }
@@ -37,7 +40,12 @@ function GalleryPage() {
               key={id}
               className="rounded-lg border border-rule bg-paper p-5 shadow-sm"
             >
-              <p className="text-base font-medium text-ink">{titleZh}</p>
+              <div className="flex items-center gap-3">
+                {countryCode ? (
+                  <CountryFlag code={countryCode} className="h-6 w-auto" />
+                ) : null}
+                <p className="text-base font-medium text-ink">{titleZh}</p>
+              </div>
               <p className="mt-2 font-mono text-xs text-ink-tertiary">{id}</p>
               <div className="mt-4 flex flex-wrap gap-3 text-sm">
                 <Link

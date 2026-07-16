@@ -11,7 +11,8 @@
   "product": {
     "name": "高考通澳大利亚",
     "categoryLabel": "高考本科出海",
-    "tagline": "高考分直录八大或预科衔接澳本"
+    "tagline": "高考分直录八大或预科衔接澳本",
+    "countryCode": "AU"
   },
   "targetCustomer": {
     "summary": "以高考成绩申请澳大利亚本科或 foundation 的学生与家长。",

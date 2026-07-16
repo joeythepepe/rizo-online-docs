@@ -11,7 +11,8 @@
   "product": {
     "name": "高考通韩国",
     "categoryLabel": "高考本科出海",
-    "tagline": "高考成绩结合韩语申请韩国本科"
+    "tagline": "高考成绩结合韩语申请韩国本科",
+    "countryCode": "KR"
   },
   "targetCustomer": {
     "summary": "希望赴韩读本科，可参加语学院或TOPIK备考的高三/毕业学生。",

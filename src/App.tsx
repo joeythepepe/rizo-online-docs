@@ -17,14 +17,14 @@ function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-[#e8e8ed] p-8">
-      <header className="no-print mb-8 max-w-4xl">
+      <header className="no-print mb-8 max-w-5xl">
         <h1 className="text-2xl font-bold text-ink">高考通 · 服务一页纸</h1>
         <p className="mt-2 text-sm text-ink-secondary">
           预览 / 打印路由 · 各国本科申请服务说明
         </p>
       </header>
 
-      <ul className="grid max-w-4xl list-none gap-4 p-0 sm:grid-cols-2">
+      <ul className="grid max-w-5xl list-none gap-4 p-0 sm:grid-cols-2 lg:grid-cols-3">
         {ids.map((id) => {
           let titleZh = id;
           let countryCode: string | undefined;

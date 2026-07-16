@@ -15,9 +15,9 @@ export interface ServiceOnePagerProps {
 }
 
 /**
- * A4 service one-pager — stack (default) or split body layout.
+ * A4 service one-pager — split body layout by default (服务内容 | 客户需具备).
  *
- * Split (`layout.variant: "split"`) is data-driven only (no viewport breakpoints).
+ * Split is data-driven only (no viewport breakpoints). Override with layout.variant: "stack".
  * Content width 182 mm, gutter 4 mm, 12-col math:
  *   col = (182 − 11×4) / 12 = 11.5 mm
  *   Deliverables col-span-5 → 73.5 mm
@@ -27,9 +27,9 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
   const layout = content.layout ?? {};
   const softPanelOn = layout.softPanelOn ?? "requirements";
   const compact = layout.density === "compact";
-  /** Default stack when unset — split only when product JSON opts in. */
-  const variant = layout.variant ?? "stack";
-  const isSplit = variant === "split";
+  /** Default split (服务内容 | 客户需具备); set layout.variant: "stack" to force single column. */
+  const variant = layout.variant ?? "split";
+  const isSplit = variant !== "stack";
   /**
    * `layout.showHighlights` gates the optional block for **both** highlights and
    * timeline (schema: mutually exclusive). Unset / true → show whichever is present;

@@ -139,10 +139,10 @@ Set `layout.density: "compact"` in product JSON, or let export promote via `?den
 
 ### Layout variant (`stack` | `split`)
 
-Default is **`stack`** (single column body). Opt in to a fixed 5/7 print grid with product JSON only — **no viewport breakpoints**:
+Default is **`split`**: 服务内容 (left) | 客户需具备 SoftPanel (right), fixed 5/7 print grid — **no viewport breakpoints**. Opt out with:
 
 ```json
-"layout": { "variant": "split" }
+"layout": { "variant": "stack" }
 ```
 
 Smoke fixture: **`content/products/example-uk-ug-split.json`** (`bun run export:pdf --product example-uk-ug-split`).

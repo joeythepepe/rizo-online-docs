@@ -89,7 +89,7 @@
     ]
   },
   "layout": {
-    "variant": "stack",
+    "variant": "split",
     "showHighlights": true,
     "showQr": true,
     "density": "normal",

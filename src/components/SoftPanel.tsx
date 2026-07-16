@@ -3,7 +3,10 @@ import type { ReactNode } from "react";
 export interface SoftPanelProps {
   children: ReactNode;
   className?: string;
-  /** Optional 2 pt left accent bar (mutually exclusive with accent list numbers). */
+  /**
+   * Optional 2 pt left accent bar (mutually exclusive with accent list numbers).
+   * Uses Tailwind `border-accent` token (#0071E3).
+   */
   accentBar?: boolean;
 }
 
@@ -17,12 +20,13 @@ export function SoftPanel({
 }: SoftPanelProps) {
   return (
     <div
-      className={`rounded-none bg-soft p-mm-8 ${className}`.trim()}
-      style={
-        accentBar
-          ? { borderLeft: "2pt solid #0071E3" }
-          : undefined
-      }
+      className={[
+        "rounded-none bg-soft p-mm-8",
+        accentBar ? "border-l-[2pt] border-accent" : "",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
     >
       {children}
     </div>

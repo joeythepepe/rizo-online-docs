@@ -27,11 +27,14 @@ function DeliverablesBody({
     <>
       <SectionLabel value={sectionTitle} />
       {intro ? <BiText value={intro} role={bodyRole} className="mt-mm-4" /> : null}
-      <ul className={`mt-mm-4 flex list-none flex-col ${listGap} p-0`}>
-        {items.map((item) => (
-          <li key={item.id} className="flex gap-mm-2">
-            <span className="text-print-body text-accent shrink-0" aria-hidden>
-              ·
+      <ol className={`mt-mm-4 flex list-none flex-col ${listGap} p-0`}>
+        {items.map((item, index) => (
+          <li key={item.id} className="flex gap-mm-4">
+            <span
+              className="text-print-body text-accent shrink-0 tabular-nums"
+              aria-hidden
+            >
+              {String(index + 1).padStart(2, "0")}
             </span>
             <div className="min-w-0">
               <BiText value={item.label} role={bodyRole} />
@@ -41,14 +44,14 @@ function DeliverablesBody({
             </div>
           </li>
         ))}
-      </ul>
+      </ol>
     </>
   );
 }
 
 /**
- * Service deliverables — bilingual list. SoftPanel optional (default: none;
- * SoftPanel is on requirements by default).
+ * Service deliverables — bilingual numbered list (matches requirements style).
+ * SoftPanel optional (default: none; SoftPanel is on requirements by default).
  */
 export function Deliverables(props: DeliverablesProps) {
   const body = <DeliverablesBody {...props} />;

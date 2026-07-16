@@ -23,17 +23,19 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
   const layout = content.layout ?? {};
   const softPanelOn = layout.softPanelOn ?? "requirements";
   const compact = layout.density === "compact";
-  const showOptional =
-    layout.showHighlights !== false &&
-    (Boolean(content.highlights?.items?.length) ||
-      Boolean(content.timeline?.steps?.length));
+  /**
+   * `layout.showHighlights` gates the optional block for **both** highlights and
+   * timeline (schema: mutually exclusive). Unset / true → show whichever is present;
+   * false → omit both. Not a highlights-only switch despite the field name.
+   */
+  const showOptionalBlock = layout.showHighlights !== false;
 
   const showHighlights =
-    showOptional &&
+    showOptionalBlock &&
     Boolean(content.highlights?.items?.length) &&
     !content.timeline;
   const showTimeline =
-    showOptional && Boolean(content.timeline?.steps?.length);
+    showOptionalBlock && Boolean(content.timeline?.steps?.length);
 
   return (
     <A4Page>

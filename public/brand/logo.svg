@@ -2,5 +2,5 @@
   <!-- Placeholder mark + wordmark; replace with real brand art later -->
   <rect x="0" y="4" width="24" height="24" rx="4" fill="#0071E3"/>
   <path d="M7 20 L12 10 L17 20 Z" fill="#FFFFFF"/>
-  <text x="32" y="22" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#1D1D1F">Brand</text>
+  <text x="32" y="22" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1D1D1F">Brand</text>
 </svg>

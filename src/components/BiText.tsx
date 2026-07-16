@@ -55,7 +55,10 @@ export interface BiTextProps {
   role?: BiTextRole;
   /** Extra class on the outer wrapper */
   className?: string;
-  /** Render as a single inline pair (meta lines) vs stacked block */
+  /**
+   * `div` (default): block stack with p tags.
+   * `span`: inline-flex column with gap-mm-1 so CN→EN gap works on inline boxes.
+   */
   as?: "div" | "span";
   zhClassName?: string;
   enClassName?: string;
@@ -74,17 +77,25 @@ export function BiText({
   enClassName = "",
 }: BiTextProps) {
   const tokens = ROLE_CLASSES[role];
+  const isInline = as === "span";
   const Tag = as;
-  const ZhTag = as === "span" ? "span" : "p";
-  const EnTag = as === "span" ? "span" : "p";
+  const ZhTag = isInline ? "span" : "p";
+  const EnTag = isInline ? "span" : "p";
+
+  const wrapperClass = [
+    isInline ? "inline-flex flex-col gap-mm-1" : "",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <Tag className={className || undefined}>
+    <Tag className={wrapperClass || undefined}>
       <ZhTag className={`${tokens.zh} ${tokens.zhColor} ${zhClassName}`.trim()}>
         {value.zh}
       </ZhTag>
       <EnTag
-        className={`mt-mm-1 ${tokens.en} ${tokens.enColor} ${enClassName}`.trim()}
+        className={`${isInline ? "" : "mt-mm-1 "} ${tokens.en} ${tokens.enColor} ${enClassName}`.trim()}
       >
         {value.en}
       </EnTag>

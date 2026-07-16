@@ -2,7 +2,8 @@ import type { BiString } from "../content/types";
 import { BiText } from "./BiText";
 
 /**
- * Section eyebrow label pair (CN label + EN label).
+ * Section title pair — print-title / print-en-title (not label/eyebrow tokens).
+ * Use BiText role="label" directly for chrome eyebrows (category, doc label).
  */
 export function SectionLabel({
   value,
@@ -11,5 +12,5 @@ export function SectionLabel({
   value: BiString;
   className?: string;
 }) {
-  return <BiText value={value} role="label" className={className} />;
+  return <BiText value={value} role="title" className={className} />;
 }

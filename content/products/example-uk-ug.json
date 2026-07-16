@@ -102,7 +102,7 @@
     "logoSrc": "/brand/logo.svg",
     "contactLine": "example.com",
     "wechatId": "example_edu",
-    "qrSrc": "/brand/wechat-qr.png",
+    "qrSrc": "/brand/wechat-qr.svg",
     "ctaLabel": { "zh": "预约顾问", "en": "Book a consultation" },
     "ctaDetail": { "zh": "扫码添加顾问微信", "en": "Scan to add counselor WeChat" }
   },

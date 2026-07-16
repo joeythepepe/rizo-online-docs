@@ -9,8 +9,8 @@ export interface TargetCustomerProps {
 }
 
 /**
- * Target customer max 52 mm: section label, summary Bi, optional chips.
- * Chips prefer CN row then optional EN row when segments present.
+ * Target customer max 52 mm: section title, summary Bi, optional chips.
+ * Segments/profiles: CN chip row then EN chip row (full bilingual).
  */
 export function TargetCustomer({ data }: TargetCustomerProps) {
   const title = data.title ?? BILINGUAL_CHROME.targetSection;
@@ -26,12 +26,14 @@ export function TargetCustomer({ data }: TargetCustomerProps) {
         <div className="mt-mm-4 flex flex-col gap-mm-2">
           <div className="flex flex-wrap gap-mm-2">
             {segments.map((seg, i) => (
-              <Chip key={`seg-zh-${i}`}>{seg.zh}</Chip>
+              <Chip key={`seg-zh-${i}`} tone="zh">
+                {seg.zh}
+              </Chip>
             ))}
           </div>
           <div className="flex flex-wrap gap-mm-2">
             {segments.map((seg, i) => (
-              <Chip key={`seg-en-${i}`} className="text-ink-secondary">
+              <Chip key={`seg-en-${i}`} tone="en">
                 {seg.en}
               </Chip>
             ))}
@@ -40,10 +42,21 @@ export function TargetCustomer({ data }: TargetCustomerProps) {
       ) : null}
 
       {profiles.length > 0 ? (
-        <div className="mt-mm-2 flex flex-wrap gap-mm-2">
-          {profiles.map((p, i) => (
-            <Chip key={`profile-${i}`}>{p.zh}</Chip>
-          ))}
+        <div className="mt-mm-2 flex flex-col gap-mm-2">
+          <div className="flex flex-wrap gap-mm-2">
+            {profiles.map((p, i) => (
+              <Chip key={`profile-zh-${i}`} tone="zh">
+                {p.zh}
+              </Chip>
+            ))}
+          </div>
+          <div className="flex flex-wrap gap-mm-2">
+            {profiles.map((p, i) => (
+              <Chip key={`profile-en-${i}`} tone="en">
+                {p.en}
+              </Chip>
+            ))}
+          </div>
         </div>
       ) : null}
     </section>

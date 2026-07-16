@@ -1,0 +1,19 @@
+{
+  "companyName": {
+    "zh": "示例升学咨询",
+    "en": "Example Admissions Consulting"
+  },
+  "logoSrc": "/brand/logo.svg",
+  "accentColor": "#0071E3",
+  "contactLine": "example.com",
+  "wechatId": "example_edu",
+  "qrSrc": "/brand/wechat-qr.png",
+  "ctaLabel": {
+    "zh": "预约顾问",
+    "en": "Book a consultation"
+  },
+  "ctaDetail": {
+    "zh": "扫码添加顾问微信",
+    "en": "Scan to add counselor WeChat"
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN-en",
+  "meta": {
+    "documentTitle": {
+      "zh": "产品名称-服务说明",
+      "en": "Product name — Service Overview"
+    },
+    "version": "YYYY.MM",
+    "cycleLabel": { "zh": "入学季", "en": "Intake term" },
+    "priceBand": { "zh": "面议", "en": "Quote on request" },
+    "confidential": false
+  },
+  "product": {
+    "name": { "zh": "产品名称", "en": "Product name" },
+    "categoryLabel": { "zh": "服务类别", "en": "Service category" },
+    "tagline": {
+      "zh": "一句话价值主张（可选）",
+      "en": "One-line value prop (optional)"
+    }
+  },
+  "targetCustomer": {
+    "summary": {
+      "zh": "用一两句话说明适合哪些学生与家长（中文摘要，至少八字）。",
+      "en": "One or two sentences on who this service is for (min 8 chars)."
+    },
+    "segments": [
+      { "zh": "标签一", "en": "Tag one" },
+      { "zh": "标签二", "en": "Tag two" }
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": {
+          "zh": "交付项一（必填 1–6 项）",
+          "en": "Deliverable one (required, 1–6 items)"
+        }
+      }
+    ]
+  },
+  "requirements": {
+    "items": [
+      {
+        "id": "r1",
+        "label": {
+          "zh": "客户需具备一（必填 1–8 项）",
+          "en": "Client requirement one (required, 1–8)"
+        },
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      { "zh": "要点一", "en": "Highlight one" }
+    ]
+  },
+  "brand": {
+    "companyName": { "zh": "示例升学咨询", "en": "Example Admissions Consulting" },
+    "logoSrc": "/brand/logo.svg",
+    "contactLine": "example.com",
+    "wechatId": "example_edu",
+    "qrSrc": "/brand/wechat-qr.png",
+    "ctaLabel": { "zh": "预约顾问", "en": "Book a consultation" },
+    "ctaDetail": { "zh": "扫码添加顾问微信", "en": "Scan to add counselor WeChat" }
+  },
+  "layout": {
+    "variant": "stack",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "bilingual": true
+  }
+}

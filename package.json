@@ -9,11 +9,13 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "check:print-classes": "bash scripts/check-print-classes.sh",
-    "fonts:subset": "bash scripts/fonts-subset.sh"
+    "fonts:subset": "bash scripts/fonts-subset.sh",
+    "validate:content": "node scripts/validate-content.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",

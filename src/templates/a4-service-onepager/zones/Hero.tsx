@@ -9,7 +9,8 @@ export interface HeroProps {
 }
 
 /**
- * Hero: category, Chinese product name + country flag, optional tagline.
+ * Hero: Chinese product name + country flag, optional tagline.
+ * categoryLabel is not shown (redundant with pathway filter / product name).
  */
 export function Hero({ product, compact = false }: HeroProps) {
   const stackMt = compact ? "mt-mm-1" : "mt-mm-2";
@@ -20,15 +21,7 @@ export function Hero({ product, compact = false }: HeroProps) {
 
   return (
     <section className="shrink-0 overflow-visible">
-      {product.categoryLabel ? (
-        <BiText value={product.categoryLabel} role="label" />
-      ) : null}
-
-      <div
-        className={`flex items-center gap-mm-4 ${
-          product.categoryLabel ? stackMt : ""
-        }`.trim()}
-      >
+      <div className="flex items-center gap-mm-4">
         {product.countryCode ? (
           <CountryFlag code={product.countryCode} className={flagClass} />
         ) : null}

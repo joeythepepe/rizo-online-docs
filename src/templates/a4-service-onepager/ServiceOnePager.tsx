@@ -16,13 +16,21 @@ export interface ServiceOnePagerProps {
 }
 
 /**
- * A4 service one-pager — stack layout (v1).
- * Composes fixed header/footer with flex body zones inside A4Page.
+ * A4 service one-pager — stack (default) or split body layout.
+ *
+ * Split (`layout.variant: "split"`) is data-driven only (no viewport breakpoints).
+ * Content width 182 mm, gutter 4 mm, 12-col math:
+ *   col = (182 − 11×4) / 12 = 11.5 mm
+ *   Deliverables col-span-5 → 73.5 mm
+ *   Requirements col-span-7 → 104.5 mm
  */
 export function ServiceOnePager({ content }: ServiceOnePagerProps) {
   const layout = content.layout ?? {};
   const softPanelOn = layout.softPanelOn ?? "requirements";
   const compact = layout.density === "compact";
+  /** Default stack when unset — split only when product JSON opts in. */
+  const variant = layout.variant ?? "stack";
+  const isSplit = variant === "split";
   /**
    * `layout.showHighlights` gates the optional block for **both** highlights and
    * timeline (schema: mutually exclusive). Unset / true → show whichever is present;
@@ -41,6 +49,26 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
   const sectionGap = compact ? "gap-mm-4" : "gap-mm-6";
   const sectionTop = compact ? "mt-mm-6" : "mt-mm-8";
 
+  const deliverables = (
+    <Deliverables
+      title={content.deliverables.title}
+      intro={content.deliverables.intro}
+      items={content.deliverables.items}
+      softPanel={softPanelOn === "deliverables"}
+      compact={compact}
+    />
+  );
+
+  const requirements = (
+    <Requirements
+      title={content.requirements.title}
+      intro={content.requirements.intro}
+      items={content.requirements.items}
+      softPanel={softPanelOn === "requirements"}
+      compact={compact}
+    />
+  );
+
   return (
     <A4Page>
       <Header brand={content.brand} />
@@ -48,28 +76,30 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
 
       <Hero product={content.product} compact={compact} />
 
-      {/* Body flex column: target → deliverables → requirements → optional */}
+      {/* Body: target → (deliverables/requirements stack or 5/7 split) → optional */}
       <div
         className={`${sectionTop} flex min-h-0 flex-1 flex-col ${sectionGap}`}
         data-density={compact ? "compact" : "normal"}
+        data-layout-variant={variant}
       >
         <TargetCustomer data={content.targetCustomer} compact={compact} />
 
-        <Deliverables
-          title={content.deliverables.title}
-          intro={content.deliverables.intro}
-          items={content.deliverables.items}
-          softPanel={softPanelOn === "deliverables"}
-          compact={compact}
-        />
-
-        <Requirements
-          title={content.requirements.title}
-          intro={content.requirements.intro}
-          items={content.requirements.items}
-          softPanel={softPanelOn === "requirements"}
-          compact={compact}
-        />
+        {isSplit ? (
+          <div
+            className="grid min-h-0 grid-cols-12 gap-mm-4"
+            data-split-grid="5-7"
+          >
+            {/* 5×11.5 + 4×4 = 73.5 mm */}
+            <div className="col-span-5 min-w-0">{deliverables}</div>
+            {/* 7×11.5 + 6×4 = 104.5 mm */}
+            <div className="col-span-7 min-w-0">{requirements}</div>
+          </div>
+        ) : (
+          <>
+            {deliverables}
+            {requirements}
+          </>
+        )}
 
         {showHighlights && content.highlights ? (
           <Highlights

@@ -156,6 +156,40 @@ Set `layout.density: "compact"` in product JSON, or let export promote via `?den
 6. Preview `/print/<id>?density=compact` before export; do not rely on silent clip.
 7. Compact still fails if content is too long — see `fixture-overflow-compact`.
 
+### Layout variant (`stack` | `split`)
+
+Default is **`stack`** (single column body). Opt in to a fixed 5/7 print grid with product JSON only — **no viewport breakpoints**:
+
+```json
+"layout": { "variant": "split" }
+```
+
+Split math (content width **182 mm**, gutter **4 mm**, 12 columns):
+
+| Zone | Span | Width |
+|------|------|--------|
+| Deliverables | `col-span-5` | **73.5 mm** |
+| Requirements | `col-span-7` | **104.5 mm** |
+
+`col = (182 − 11×4) / 12 = 11.5 mm` → 5-col = 5×11.5 + 4×4 = 73.5; 7-col = 7×11.5 + 6×4 = 104.5.
+
+### Brand assets
+
+Static files are served from **`public/brand/`**:
+
+| File | Role |
+|------|------|
+| `public/brand/logo.svg` | Placeholder mark + wordmark (professional stand-in). **Replace with real logo** (SVG preferred; PNG min width **600px**). Header renders ≤ **8 mm** tall / ≤ **36 mm** wide. |
+| `public/brand/wechat-qr.svg` | Placeholder QR for demos. **Replace with real WeChat QR** (PNG or SVG). Footer shows ≤ **14 mm**. |
+
+Wire paths in content (not by renaming only):
+
+1. Drop real art into `public/brand/` (keep or change filenames).
+2. Set `logoSrc` / `qrSrc` in **`content/brand/default.json`** (shared defaults).
+3. Optionally override per product under `brand` in `content/products/<id>.json`.
+
+Accent color defaults to `#0071E3` (`brand.accentColor`) until brand confirms. Company name, CTA, WeChat id, and contact line are content fields — not baked into the SVG.
+
 ## Project layout
 
 ```text

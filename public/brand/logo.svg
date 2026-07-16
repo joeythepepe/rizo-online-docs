@@ -1,6 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 32" role="img" aria-label="Brand logo placeholder">
-  <!-- Placeholder mark + wordmark; replace with real brand art later -->
-  <rect x="0" y="4" width="24" height="24" rx="4" fill="#0071E3"/>
-  <path d="M7 20 L12 10 L17 20 Z" fill="#FFFFFF"/>
-  <text x="32" y="22" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1D1D1F">Brand</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" role="img" aria-label="Brand logo placeholder">
+  <!--
+    Placeholder logo (professional mark + wordmark).
+    Replace with real brand art: drop SVG/PNG into public/brand/ and set brand.logoSrc
+    in content/brand/default.json (and product brand overrides). Prefer SVG; PNG min width 600px.
+    Keep rendered height ≤ 8 mm (Header). Accent default #0071E3 until brand confirms.
+  -->
+  <defs>
+    <style>
+      .mark { fill: #0071E3; }
+      .mark-inner { fill: #FFFFFF; }
+      .word { fill: #1D1D1F; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+    </style>
+  </defs>
+  <!-- Rounded square mark with ascending path (education / progress) -->
+  <rect class="mark" x="0" y="2" width="28" height="28" rx="6"/>
+  <path class="mark-inner" d="M7.5 21.5 V12.5 L12.5 17 L20.5 9.5" fill="none" stroke="#FFFFFF" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle class="mark-inner" cx="20.5" cy="9.5" r="1.6"/>
+  <text class="word" x="36" y="21">Brand</text>
 </svg>

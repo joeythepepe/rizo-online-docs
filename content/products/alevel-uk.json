@@ -98,6 +98,6 @@
     "showHighlights": true,
     "showQr": true,
     "density": "normal",
-    "softPanelOn": "requirements"
+    "softPanelOn": "none"
   }
 }

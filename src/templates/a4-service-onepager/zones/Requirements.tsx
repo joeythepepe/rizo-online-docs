@@ -8,7 +8,7 @@ export interface RequirementsProps {
   title?: ZhString;
   intro?: ZhString;
   items: ListItem[];
-  /** SoftPanel on by default per design (softPanelOn: requirements) */
+  /** SoftPanel off by default for visual parity with deliverables */
   softPanel?: boolean;
   compact?: boolean;
   /** Accent digits when SoftPanel has no accent bar */
@@ -60,10 +60,10 @@ function RequirementsBody({
 }
 
 /**
- * Client requirements — priority flex consumer; SoftPanel default.
+ * Client requirements — plain layout (same as deliverables).
  */
 export function Requirements({
-  softPanel = true,
+  softPanel = false,
   compact,
   ...rest
 }: RequirementsProps) {

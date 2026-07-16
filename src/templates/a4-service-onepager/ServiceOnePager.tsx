@@ -25,7 +25,8 @@ export interface ServiceOnePagerProps {
  */
 export function ServiceOnePager({ content }: ServiceOnePagerProps) {
   const layout = content.layout ?? {};
-  const softPanelOn = layout.softPanelOn ?? "requirements";
+  /** No SoftPanel by default — left/right columns share the same plain layout. */
+  const softPanelOn = layout.softPanelOn ?? "none";
   const compact = layout.density === "compact";
   /** Default split (服务内容 | 客户需具备); set layout.variant: "stack" to force single column. */
   const variant = layout.variant ?? "split";

@@ -45,7 +45,7 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
   const showTimeline =
     showOptionalBlock && Boolean(content.timeline?.steps?.length);
 
-  // Dense stack: bilingual body needs tighter inter-zone gaps than mm-12 to fit A4.
+  // Dense stack: tighter inter-zone gaps than mm-12 to fit A4.
   const sectionGap = compact ? "gap-mm-4" : "gap-mm-6";
   const sectionTop = compact ? "mt-mm-6" : "mt-mm-8";
 

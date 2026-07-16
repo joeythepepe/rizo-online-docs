@@ -50,7 +50,7 @@ async function measureOverflow(
 }
 
 test.describe("print screenshot smoke", () => {
-  test("example-uk-ug A4 renders bilingual content without overflow", async ({
+  test("example-uk-ug A4 renders Chinese content without overflow", async ({
     page,
   }) => {
     await page.goto("/print/example-uk-ug");
@@ -59,9 +59,9 @@ test.describe("print screenshot smoke", () => {
     const a4 = page.locator("[data-page=a4]");
     await expect(a4).toBeVisible();
 
-    // CN + EN product name (happy-path bilingual)
+    // Chinese product name (CN-only documents)
     await expect(a4.getByText("英本冲刺计划").first()).toBeVisible();
-    await expect(a4.getByText("UK Undergraduate Sprint").first()).toBeVisible();
+    await expect(a4.getByText("UK Undergraduate Sprint")).toHaveCount(0);
 
     // Density attribute present (normal for example product)
     await expect(page.locator("[data-density=normal]").first()).toBeVisible();

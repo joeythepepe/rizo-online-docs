@@ -8,7 +8,7 @@ export interface DisclaimerProps {
 }
 
 /**
- * Always-on disclaimer — max 14 mm, CN + EN meta type.
+ * Always-on disclaimer — max 14 mm, Chinese meta type.
  */
 export function Disclaimer({ value }: DisclaimerProps) {
   const text = value ?? BILINGUAL_CHROME.disclaimer;

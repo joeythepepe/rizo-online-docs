@@ -8,10 +8,9 @@ export interface HeaderProps {
 }
 
 /**
- * Fixed 16 mm header: brand logo left (Rizo wordmark), doc label right.
- * Logo caps: max 8 mm tall / 48 mm wide (wide wordmarks); object-contain.
- * Company name BiString is not shown beside the logo — the SVG includes the mark.
- * Art: `public/brand/logo.svg` (see README).
+ * Fixed header: larger Rizo wordmark left, Chinese doc label right.
+ * Logo caps: max 12 mm tall / 72 mm wide; object-contain.
+ * Company name is not shown beside the logo (SVG includes the mark).
  */
 export function Header({
   brand,
@@ -23,12 +22,12 @@ export function Header({
   const logoH = 51;
 
   return (
-    <header className="flex h-[16mm] shrink-0 items-center justify-between gap-mm-4">
+    <header className="flex h-[20mm] shrink-0 items-center justify-between gap-mm-4">
       <div className="flex min-w-0 items-center gap-mm-4">
         <img
           src={logoSrc}
           alt={brand.companyName.zh || "Rizo"}
-          className="h-[8mm] w-auto max-w-[48mm] object-contain object-left"
+          className="h-[12mm] w-auto max-w-[72mm] object-contain object-left"
           width={logoW}
           height={logoH}
         />

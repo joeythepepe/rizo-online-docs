@@ -113,12 +113,12 @@ export function printUrl(
   return `${EXPORT_ORIGIN}/print/${encodeURIComponent(productId)}${qs ? `?${qs}` : ""}`;
 }
 
-/** PDF document title from bilingual meta. */
+/** PDF document title from Chinese meta.documentTitle.zh. */
 export function documentTitleFromMeta(documentTitle: {
   zh: string;
   en: string;
 }): string {
-  return `${documentTitle.zh} — ${documentTitle.en}`;
+  return documentTitle.zh;
 }
 
 /** Convert PDF points (1/72") to mm. */

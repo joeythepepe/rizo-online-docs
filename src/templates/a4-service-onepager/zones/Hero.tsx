@@ -8,7 +8,7 @@ export interface HeroProps {
 }
 
 /**
- * Hero max 54 mm: category, name CN+EN, optional tagline.
+ * Hero max 54 mm: category, Chinese product name, optional tagline.
  * cycle/price live in Footer only.
  */
 export function Hero({ product, compact = false }: HeroProps) {

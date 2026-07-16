@@ -11,8 +11,7 @@ export interface TargetCustomerProps {
 }
 
 /**
- * Target customer max 52 mm: section title, summary Bi, optional chips.
- * Segments/profiles: CN chip row then EN chip row (full bilingual).
+ * Target customer max 52 mm: section title, summary, optional CN chips.
  */
 export function TargetCustomer({ data, compact = false }: TargetCustomerProps) {
   const title = data.title ?? BILINGUAL_CHROME.targetSection;
@@ -28,40 +27,22 @@ export function TargetCustomer({ data, compact = false }: TargetCustomerProps) {
       <BiText value={data.summary} role={bodyRole} className={stackMt} />
 
       {segments.length > 0 ? (
-        <div className={`${stackMt} flex flex-col ${chipGap}`}>
-          <div className={`flex flex-wrap ${chipGap}`}>
-            {segments.map((seg, i) => (
-              <Chip key={`seg-zh-${i}`} tone="zh" compact={compact}>
-                {seg.zh}
-              </Chip>
-            ))}
-          </div>
-          <div className={`flex flex-wrap ${chipGap}`}>
-            {segments.map((seg, i) => (
-              <Chip key={`seg-en-${i}`} tone="en" compact={compact}>
-                {seg.en}
-              </Chip>
-            ))}
-          </div>
+        <div className={`${stackMt} flex flex-wrap ${chipGap}`}>
+          {segments.map((seg, i) => (
+            <Chip key={`seg-zh-${i}`} tone="zh" compact={compact}>
+              {seg.zh}
+            </Chip>
+          ))}
         </div>
       ) : null}
 
       {profiles.length > 0 ? (
-        <div className={`mt-mm-2 flex flex-col ${chipGap}`}>
-          <div className={`flex flex-wrap ${chipGap}`}>
-            {profiles.map((p, i) => (
-              <Chip key={`profile-zh-${i}`} tone="zh" compact={compact}>
-                {p.zh}
-              </Chip>
-            ))}
-          </div>
-          <div className={`flex flex-wrap ${chipGap}`}>
-            {profiles.map((p, i) => (
-              <Chip key={`profile-en-${i}`} tone="en" compact={compact}>
-                {p.en}
-              </Chip>
-            ))}
-          </div>
+        <div className={`mt-mm-2 flex flex-wrap ${chipGap}`}>
+          {profiles.map((p, i) => (
+            <Chip key={`profile-zh-${i}`} tone="zh" compact={compact}>
+              {p.zh}
+            </Chip>
+          ))}
         </div>
       ) : null}
     </section>

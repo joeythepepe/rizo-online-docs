@@ -55,7 +55,7 @@ function DeliverablesBody({
 }
 
 /**
- * Service deliverables — bilingual numbered list (matches requirements style).
+ * Service deliverables — Chinese numbered list (matches requirements style).
  * SoftPanel optional (default: none; SoftPanel is on requirements by default).
  */
 export function Deliverables(props: DeliverablesProps) {

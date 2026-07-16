@@ -26,11 +26,9 @@ function GalleryPage() {
       <ul className="grid max-w-4xl list-none gap-4 p-0 sm:grid-cols-2">
         {ids.map((id) => {
           let titleZh = id;
-          let titleEn = "";
           try {
             const p = loadProduct(id);
             titleZh = p.product.name.zh;
-            titleEn = p.product.name.en;
           } catch {
             /* keep id */
           }
@@ -40,9 +38,6 @@ function GalleryPage() {
               className="rounded-lg border border-rule bg-paper p-5 shadow-sm"
             >
               <p className="text-base font-medium text-ink">{titleZh}</p>
-              {titleEn ? (
-                <p className="mt-1 text-sm text-ink-secondary">{titleEn}</p>
-              ) : null}
               <p className="mt-2 font-mono text-xs text-ink-tertiary">{id}</p>
               <div className="mt-4 flex flex-wrap gap-3 text-sm">
                 <Link

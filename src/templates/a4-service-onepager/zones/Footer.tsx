@@ -8,7 +8,7 @@ export interface FooterProps {
 }
 
 /**
- * Fixed 16 mm footer: meta rows + optional QR + ctaDetail when QR shown.
+ * Fixed 16 mm footer: Chinese-only meta rows + optional QR + ctaDetail when QR shown.
  * No CSS ellipsis — wrap within the band; vertical overflow fails export measure.
  */
 export function Footer({ brand, meta, showQr = true }: FooterProps) {
@@ -25,9 +25,7 @@ export function Footer({ brand, meta, showQr = true }: FooterProps) {
   const metaLine = [
     contactParts,
     `${meta.version} · 1/1`,
-    meta.confidential
-      ? `${BILINGUAL_CHROME.confidential.zh}/${BILINGUAL_CHROME.confidential.en}`
-      : null,
+    meta.confidential ? BILINGUAL_CHROME.confidential.zh : null,
   ]
     .filter(Boolean)
     .join(" · ");
@@ -38,15 +36,13 @@ export function Footer({ brand, meta, showQr = true }: FooterProps) {
         {(cycle || price) && (
           <div className="flex flex-wrap items-baseline gap-mm-4">
             {cycle ? (
-              <span className="text-print-meta text-ink-tertiary">
-                <span className="text-ink-secondary">{cycle.zh}</span>
-                <span className="text-ink-tertiary"> / {cycle.en}</span>
+              <span className="text-print-meta text-ink-secondary">
+                {cycle.zh}
               </span>
             ) : null}
             {price ? (
-              <span className="text-print-meta text-ink-tertiary">
-                <span className="text-ink-secondary">{price.zh}</span>
-                <span className="text-ink-tertiary"> / {price.en}</span>
+              <span className="text-print-meta text-ink-secondary">
+                {price.zh}
               </span>
             ) : null}
           </div>
@@ -57,11 +53,10 @@ export function Footer({ brand, meta, showQr = true }: FooterProps) {
         {ctaLabel ? (
           <p className="text-print-meta">
             <span className="text-accent">{ctaLabel.zh}</span>
-            <span className="text-ink-tertiary"> / {ctaLabel.en}</span>
             {showQrImage && ctaDetail ? (
               <span className="text-ink-tertiary">
                 {" · "}
-                {ctaDetail.zh} / {ctaDetail.en}
+                {ctaDetail.zh}
               </span>
             ) : null}
           </p>

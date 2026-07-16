@@ -50,11 +50,15 @@ async function main() {
       "/src/content/defaults/bilingual.ts",
     );
 
-    const example = JSON.parse(
-      readFileSync(join(root, "content/products/gaokao-uk.json"), "utf8"),
-    );
     const brand = JSON.parse(
       readFileSync(join(root, "content/brand/default.json"), "utf8"),
+    );
+    // Products may omit brand; merge defaults so Zod parseProduct accepts them.
+    const example = mergeProductContent(
+      JSON.parse(
+        readFileSync(join(root, "content/products/gaokao-uk.json"), "utf8"),
+      ),
+      brand,
     );
 
     const ids = listProductIds();

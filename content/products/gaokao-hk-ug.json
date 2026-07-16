@@ -1,128 +1,86 @@
 {
   "templateId": "a4-service-onepager-v1",
-  "locale": "zh-CN-en",
+  "locale": "zh-CN",
   "meta": {
-    "documentTitle": {
-      "zh": "高考通港本-服务说明",
-      "en": "Gaokao to HK UG — Service Overview"
-    },
+    "documentTitle": "高考通港本-服务说明",
     "version": "2026.07",
-    "cycleLabel": { "zh": "2026 秋季入学", "en": "2026 Fall intake" },
-    "priceBand": { "zh": "面议", "en": "Quote on request" },
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
     "confidential": false
   },
   "product": {
-    "name": { "zh": "高考通港本", "en": "Gaokao → HK UG" },
-    "categoryLabel": { "zh": "高考本科出海", "en": "Gaokao global UG" },
-    "tagline": {
-      "zh": "内地高考成绩申请香港院校本科",
-      "en": "HK UG via mainland Gaokao scores"
-    }
+    "name": "高考通港本",
+    "categoryLabel": "高考本科出海",
+    "tagline": "内地高考成绩申请香港院校本科"
   },
   "targetCustomer": {
-    "summary": {
-      "zh": "以高考成绩冲刺香港本科的高三/复读生及家长，关注港八大与自资院校。",
-      "en": "G12/retake students using Gaokao for Hong Kong bachelor's."
-    },
+    "summary": "以高考成绩冲刺香港本科的高三/复读生及家长，关注港八大与自资院校。",
     "segments": [
-      { "zh": "高三/复读", "en": "G12 / retake" },
-      { "zh": "冲刺港八大", "en": "Top-8 HK" },
-      { "zh": "英语基础好", "en": "Strong English" }
+      "高三/复读",
+      "冲刺港八大",
+      "英语基础好"
     ]
   },
   "deliverables": {
     "items": [
       {
         "id": "d1",
-        "label": {
-          "zh": "院校梯度名单与专业匹配（冲/稳/保）",
-          "en": "Tiered school list and major fit"
-        }
+        "label": "院校梯度名单与专业匹配（冲/稳/保）"
       },
       {
         "id": "d2",
-        "label": {
-          "zh": "内地生高考招生路径与时间表拆解",
-          "en": "Mainland Gaokao route timeline"
-        }
+        "label": "内地生高考招生路径与时间表拆解"
       },
       {
         "id": "d3",
-        "label": {
-          "zh": "网申材料清单、文书与面试辅导",
-          "en": "Application pack, essays, interview"
-        }
+        "label": "网申材料清单、文书与面试辅导"
       },
       {
         "id": "d4",
-        "label": {
-          "zh": "录取后签证、住宿与行前清单",
-          "en": "Post-offer visa and pre-departure"
-        }
+        "label": "录取后签证、住宿与行前清单"
       }
     ]
   },
   "requirements": {
-    "intro": {
-      "zh": "以下为常见硬性条件，最终以目标院校当年简章为准。",
-      "en": "Typical hard requirements; final rules per school year."
-    },
+    "intro": "以下为常见硬性条件，最终以目标院校当年简章为准。",
     "items": [
       {
         "id": "r1",
-        "label": {
-          "zh": "参加当年普通高考（文/理/新高考均可）",
-          "en": "Sit the current-year national Gaokao"
-        },
+        "label": "参加当年普通高考（文/理/新高考均可）",
         "mandatory": true
       },
       {
         "id": "r2",
-        "label": {
-          "zh": "高考总分建议达一本线或院校公布线",
-          "en": "Score near first-tier or published cut"
-        },
+        "label": "高考总分建议达一本线或院校公布线",
         "mandatory": true
       },
       {
         "id": "r3",
-        "label": {
-          "zh": "英语：高考英语≥120或雅思6.0+/同等",
-          "en": "English: Gaokao ≥120 or IELTS 6.0+"
-        },
+        "label": "英语：高考英语≥120或雅思6.0+/同等",
         "mandatory": true
       },
       {
         "id": "r4",
-        "label": {
-          "zh": "高中三年成绩单与学籍/会考证明齐全",
-          "en": "Full high-school transcripts and records"
-        },
+        "label": "高中三年成绩单与学籍/会考证明齐全",
         "mandatory": true
       },
       {
         "id": "r5",
-        "label": {
-          "zh": "可配合面试/笔试（部分港大/中大专业）",
-          "en": "Available for interview/test if required"
-        },
+        "label": "可配合面试/笔试（部分港大/中大专业）",
         "mandatory": false
       },
       {
         "id": "r6",
-        "label": {
-          "zh": "无严重纪律处分；护照办理时间充足",
-          "en": "Clean record; passport timeline OK"
-        },
+        "label": "无严重纪律处分；护照办理时间充足",
         "mandatory": true
       }
     ]
   },
   "highlights": {
     "items": [
-      { "zh": "覆盖港八大+自资院校", "en": "UGC + self-funded" },
-      { "zh": "对标高考内地招生简章", "en": "Align to Gaokao schemes" },
-      { "zh": "面试与英语短板可补强", "en": "Interview/English boost" }
+      "覆盖港八大+自资院校",
+      "对标高考内地招生简章",
+      "面试与英语短板可补强"
     ]
   },
   "layout": {

@@ -1,16 +1,16 @@
-import type { BiString } from "../../../content/types";
+import type { ZhString } from "../../../content/types";
 import { BILINGUAL_CHROME } from "../../../content/defaults/bilingual";
 import { BiText } from "../../../components/BiText";
 import { SectionLabel } from "../../../components/SectionLabel";
 
 export interface TimelineStep {
   id: string;
-  label: BiString;
-  timeHint?: BiString;
+  label: ZhString;
+  timeHint?: ZhString;
 }
 
 export interface TimelineProps {
-  title?: BiString;
+  title?: ZhString;
   steps: TimelineStep[];
   compact?: boolean;
 }

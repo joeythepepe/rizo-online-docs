@@ -1,143 +1,95 @@
 {
   "templateId": "a4-service-onepager-v1",
-  "locale": "zh-CN-en",
+  "locale": "zh-CN",
   "meta": {
-    "documentTitle": {
-      "zh": "高考通美加本-服务说明",
-      "en": "Gaokao to US/CA UG — Service Overview"
-    },
+    "documentTitle": "高考通美加本-服务说明",
     "version": "2026.07",
-    "cycleLabel": { "zh": "2026–2027 入学季", "en": "2026–27 intake" },
-    "priceBand": { "zh": "面议", "en": "Quote on request" },
+    "cycleLabel": "2026–2027 入学季",
+    "priceBand": "面议",
     "confidential": false
   },
   "product": {
-    "name": { "zh": "高考通美加本", "en": "Gaokao → US/CA UG" },
-    "categoryLabel": { "zh": "高考本科出海", "en": "Gaokao global UG" },
-    "tagline": {
-      "zh": "高考+标化+文书路径进美加本科",
-      "en": "Gaokao path to US & Canada UG"
-    }
+    "name": "高考通美加本",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考+标化+文书路径进美加本科"
   },
   "targetCustomer": {
-    "summary": {
-      "zh": "计划用高考成绩叠加标化与活动，申请美国或加拿大本科的学生与家长。",
-      "en": "Students using Gaokao plus testing for US/Canada UG."
-    },
+    "summary": "计划用高考成绩叠加标化与活动，申请美国或加拿大本科的学生与家长。",
     "segments": [
-      { "zh": "高二启动佳", "en": "Start G11" },
-      { "zh": "美本/加本", "en": "US / Canada" },
-      { "zh": "可投入活动", "en": "Activities OK" }
+      "高二启动佳",
+      "美本/加本",
+      "可投入活动"
     ]
   },
   "deliverables": {
     "items": [
       {
         "id": "d1",
-        "label": {
-          "zh": "美加选校定位与专业/州省策略",
-          "en": "US/CA list and major strategy"
-        }
+        "label": "美加选校定位与专业/州省策略"
       },
       {
         "id": "d2",
-        "label": {
-          "zh": "标化路径规划（托福/雅思/SAT等）",
-          "en": "Testing plan (TOEFL/IELTS/SAT)"
-        }
+        "label": "标化路径规划（托福/雅思/SAT等）"
       },
       {
         "id": "d3",
-        "label": {
-          "zh": "Common App/OUAC 等主文书与活动表",
-          "en": "Main essays and activity list"
-        }
+        "label": "Common App/OUAC 等主文书与活动表"
       },
       {
         "id": "d4",
-        "label": {
-          "zh": "推荐信、成绩认证与递交节点管理",
-          "en": "Recs, credentials, deadlines"
-        }
+        "label": "推荐信、成绩认证与递交节点管理"
       },
       {
         "id": "d5",
-        "label": {
-          "zh": "录取比较、签证与行前指导",
-          "en": "Offer compare, visa, departure"
-        }
+        "label": "录取比较、签证与行前指导"
       }
     ]
   },
   "requirements": {
-    "intro": {
-      "zh": "美加极少只看高考；下列为可执行的组合条件草案。",
-      "en": "US/CA rarely Gaokao-only; combined profile required."
-    },
+    "intro": "美加极少只看高考；下列为可执行的组合条件草案。",
     "items": [
       {
         "id": "r1",
-        "label": {
-          "zh": "高考成绩优秀（建议超本省一本线）",
-          "en": "Strong Gaokao (above first-tier)"
-        },
+        "label": "高考成绩优秀（建议超本省一本线）",
         "mandatory": true
       },
       {
         "id": "r2",
-        "label": {
-          "zh": "英语标化：托福≥80或雅思≥6.5（目标校）",
-          "en": "TOEFL ≥80 or IELTS ≥6.5 (target)"
-        },
+        "label": "英语标化：托福≥80或雅思≥6.5（目标校）",
         "mandatory": true
       },
       {
         "id": "r3",
-        "label": {
-          "zh": "美本建议SAT/ACT或走标化可选政策校",
-          "en": "SAT/ACT or test-optional schools"
-        },
+        "label": "美本建议SAT/ACT或走标化可选政策校",
         "mandatory": false
       },
       {
         "id": "r4",
-        "label": {
-          "zh": "高中成绩单+在读证明；可办成绩认证",
-          "en": "Transcripts; credential eval ready"
-        },
+        "label": "高中成绩单+在读证明；可办成绩认证",
         "mandatory": true
       },
       {
         "id": "r5",
-        "label": {
-          "zh": "可沉淀活动/竞赛/科研等背景材料",
-          "en": "Activities / awards / research"
-        },
+        "label": "可沉淀活动/竞赛/科研等背景材料",
         "mandatory": true
       },
       {
         "id": "r6",
-        "label": {
-          "zh": "能完成多轮文书与推荐信协调",
-          "en": "Multi-round essays and recs"
-        },
+        "label": "能完成多轮文书与推荐信协调",
         "mandatory": true
       },
       {
         "id": "r7",
-        "label": {
-          "zh": "资金证明与留学签证材料可配合",
-          "en": "Funds proof and visa docs"
-        },
+        "label": "资金证明与留学签证材料可配合",
         "mandatory": true
       }
     ]
   },
   "highlights": {
     "items": [
-      { "zh": "高考不是唯一路径", "en": "Not Gaokao-only" },
-      { "zh": "美加双轨选校", "en": "US + Canada track" },
-      { "zh": "标化与活动可并行", "en": "Tests + activities" }
+      "高考不是唯一路径",
+      "美加双轨选校",
+      "标化与活动可并行"
     ]
   },
   "layout": {

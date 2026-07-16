@@ -29,8 +29,8 @@ export function TargetCustomer({ data, compact = false }: TargetCustomerProps) {
       {segments.length > 0 ? (
         <div className={`${stackMt} flex flex-wrap ${chipGap}`}>
           {segments.map((seg, i) => (
-            <Chip key={`seg-zh-${i}`} tone="zh" compact={compact}>
-              {seg.zh}
+            <Chip key={`seg-${i}`} tone="zh" compact={compact}>
+              {seg}
             </Chip>
           ))}
         </div>
@@ -39,8 +39,8 @@ export function TargetCustomer({ data, compact = false }: TargetCustomerProps) {
       {profiles.length > 0 ? (
         <div className={`mt-mm-2 flex flex-wrap ${chipGap}`}>
           {profiles.map((p, i) => (
-            <Chip key={`profile-zh-${i}`} tone="zh" compact={compact}>
-              {p.zh}
+            <Chip key={`profile-${i}`} tone="zh" compact={compact}>
+              {p}
             </Chip>
           ))}
         </div>

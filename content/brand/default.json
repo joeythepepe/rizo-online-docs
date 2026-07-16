@@ -1,19 +1,10 @@
 {
-  "companyName": {
-    "zh": "Rizo 瑞卓升学",
-    "en": "Rizo Admissions"
-  },
+  "companyName": "Rizo 瑞卓升学",
   "logoSrc": "/brand/logo.svg",
   "accentColor": "#0071E3",
   "contactLine": "example.com",
   "wechatId": "example_edu",
   "qrSrc": "/brand/wechat-qr.svg",
-  "ctaLabel": {
-    "zh": "预约顾问",
-    "en": "Book a consultation"
-  },
-  "ctaDetail": {
-    "zh": "扫码添加顾问微信",
-    "en": "Scan to add counselor WeChat"
-  }
+  "ctaLabel": "预约顾问",
+  "ctaDetail": "扫码添加顾问微信"
 }

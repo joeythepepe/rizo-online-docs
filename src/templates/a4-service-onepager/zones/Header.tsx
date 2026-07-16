@@ -1,10 +1,10 @@
-import type { BiString, BrandConfig } from "../../../content/types";
+import type { BrandConfig, ZhString } from "../../../content/types";
 import { BILINGUAL_CHROME } from "../../../content/defaults/bilingual";
 import { BiText } from "../../../components/BiText";
 
 export interface HeaderProps {
   brand: BrandConfig;
-  docLabel?: BiString;
+  docLabel?: ZhString;
 }
 
 /**
@@ -26,7 +26,7 @@ export function Header({
       <div className="flex min-w-0 items-center gap-mm-4">
         <img
           src={logoSrc}
-          alt={brand.companyName.zh || "Rizo"}
+          alt={brand.companyName || "Rizo"}
           className="h-[12mm] w-auto max-w-[72mm] object-contain object-left"
           width={logoW}
           height={logoH}

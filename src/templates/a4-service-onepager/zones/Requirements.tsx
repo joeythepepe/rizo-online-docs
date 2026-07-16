@@ -1,12 +1,12 @@
-import type { ListItem, BiString } from "../../../content/types";
+import type { ListItem, ZhString } from "../../../content/types";
 import { BILINGUAL_CHROME } from "../../../content/defaults/bilingual";
 import { BiText } from "../../../components/BiText";
 import { SectionLabel } from "../../../components/SectionLabel";
 import { SoftPanel } from "../../../components/SoftPanel";
 
 export interface RequirementsProps {
-  title?: BiString;
-  intro?: BiString;
+  title?: ZhString;
+  intro?: ZhString;
   items: ListItem[];
   /** SoftPanel on by default per design (softPanelOn: requirements) */
   softPanel?: boolean;

@@ -4,38 +4,29 @@
  */
 
 import { BILINGUAL_CHROME } from "./defaults/bilingual";
-import type { BiString, BrandConfig, ServiceOnePagerContent } from "./types";
+import type { BrandConfig, ServiceOnePagerContent, ZhString } from "./types";
 
-function nonEmptyLang(value?: string | null): string | undefined {
+function nonEmpty(value?: string | null): string | undefined {
   if (value == null) return undefined;
   const trimmed = value.trim();
   return trimmed.length > 0 ? trimmed : undefined;
 }
 
 /**
- * Per-language BiString merge: product side wins when non-empty after trim;
- * otherwise fall back. Returns undefined only when both sides contribute nothing.
- * Zod enforces both langs non-empty for required fields after merge.
+ * Chinese string merge: product wins when non-empty after trim; else fallback.
  */
-export function mergeBiString(
-  primary?: { zh?: string; en?: string } | null,
-  fallback?: { zh?: string; en?: string } | null,
-): BiString | undefined {
-  if (primary == null && fallback == null) return undefined;
-
-  const zh = nonEmptyLang(primary?.zh) ?? nonEmptyLang(fallback?.zh) ?? "";
-  const en = nonEmptyLang(primary?.en) ?? nonEmptyLang(fallback?.en) ?? "";
-
-  if (!zh && !en) return undefined;
-  return { zh, en };
+export function mergeZhString(
+  primary?: string | null,
+  fallback?: string | null,
+): ZhString | undefined {
+  return nonEmpty(primary) ?? nonEmpty(fallback);
 }
 
+/** @deprecated Use mergeZhString — kept as alias for call-site transitions. */
+export const mergeBiString = mergeZhString;
+
 /**
- * Merge order (DESIGN.md):
- * chrome BiStrings ← brand defaults ← product JSON
- *
- * Pure: safe for CLI (fs read + this function + parseProduct).
- * Callers must pass brandBase (from brand/default.json or getBrandDefaults()).
+ * Merge order: chrome defaults ← brand defaults ← product JSON
  */
 export function mergeProductContent(
   raw: Record<string, unknown>,
@@ -46,26 +37,25 @@ export function mergeProductContent(
       ? (raw.brand as Record<string, unknown>)
       : {};
 
-  const companyName = mergeBiString(
-    rawBrand.companyName as { zh?: string; en?: string } | undefined,
+  const companyName = mergeZhString(
+    rawBrand.companyName as string | undefined,
     brandBase.companyName,
   );
 
   const brand: BrandConfig = {
     ...brandBase,
     ...rawBrand,
-    // Always deep-merge required companyName (never leave a partial product pair)
     companyName: companyName ?? brandBase.companyName,
-    legalLine: mergeBiString(
-      rawBrand.legalLine as { zh?: string; en?: string } | undefined,
+    legalLine: mergeZhString(
+      rawBrand.legalLine as string | undefined,
       brandBase.legalLine,
     ),
-    ctaLabel: mergeBiString(
-      rawBrand.ctaLabel as { zh?: string; en?: string } | undefined,
+    ctaLabel: mergeZhString(
+      rawBrand.ctaLabel as string | undefined,
       brandBase.ctaLabel,
     ),
-    ctaDetail: mergeBiString(
-      rawBrand.ctaDetail as { zh?: string; en?: string } | undefined,
+    ctaDetail: mergeZhString(
+      rawBrand.ctaDetail as string | undefined,
       brandBase.ctaDetail,
     ),
   };
@@ -77,7 +67,7 @@ export function mergeProductContent(
 }
 
 /**
- * Fill chrome-overridable titles and always-on disclaimer from bilingual defaults.
+ * Fill chrome-overridable titles and always-on disclaimer from Chinese defaults.
  * Call after Zod parse so required body fields are already valid.
  */
 export function applyChromeDefaults(
@@ -86,10 +76,10 @@ export function applyChromeDefaults(
   const brand: BrandConfig = {
     ...content.brand,
     ctaLabel:
-      mergeBiString(content.brand.ctaLabel, BILINGUAL_CHROME.ctaLabel) ??
+      mergeZhString(content.brand.ctaLabel, BILINGUAL_CHROME.ctaLabel) ??
       BILINGUAL_CHROME.ctaLabel,
     ctaDetail:
-      mergeBiString(content.brand.ctaDetail, BILINGUAL_CHROME.ctaDetail) ??
+      mergeZhString(content.brand.ctaDetail, BILINGUAL_CHROME.ctaDetail) ??
       BILINGUAL_CHROME.ctaDetail,
   };
 
@@ -98,13 +88,13 @@ export function applyChromeDefaults(
     meta: {
       ...content.meta,
       disclaimer:
-        mergeBiString(content.meta.disclaimer, BILINGUAL_CHROME.disclaimer) ??
+        mergeZhString(content.meta.disclaimer, BILINGUAL_CHROME.disclaimer) ??
         BILINGUAL_CHROME.disclaimer,
     },
     targetCustomer: {
       ...content.targetCustomer,
       title:
-        mergeBiString(
+        mergeZhString(
           content.targetCustomer.title,
           BILINGUAL_CHROME.targetSection,
         ) ?? BILINGUAL_CHROME.targetSection,
@@ -112,7 +102,7 @@ export function applyChromeDefaults(
     deliverables: {
       ...content.deliverables,
       title:
-        mergeBiString(
+        mergeZhString(
           content.deliverables.title,
           BILINGUAL_CHROME.deliverablesSection,
         ) ?? BILINGUAL_CHROME.deliverablesSection,
@@ -120,7 +110,7 @@ export function applyChromeDefaults(
     requirements: {
       ...content.requirements,
       title:
-        mergeBiString(
+        mergeZhString(
           content.requirements.title,
           BILINGUAL_CHROME.requirementsSection,
         ) ?? BILINGUAL_CHROME.requirementsSection,
@@ -128,7 +118,6 @@ export function applyChromeDefaults(
     brand,
     layout: {
       dropOptionalIfTight: true,
-      bilingual: true,
       ...content.layout,
     },
   };
@@ -137,7 +126,7 @@ export function applyChromeDefaults(
     next.highlights = {
       ...next.highlights,
       title:
-        mergeBiString(next.highlights.title, BILINGUAL_CHROME.highlights) ??
+        mergeZhString(next.highlights.title, BILINGUAL_CHROME.highlights) ??
         BILINGUAL_CHROME.highlights,
     };
   }
@@ -146,7 +135,7 @@ export function applyChromeDefaults(
     next.timeline = {
       ...next.timeline,
       title:
-        mergeBiString(next.timeline.title, BILINGUAL_CHROME.timeline) ??
+        mergeZhString(next.timeline.title, BILINGUAL_CHROME.timeline) ??
         BILINGUAL_CHROME.timeline,
     };
   }

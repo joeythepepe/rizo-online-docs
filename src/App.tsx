@@ -28,7 +28,7 @@ function GalleryPage() {
           let titleZh = id;
           try {
             const p = loadProduct(id);
-            titleZh = p.product.name.zh;
+            titleZh = p.product.name;
           } catch {
             /* keep id */
           }

@@ -1,136 +1,91 @@
 {
   "templateId": "a4-service-onepager-v1",
-  "locale": "zh-CN-en",
+  "locale": "zh-CN",
   "meta": {
-    "documentTitle": {
-      "zh": "高考通欧本-服务说明",
-      "en": "Gaokao to Europe UG — Service Overview"
-    },
+    "documentTitle": "高考通欧本-服务说明",
     "version": "2026.07",
-    "cycleLabel": { "zh": "2026–2027 入学季", "en": "2026–27 intake" },
-    "priceBand": { "zh": "面议", "en": "Quote on request" },
+    "cycleLabel": "2026–2027 入学季",
+    "priceBand": "面议",
     "confidential": false
   },
   "product": {
-    "name": { "zh": "高考通欧本", "en": "Gaokao → Europe UG" },
-    "categoryLabel": { "zh": "高考本科出海", "en": "Gaokao global UG" },
-    "tagline": {
-      "zh": "高考衔接欧洲本科与预科路径",
-      "en": "Gaokao to EU bachelor/foundation"
-    }
+    "name": "高考通欧本",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考衔接欧洲本科与预科路径"
   },
   "targetCustomer": {
-    "summary": {
-      "zh": "希望用高考成绩进入欧洲本科（含预科/语言衔接）的学生与家长。",
-      "en": "Students using Gaokao for Europe UG pathways."
-    },
+    "summary": "希望用高考成绩进入欧洲本科（含预科/语言衔接）的学生与家长。",
     "segments": [
-      { "zh": "高三/毕业党", "en": "G12 / gap" },
-      { "zh": "荷德法意等", "en": "NL/DE/FR/IT…" },
-      { "zh": "可学小语种", "en": "Local lang OK" }
+      "高三/毕业党",
+      "荷德法意等",
+      "可学小语种"
     ]
   },
   "deliverables": {
     "items": [
       {
         "id": "d1",
-        "label": {
-          "zh": "国家/院校/专业匹配（英授或本地语）",
-          "en": "Country/uni/major match"
-        }
+        "label": "国家/院校/专业匹配（英授或本地语）"
       },
       {
         "id": "d2",
-        "label": {
-          "zh": "高考成绩与预科/直录路径评估",
-          "en": "Direct vs foundation path"
-        }
+        "label": "高考成绩与预科/直录路径评估"
       },
       {
         "id": "d3",
-        "label": {
-          "zh": "语言考试规划与申请材料辅导",
-          "en": "Language tests and docs"
-        }
+        "label": "语言考试规划与申请材料辅导"
       },
       {
         "id": "d4",
-        "label": {
-          "zh": "网申节点、签证与行前全流程",
-          "en": "Apply, visa, pre-departure"
-        }
+        "label": "网申节点、签证与行前全流程"
       }
     ]
   },
   "requirements": {
-    "intro": {
-      "zh": "欧洲各国规则差异大；下列为通用底线，分国细则另行方案。",
-      "en": "Country rules vary; baselines only."
-    },
+    "intro": "欧洲各国规则差异大；下列为通用底线，分国细则另行方案。",
     "items": [
       {
         "id": "r1",
-        "label": {
-          "zh": "高考成绩有效；多数国家建议过本科线",
-          "en": "Valid Gaokao; often bachelor line+"
-        },
+        "label": "高考成绩有效；多数国家建议过本科线",
         "mandatory": true
       },
       {
         "id": "r2",
-        "label": {
-          "zh": "英授项目：雅思6.0–6.5+或同等（按校）",
-          "en": "English track: IELTS 6.0–6.5+"
-        },
+        "label": "英授项目：雅思6.0–6.5+或同等（按校）",
         "mandatory": false
       },
       {
         "id": "r3",
-        "label": {
-          "zh": "本地语授课：德/法/意等达到B1–B2",
-          "en": "Local-lang track: B1–B2"
-        },
+        "label": "本地语授课：德/法/意等达到B1–B2",
         "mandatory": false
       },
       {
         "id": "r4",
-        "label": {
-          "zh": "高中毕业证/成绩单可做认证（如有要求）",
-          "en": "Transcripts/legalization if needed"
-        },
+        "label": "高中毕业证/成绩单可做认证（如有要求）",
         "mandatory": true
       },
       {
         "id": "r5",
-        "label": {
-          "zh": "德国等方向或需审核部/APS等手续",
-          "en": "APS/other checks for DE etc."
-        },
+        "label": "德国等方向或需审核部/APS等手续",
         "mandatory": false
       },
       {
         "id": "r6",
-        "label": {
-          "zh": "可提供资金证明并配合学生签证",
-          "en": "Funds proof and student visa"
-        },
+        "label": "可提供资金证明并配合学生签证",
         "mandatory": true
       },
       {
         "id": "r7",
-        "label": {
-          "zh": "接受预科/语言班衔接（若直录不足）",
-          "en": "Open to foundation if needed"
-        },
+        "label": "接受预科/语言班衔接（若直录不足）",
         "mandatory": false
       }
     ]
   },
   "highlights": {
     "items": [
-      { "zh": "多国多语种可选", "en": "Multi-country" },
-      { "zh": "直录与预科双路径", "en": "Direct + foundation" },
-      { "zh": "分国条件单独出案", "en": "Per-country plans" }
+      "多国多语种可选",
+      "直录与预科双路径",
+      "分国条件单独出案"
     ]
   },
   "layout": {

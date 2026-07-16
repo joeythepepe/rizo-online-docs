@@ -1,10 +1,10 @@
-import type { BiString } from "../../../content/types";
+import type { ZhString } from "../../../content/types";
 import { BILINGUAL_CHROME } from "../../../content/defaults/bilingual";
 import { SectionLabel } from "../../../components/SectionLabel";
 
 export interface HighlightsProps {
-  title?: BiString;
-  items: BiString[];
+  title?: ZhString;
+  items: ZhString[];
   compact?: boolean;
 }
 
@@ -27,7 +27,7 @@ export function Highlights({ title, items, compact = false }: HighlightsProps) {
             <span className={`${textCls} text-accent shrink-0`} aria-hidden>
               ·
             </span>
-            <p className={`${textCls} text-ink min-w-0`}>{item.zh}</p>
+            <p className={`${textCls} text-ink min-w-0`}>{item}</p>
           </li>
         ))}
       </ul>

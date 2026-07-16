@@ -7,7 +7,12 @@ import { brandConfigSchema, parseProduct } from "./schema";
 import type { BrandConfig, ServiceOnePagerContent } from "./types";
 
 // Re-export pure helpers so existing import paths keep working.
-export { applyChromeDefaults, mergeBiString, mergeProductContent } from "./merge";
+export {
+  applyChromeDefaults,
+  mergeBiString,
+  mergeZhString,
+  mergeProductContent,
+} from "./merge";
 
 /**
  * Bundled product JSON via Vite glob.

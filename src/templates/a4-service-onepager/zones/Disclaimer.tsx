@@ -1,10 +1,10 @@
-import type { BiString } from "../../../content/types";
+import type { ZhString } from "../../../content/types";
 import { BILINGUAL_CHROME } from "../../../content/defaults/bilingual";
 import { BiText } from "../../../components/BiText";
 
 export interface DisclaimerProps {
   /** Always-on; defaults applied in loadProduct when omitted */
-  value?: BiString;
+  value?: ZhString;
 }
 
 /**

@@ -191,7 +191,7 @@ Static files are served from **`public/brand/`**:
 
 | File | Role |
 |------|------|
-| `public/brand/logo.svg` | **Rizo** brand logo (from `rizologo.svg`). Header caps: max **12 mm** tall / **72 mm** wide (`object-contain`). Also mirrored as `public/brand/rizologo.svg`. Print copy is **Chinese-only** (schema may still store `en` for later use). |
+| `public/brand/logo.svg` | **Rizo** brand logo (from `rizologo.svg`). Header caps: max **12 mm** tall / **72 mm** wide (`object-contain`). Also mirrored as `public/brand/rizologo.svg`. Product content is **Chinese-only** plain strings (no `en` fields). |
 | `public/brand/wechat-qr.svg` | Placeholder QR for demos (**not scannable**). **Replace with real WeChat QR** (PNG or SVG). Footer shows **14 mm**. |
 
 Wire paths in content (not by renaming only):

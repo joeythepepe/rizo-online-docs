@@ -1,265 +1,144 @@
 {
   "templateId": "a4-service-onepager-v1",
-  "locale": "zh-CN-en",
+  "locale": "zh-CN",
   "meta": {
-    "documentTitle": {
-      "zh": "紧凑密度溢出夹具-服务说明",
-      "en": "Compact Overflow Fixture — Service Overview"
-    },
+    "documentTitle": "紧凑密度溢出夹具-服务说明",
     "version": "2026.07-overflow-compact",
-    "cycleLabel": { "zh": "2026 秋季入学", "en": "2026 Fall intake" },
-    "priceBand": { "zh": "面议", "en": "Quote on request" },
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
     "confidential": true
   },
   "product": {
-    "name": { "zh": "紧凑密度仍溢出", "en": "Compact Still Overflows" },
-    "categoryLabel": { "zh": "测试专用服务方案", "en": "Test-only service plan" },
-    "tagline": {
-      "zh": "已声明 compact；仍应导出失败并截图",
-      "en": "Already compact; export still fails + PNG"
-    }
+    "name": "紧凑密度仍溢出",
+    "categoryLabel": "测试专用服务方案",
+    "tagline": "已声明 compact；仍应导出失败并截图"
   },
   "targetCustomer": {
-    "summary": {
-      "zh": "第二夹具：JSON 已声明 compact。紧凑密度不是免死金牌，超长内容仍应 exit 1 并写失败截图。",
-      "en": "Second fixture: already compact in JSON. Still exit 1 + failure PNG if too long."
-    },
+    "summary": "第二夹具：JSON 已声明 compact。紧凑密度不是免死金牌，超长内容仍应 exit 1 并写失败截图。",
     "segments": [
-      { "zh": "高一至高三", "en": "G10–G12 students" },
-      { "zh": "国际课程体系", "en": "Intl. curriculum" },
-      { "zh": "冲刺顶尖院校", "en": "Top-tier targets" },
-      { "zh": "家长决策参与", "en": "Parent co-decision" },
-      { "zh": "文书密集周期", "en": "Essay-heavy cycle" },
-      { "zh": "多国联申", "en": "Multi-country apps" }
+      "高一至高三",
+      "国际课程体系",
+      "冲刺顶尖院校",
+      "家长决策参与",
+      "文书密集周期",
+      "多国联申"
     ],
     "profiles": [
-      {
-        "zh": "成绩优秀但时间线混乱需要强节点管理的学生",
-        "en": "Strong grades but chaotic timeline needing milestones"
-      },
-      {
-        "zh": "首次接触英本申请流程的家长希望同步信息",
-        "en": "First-time UK UG parents needing shared visibility"
-      },
-      {
-        "zh": "同时准备标化考试与活动叙事的双线候选人",
-        "en": "Candidates juggling testing and activity narrative"
-      }
+      "成绩优秀但时间线混乱需要强节点管理的学生",
+      "首次接触英本申请流程的家长希望同步信息",
+      "同时准备标化考试与活动叙事的双线候选人"
     ]
   },
   "deliverables": {
-    "intro": {
-      "zh": "以下交付项均含完整双语说明与额外细节段落，用于制造垂直空间压力。",
-      "en": "Each deliverable includes full bilingual labels plus long detail blocks for vertical pressure."
-    },
+    "intro": "以下交付项均含完整双语说明与额外细节段落，用于制造垂直空间压力。",
     "items": [
       {
         "id": "d1",
-        "label": {
-          "zh": "选校定位与名单策略（含专业匹配）",
-          "en": "School list strategy and major fit analysis"
-        },
-        "detail": {
-          "zh": "覆盖定位访谈、专业方向梳理、冲刺/匹配/保底分层、专业录取数据对照、家长共识会纪要，以及后续名单变更的版本管理与理由记录，确保决策可追溯。",
-          "en": "Includes discovery interviews, major mapping, reach/match/safety tiers, admissions data checks, parent consensus notes, and versioned list change logs so every decision is traceable."
-        }
+        "label": "选校定位与名单策略（含专业匹配）",
+        "detail": "覆盖定位访谈、专业方向梳理、冲刺/匹配/保底分层、专业录取数据对照、家长共识会纪要，以及后续名单变更的版本管理与理由记录，确保决策可追溯。"
       },
       {
         "id": "d2",
-        "label": {
-          "zh": "主文书与补充文书多轮修改",
-          "en": "Personal statement + multi-round supp. edits"
-        },
-        "detail": {
-          "zh": "从素材采集、故事主线、结构大纲、多轮中英修订到最终定稿检查，包含活动叙事一致性审查与字数合规，避免模板化表达并保留学生真实声音。",
-          "en": "From material mining and story spine through outlines, multi-round CN/EN edits, final polish, activity narrative consistency, and word-count compliance while keeping the student voice."
-        }
+        "label": "主文书与补充文书多轮修改",
+        "detail": "从素材采集、故事主线、结构大纲、多轮中英修订到最终定稿检查，包含活动叙事一致性审查与字数合规，避免模板化表达并保留学生真实声音。"
       },
       {
         "id": "d3",
-        "label": {
-          "zh": "推荐信指导与递交清单管理",
-          "en": "Reference guidance and submission checklist ops"
-        },
-        "detail": {
-          "zh": "协助梳理推荐人选择、要点包准备、时间提醒与平台递交状态核对，维护总清单避免漏交材料，并在关键窗口同步风险与补救路径。",
-          "en": "Referee selection, brag-sheet prep, deadline pings, portal status checks, master checklist hygiene, and risk/remediation sync at critical windows."
-        }
+        "label": "推荐信指导与递交清单管理",
+        "detail": "协助梳理推荐人选择、要点包准备、时间提醒与平台递交状态核对，维护总清单避免漏交材料，并在关键窗口同步风险与补救路径。"
       },
       {
         "id": "d4",
-        "label": {
-          "zh": "关键节点规划与家长同步会",
-          "en": "Milestone plan and parent sync meetings"
-        },
-        "detail": {
-          "zh": "制定学期级与周级节点，覆盖标化、活动、文书、递交与面试准备；定期同步会输出纪要与待办，保证家庭与顾问信息同频。",
-          "en": "Term and weekly milestones across testing, activities, essays, submissions, and interview prep; recurring syncs with minutes and actions for family-counselor alignment."
-        }
+        "label": "关键节点规划与家长同步会",
+        "detail": "制定学期级与周级节点，覆盖标化、活动、文书、递交与面试准备；定期同步会输出纪要与待办，保证家庭与顾问信息同频。"
       },
       {
         "id": "d5",
-        "label": {
-          "zh": "面试准备与模拟演练纪要",
-          "en": "Interview prep with mock session notes"
-        },
-        "detail": {
-          "zh": "题库梳理、结构化作答训练、两轮模拟与书面反馈，覆盖学术兴趣、活动深挖与临场表达，并给出下一轮改进清单。",
-          "en": "Question banks, structured answers, two mocks with written feedback on academic interest, activity depth, delivery, and a next-round improvement list."
-        }
+        "label": "面试准备与模拟演练纪要",
+        "detail": "题库梳理、结构化作答训练、两轮模拟与书面反馈，覆盖学术兴趣、活动深挖与临场表达，并给出下一轮改进清单。"
       },
       {
         "id": "d6",
-        "label": {
-          "zh": "递交后跟进与补件策略建议",
-          "en": "Post-submit follow-up and extra-doc strategy"
-        },
-        "detail": {
-          "zh": "跟踪状态更新、补件通知响应、等待期沟通节奏与结果解读框架，帮助家庭在不确定阶段保持可执行的下一步。",
-          "en": "Status tracking, additional-document responses, wait-period communication cadence, and outcome framing so families always have a next executable step."
-        }
+        "label": "递交后跟进与补件策略建议",
+        "detail": "跟踪状态更新、补件通知响应、等待期沟通节奏与结果解读框架，帮助家庭在不确定阶段保持可执行的下一步。"
       }
     ]
   },
   "requirements": {
-    "intro": {
-      "zh": "客户侧配合事项全部展开细节，确保即使 compact 密度仍无法装入单页。",
-      "en": "Client-side requirements expanded so even compact density cannot fit one page."
-    },
+    "intro": "客户侧配合事项全部展开细节，确保即使 compact 密度仍无法装入单页。",
     "items": [
       {
         "id": "r1",
-        "label": {
-          "zh": "提供近两年成绩单与标化考试规划",
-          "en": "Provide two-year transcripts and testing plan"
-        },
-        "detail": {
-          "zh": "需包含课程名称、分数说明、预估分与重考计划；标化科目、目标分与备考周计划需书面确认，便于顾问校准选校与时间线。",
-          "en": "Course names, grade context, predicted scores, retake plans; testing subjects, targets, and weekly prep must be confirmed in writing for list and timeline calibration."
-        },
+        "label": "提供近两年成绩单与标化考试规划",
+        "detail": "需包含课程名称、分数说明、预估分与重考计划；标化科目、目标分与备考周计划需书面确认，便于顾问校准选校与时间线。",
         "mandatory": true
       },
       {
         "id": "r2",
-        "label": {
-          "zh": "按节点完成活动与文书素材收集",
-          "en": "Meet activity and essay material deadlines"
-        },
-        "detail": {
-          "zh": "素材包括活动职责、影响力证据、个人转折事件与可用数据；逾期将挤压修改轮次并可能影响冲刺校策略。",
-          "en": "Materials include roles, impact evidence, turning points, and metrics; lateness compresses edit rounds and may weaken reach-school strategy."
-        },
+        "label": "按节点完成活动与文书素材收集",
+        "detail": "素材包括活动职责、影响力证据、个人转折事件与可用数据；逾期将挤压修改轮次并可能影响冲刺校策略。",
         "mandatory": true
       },
       {
         "id": "r3",
-        "label": {
-          "zh": "家长参与关键节点确认（选校/递交）",
-          "en": "Parent confirmation at key milestones"
-        },
-        "detail": {
-          "zh": "选校分层、预算边界与最终递交名单需家长签字确认；缺席确认将暂停冲刺动作直至对齐完成。",
-          "en": "List tiers, budget bounds, and final submit set require parent sign-off; missing confirmation pauses reach actions until aligned."
-        },
+        "label": "家长参与关键节点确认（选校/递交）",
+        "detail": "选校分层、预算边界与最终递交名单需家长签字确认；缺席确认将暂停冲刺动作直至对齐完成。",
         "mandatory": true
       },
       {
         "id": "r4",
-        "label": {
-          "zh": "保持周沟通并及时反馈修改意见",
-          "en": "Maintain weekly comms and timely edit feedback"
-        },
-        "detail": {
-          "zh": "约定响应时限内回复批注；无反馈视为同意当前稿进入下一流程，责任共担。",
-          "en": "Reply to annotations within agreed SLAs; silence is treated as approval to advance, with shared ownership."
-        },
+        "label": "保持周沟通并及时反馈修改意见",
+        "detail": "约定响应时限内回复批注；无反馈视为同意当前稿进入下一流程，责任共担。",
         "mandatory": true
       },
       {
         "id": "r5",
-        "label": {
-          "zh": "准备推荐人联系方式与要点包",
-          "en": "Prepare referee contacts and brag sheets"
-        },
-        "detail": {
-          "zh": "提前两周提供推荐人邮箱、关系说明与成就要点，避免临近截止的催办风险。",
-          "en": "Provide referee emails, relationship context, and achievement bullets two weeks early to avoid deadline chase risk."
-        },
+        "label": "准备推荐人联系方式与要点包",
+        "detail": "提前两周提供推荐人邮箱、关系说明与成就要点，避免临近截止的催办风险。",
         "mandatory": true
       },
       {
         "id": "r6",
-        "label": {
-          "zh": "配合模拟面试并完成复盘作业",
-          "en": "Join mocks and complete debrief homework"
-        },
-        "detail": {
-          "zh": "每次模拟后提交书面反思与改写答案；缺席将影响面试准备完整度评估。",
-          "en": "After each mock, submit written reflection and revised answers; absences affect readiness assessment."
-        },
+        "label": "配合模拟面试并完成复盘作业",
+        "detail": "每次模拟后提交书面反思与改写答案；缺席将影响面试准备完整度评估。",
         "mandatory": false
       },
       {
         "id": "r7",
-        "label": {
-          "zh": "授权必要平台账号只读协同",
-          "en": "Authorize read-only portal collaboration"
-        },
-        "detail": {
-          "zh": "用于状态核对与清单勾选；不替代学生本人最终提交操作。",
-          "en": "For status checks and checklist ticks only; does not replace the student final submit action."
-        },
+        "label": "授权必要平台账号只读协同",
+        "detail": "用于状态核对与清单勾选；不替代学生本人最终提交操作。",
         "mandatory": true
       },
       {
         "id": "r8",
-        "label": {
-          "zh": "确认信息真实并签署服务边界说明",
-          "en": "Confirm truthfulness and service-boundary terms"
-        },
-        "detail": {
-          "zh": "所有成绩、活动与身份信息须真实可核；顾问不代写不可核验内容，不承诺录取结果。",
-          "en": "All grades, activities, and identity facts must be verifiable; counselors do not fabricate content or guarantee outcomes."
-        },
+        "label": "确认信息真实并签署服务边界说明",
+        "detail": "所有成绩、活动与身份信息须真实可核；顾问不代写不可核验内容，不承诺录取结果。",
         "mandatory": true
       }
     ]
   },
   "highlights": {
     "items": [
-      {
-        "zh": "一对一顾问全周期陪伴与纪要闭环",
-        "en": "1:1 counselor with meeting-note loop"
-      },
-      {
-        "zh": "节点制管理覆盖标化文书递交面试",
-        "en": "Milestones for tests, essays, and submit"
-      },
-      {
-        "zh": "双语材料同步降低家庭沟通成本",
-        "en": "Bilingual materials cut family friction"
-      },
-      {
-        "zh": "溢出夹具专用请勿用于真实销售",
-        "en": "Overflow fixture only — not for sales"
-      }
+      "一对一顾问全周期陪伴与纪要闭环",
+      "节点制管理覆盖标化文书递交面试",
+      "双语材料同步降低家庭沟通成本",
+      "溢出夹具专用请勿用于真实销售"
     ]
   },
   "brand": {
-    "companyName": { "zh": "示例升学咨询", "en": "Example Admissions Consulting" },
+    "companyName": "示例升学咨询",
     "logoSrc": "/brand/logo.svg",
     "contactLine": "example.com",
     "wechatId": "example_edu",
     "qrSrc": "/brand/wechat-qr.svg",
-    "ctaLabel": { "zh": "预约顾问", "en": "Book a consultation" },
-    "ctaDetail": { "zh": "扫码添加顾问微信", "en": "Scan to add counselor WeChat" }
+    "ctaLabel": "预约顾问",
+    "ctaDetail": "扫码添加顾问微信"
   },
   "layout": {
     "variant": "stack",
     "showHighlights": true,
     "showQr": true,
     "density": "compact",
-    "bilingual": true,
     "softPanelOn": "requirements"
   }
 }

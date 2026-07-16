@@ -25,7 +25,7 @@ export function Footer({ brand, meta, showQr = true }: FooterProps) {
   const metaLine = [
     contactParts,
     `${meta.version} · 1/1`,
-    meta.confidential ? BILINGUAL_CHROME.confidential.zh : null,
+    meta.confidential ? BILINGUAL_CHROME.confidential : null,
   ]
     .filter(Boolean)
     .join(" · ");
@@ -36,14 +36,10 @@ export function Footer({ brand, meta, showQr = true }: FooterProps) {
         {(cycle || price) && (
           <div className="flex flex-wrap items-baseline gap-mm-4">
             {cycle ? (
-              <span className="text-print-meta text-ink-secondary">
-                {cycle.zh}
-              </span>
+              <span className="text-print-meta text-ink-secondary">{cycle}</span>
             ) : null}
             {price ? (
-              <span className="text-print-meta text-ink-secondary">
-                {price.zh}
-              </span>
+              <span className="text-print-meta text-ink-secondary">{price}</span>
             ) : null}
           </div>
         )}
@@ -52,11 +48,11 @@ export function Footer({ brand, meta, showQr = true }: FooterProps) {
 
         {ctaLabel ? (
           <p className="text-print-meta">
-            <span className="text-accent">{ctaLabel.zh}</span>
+            <span className="text-accent">{ctaLabel}</span>
             {showQrImage && ctaDetail ? (
               <span className="text-ink-tertiary">
                 {" · "}
-                {ctaDetail.zh}
+                {ctaDetail}
               </span>
             ) : null}
           </p>

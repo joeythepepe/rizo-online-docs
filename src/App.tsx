@@ -18,9 +18,9 @@ function GalleryPage() {
   return (
     <div className="min-h-screen bg-[#e8e8ed] p-8">
       <header className="no-print mb-8 max-w-5xl">
-        <h1 className="text-2xl font-bold text-ink">高考通 · 服务一页纸</h1>
+        <h1 className="text-2xl font-bold text-ink">睿卓升学一站通</h1>
         <p className="mt-2 text-sm text-ink-secondary">
-          预览 / 打印路由 · 各国本科申请服务说明
+          高考通 · 各国本科申请服务说明
         </p>
       </header>
 

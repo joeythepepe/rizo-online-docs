@@ -23,6 +23,8 @@ logs/
 *.log
 npm-debug.log*
 pnpm-debug.log*
+yarn-error.log*
+bun-debug.log*
 yarn-debug.log*
 yarn-error.log*
 

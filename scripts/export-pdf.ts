@@ -2,10 +2,10 @@
  * Playwright PDF export CLI with overflow gate.
  *
  * Usage:
- *   pnpm export:pdf --product example-uk-ug
- *   pnpm export:pdf --product example-uk-ug --force
- *   pnpm export:pdf --product example-uk-ug --out output/custom.pdf
- *   pnpm export:pdf example-uk-ug
+ *   bun run export:pdf --product example-uk-ug
+ *   bun run export:pdf --product example-uk-ug --force
+ *   bun run export:pdf --product example-uk-ug --out output/custom.pdf
+ *   bun run export:pdf example-uk-ug
  *
  * Flow: Zod-validate product via FS (same merge/chrome as app loadProduct) →
  * build → vite preview → Chromium → measure overflow → one compact retry →
@@ -58,7 +58,7 @@ export interface ExportOptions {
   outPath?: string;
   /** Write PDF even if overflow (logs warning). */
   force?: boolean;
-  /** Skip `pnpm build` when dist/ already present. */
+  /** Skip `bun run build` when dist/ already present. */
   skipBuild?: boolean;
   /** Reuse an already-running preview (do not spawn). */
   baseUrl?: string;
@@ -182,13 +182,13 @@ async function waitForServer(url: string, timeoutMs: number): Promise<void> {
 }
 
 /**
- * Spawn vite preview directly (not via pnpm) in its own process group so
+ * Spawn vite preview directly (not via `bun run`) in its own process group so
  * teardown can SIGTERM the whole tree and not leave :4173 occupied.
  */
 function startPreview(root: string): ChildProcess {
   const viteJs = join(root, "node_modules", "vite", "bin", "vite.js");
   if (!existsSync(viteJs)) {
-    fail(`vite binary missing at ${viteJs}; run pnpm install`);
+    fail(`vite binary missing at ${viteJs}; run bun install`);
   }
 
   const child = spawn(
@@ -386,9 +386,9 @@ export async function exportProduct(
 
   if (!options.skipBuild) {
     log("export: building…");
-    execSync("pnpm build", { cwd: ROOT, stdio: options.quiet ? "pipe" : "inherit" });
+    execSync("bun run build", { cwd: ROOT, stdio: options.quiet ? "pipe" : "inherit" });
   } else if (!existsSync(join(ROOT, "dist"))) {
-    fail("dist/ missing; run without --skip-build or pnpm build first");
+    fail("dist/ missing; run without --skip-build or bun run build first");
   }
 
   let preview: ChildProcess | null = null;

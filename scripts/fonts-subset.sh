@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Subset Noto Sans SC (400/500/700) → WOFF2 for print embed.
-# Usage: pnpm fonts:subset  |  bash scripts/fonts-subset.sh
+# Usage: bun run fonts:subset  |  bash scripts/fonts-subset.sh
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
@@ -61,7 +61,7 @@ error: pyftsubset (fonttools) not found.
 Install:
   pip3 install --user 'fonttools[woff]' brotli
 
-Then re-run: pnpm fonts:subset
+Then re-run: bun run fonts:subset
 EOF
   exit 1
 fi
@@ -202,4 +202,4 @@ fi
 
 echo "==> Done. Subsets in fonts/subset/ and public/fonts/"
 echo "    Upstream pin: notofonts/noto-cjk@${NOTO_CJK_REF} (${NOTO_CJK_SHA})"
-echo "    Re-run after charset changes: pnpm fonts:subset"
+echo "    Re-run after charset changes: bun run fonts:subset"

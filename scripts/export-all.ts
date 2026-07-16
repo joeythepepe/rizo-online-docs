@@ -3,9 +3,9 @@
  * Skips `fixture-overflow*` by default (intentional fail); include with --force.
  *
  * Usage:
- *   pnpm export:all
- *   pnpm export:all --skip-build
- *   pnpm export:all --force
+ *   bun run export:all
+ *   bun run export:all --skip-build
+ *   bun run export:all --force
  */
 
 import { dirname, join } from "node:path";

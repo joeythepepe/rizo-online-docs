@@ -641,9 +641,9 @@ flowchart LR
 | Validation | Zod | Runtime + CLI |
 | Content | `content/products/*.json` via **`import.meta.glob`** | Bundled for browser; same files for CLI FS read |
 | PDF | **Playwright** `page.pdf` | Preview ≡ print |
-| Package manager | pnpm | Deterministic |
+| Package manager | bun | Deterministic |
 | Lint/format | ESLint + Prettier | Consistency |
-| Font subset | `fonttools` (`pyftsubset`) via `pnpm fonts:subset` | Controlled CJK embed size |
+| Font subset | `fonttools` (`pyftsubset`) via `bun run fonts:subset` | Controlled CJK embed size |
 
 **Content loading**
 
@@ -857,8 +857,8 @@ export default {
 
 | Step | Detail |
 |------|--------|
-| Build | `pnpm build` → Vite `dist/` |
-| Serve | Playwright **`webServer`**: `pnpm vite preview --port 4173 --strictPort` (or `npx serve dist`) |
+| Build | `bun run build` → Vite `dist/` |
+| Serve | Playwright **`webServer`**: `bunx vite preview --port 4173 --strictPort` (or `npx serve dist`) |
 | Navigate | `http://127.0.0.1:4173/print/<productId>?export=1` |
 | Wait | `waitUntil: "load"` then `document.fonts.ready` (timeout **10s** → fail). Optional: `locator('[data-page=a4]')` visible. **Do not use `networkidle`** as primary wait |
 | Measure | Evaluate overflow on `[data-page=a4]` |
@@ -922,9 +922,9 @@ sequenceDiagram
 #### CLI
 
 ```bash
-pnpm export:pdf --product example-uk-ug
-pnpm export:all
-pnpm export:pdf --product example-uk-ug --force   # debug: write PDF even if overflow (logs warning)
+bun run export:pdf --product example-uk-ug
+bun run export:all
+bun run export:pdf --product example-uk-ug --force   # debug: write PDF even if overflow (logs warning)
 ```
 
 **Export surface:** v1 is **CLI-first** (`scripts/export-pdf.ts`). `src/export/pdf.ts` holds shared constants (`A4_WIDTH_MM`, wait timeouts, measure snippet) imported by CLI — not a published library API yet.
@@ -940,7 +940,7 @@ pnpm export:pdf --product example-uk-ug --force   # debug: write PDF even if ove
 | Source | [Noto Sans SC](https://fonts.google.com/noto/specimen/Noto+Sans+SC) static OFL downloads (or adobe-fonts Source Han Sans SC SC subset source) |
 | Weights committed | **400, 500, 700** only — maps 1:1 to CSS (Display/Title=700, Label=500, Body=400). **No 600 face** |
 | Charset | `fonts/charset/gb2312-plus.txt` = GB2312/常用汉字 + full-width punctuation + ASCII Latin + digits + common symbols (© · — –) |
-| Tool | `pyftsubset` (fonttools); script `scripts/fonts-subset.sh` → `pnpm fonts:subset` |
+| Tool | `pyftsubset` (fonttools); script `scripts/fonts-subset.sh` → `bun run fonts:subset` |
 | Output format | **WOFF2** for web + verify Chromium PDF embed; keep **TTF** subset fallback if WOFF2 embed issues in QA |
 | Output path | `fonts/subset/NotoSansSC-{Regular,Medium,Bold}.woff2` copied to `public/fonts/` |
 | Max committed font bytes | **≤ 4 MB total** for all weights (target); fail CI script if over **6 MB** |
@@ -999,8 +999,8 @@ flowchart TB
 
 1. Copy `content/products/_template.json` → `<id>.json`.
 2. Fill fields; respect Zod max lengths.
-3. `pnpm dev` → gallery → open `/p/:id` at **100% zoom**; also open `/print/:id` for true page chrome.
-4. `pnpm export:pdf --product <id>` → `output/<id>.pdf`.
+3. `bun run dev` → gallery → open `/p/:id` at **100% zoom**; also open `/print/:id` for true page chrome.
+4. `bun run export:pdf --product <id>` → `output/<id>.pdf`.
 5. Print QA per Appendix A.
 
 **Routes (react-router-dom)**
@@ -1247,14 +1247,14 @@ Independently reviewable PRs. **MVP = PR 1–5.** PR 6–7 post-MVP polish.
 - **Files:** `package.json`, `tsconfig.json`, `vite.config.ts`, `tailwind.config.ts`, `postcss.config.js`, `index.html`, `src/main.tsx`, `src/App.tsx`, `src/design-tokens/print.css`, `.gitignore`, `README.md` (setup)
 - **Dependencies:** None
 - **Description:** Toolchain + frozen color/type/`mm-*` spacing tokens + `@page` A4 CSS. Document forbidden template utilities in README.
-- **Acceptance:** `pnpm dev` runs; Tailwind classes `text-print-display`, `p-mm-14` resolve.
+- **Acceptance:** `bun run dev` runs; Tailwind classes `text-print-display`, `p-mm-14` resolve.
 
 ### PR 2 — Font subset pipeline & A4 shell
 
 - **Title:** `feat: Noto SC subset pipeline and A4Page shell`
 - **Files:** `scripts/fonts-subset.sh`, `fonts/charset/*`, `fonts/subset/*`, `fonts/README.md`, `public/fonts/*`, `src/components/A4Page.tsx`, font-face CSS
 - **Dependencies:** PR 1
-- **Description:** `pnpm fonts:subset` with pyftsubset; weights 400/500/700; commit subsets under size cap; A4 210×297 + 14 mm safe area.
+- **Description:** `bun run fonts:subset` with pyftsubset; weights 400/500/700; commit subsets under size cap; A4 210×297 + 14 mm safe area.
 - **Acceptance:** Subset total ≤ 6 MB; sample page shows Noto in DevTools; `document.fonts.ready` loads faces.
 
 ### PR 3 — Content schema, bilingual defaults, example product

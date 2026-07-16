@@ -77,7 +77,7 @@ Requirements:
 Then:
 
 ```bash
-pnpm fonts:subset
+bun run fonts:subset
 # equivalent: bash scripts/fonts-subset.sh
 ```
 

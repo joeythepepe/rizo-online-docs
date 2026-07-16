@@ -3,7 +3,7 @@
  * Uses Vite `ssrLoadModule` so `import.meta.glob` and real `loadProduct` /
  * `listProductIds` are exercised (no undeclared esbuild dependency).
  *
- * Run: node scripts/validate-content.mjs  (or pnpm validate:content)
+ * Run: node scripts/validate-content.mjs  (or bun run validate:content)
  */
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";

@@ -1,31 +1,31 @@
 # A4 Print Template System
 
-Premium A4 print templates for China-mainland education consulting materials (full bilingual CN+EN). Built with **Vite + React + TypeScript + Tailwind CSS**.
+Premium A4 print templates for China-mainland education consulting materials (full bilingual CN+EN). Built with **Bun + Vite + React + TypeScript + Tailwind CSS**.
 
 See [DESIGN.md](./DESIGN.md) for the full design specification.
 
 ## Quick start
 
 ```bash
-pnpm install
-pnpm dev
+bun install
+bun run dev
 ```
 
 - **Dev server:** Vite on the default port (usually `http://localhost:5173`)
-- **Typecheck:** `pnpm typecheck`
-- **Print class denylist:** `pnpm check:print-classes`
-- **Font subset (Noto SC):** `pnpm fonts:subset` — see [fonts/README.md](./fonts/README.md)
-- **Validate product JSON:** `pnpm validate:content`
-- **Production build:** `pnpm build`
-- **Preview build:** `pnpm preview`
-- **Export PDF:** `pnpm export:pdf --product example-uk-ug` → `output/<id>.pdf`
-- **Export all products:** `pnpm export:all` (skips overflow fixtures)
-- **Screenshot smoke:** `pnpm test:smoke` → builds, previews, asserts example product A4 + writes `output/smoke/*.png`
+- **Typecheck:** `bun run typecheck`
+- **Print class denylist:** `bun run check:print-classes`
+- **Font subset (Noto SC):** `bun run fonts:subset` — see [fonts/README.md](./fonts/README.md)
+- **Validate product JSON:** `bun run validate:content`
+- **Production build:** `bun run build`
+- **Preview build:** `bun run preview`
+- **Export PDF:** `bun run export:pdf --product example-uk-ug` → `output/<id>.pdf`
+- **Export all products:** `bun run export:all` (skips overflow fixtures)
+- **Screenshot smoke:** `bun run test:smoke` → builds, previews, asserts example product A4 + writes `output/smoke/*.png`
 
 First-time PDF export / smoke needs Chromium for Playwright:
 
 ```bash
-pnpm exec playwright install chromium
+bunx playwright install chromium
 ```
 
 ## Frozen design tokens
@@ -79,19 +79,19 @@ Page size utilities: `w-a4` (210mm), `h-a4` (297mm). CSS shell: `.a4-page`, `.a4
 
 Shadows and decorative chrome **are** allowed on gallery/screen routes (`/`, `/p/*`) outside the A4 page frame — not inside print roots.
 
-**Enforcement (lightweight):** `pnpm check:print-classes` runs `scripts/check-print-classes.sh`, which greps `src/templates/**` and `src/components/**` for breakpoints, `font-semibold`, shadows/rings/gradients/blur, and `min-h-screen` / `h-screen` / `vh`. (Dirs may be empty until later PRs; the script still exits 0.)
+**Enforcement (lightweight):** `bun run check:print-classes` runs `scripts/check-print-classes.sh`, which greps `src/templates/**` and `src/components/**` for breakpoints, `font-semibold`, shadows/rings/gradients/blur, and `min-h-screen` / `h-screen` / `vh`. (Dirs may be empty until later PRs; the script still exits 0.)
 
 ## PDF export
 
 Canonical artifact is Playwright PDF (not browser Print → Save as PDF).
 
 ```bash
-pnpm export:pdf --product example-uk-ug
-pnpm export:pdf --product example-uk-ug --force   # debug: write PDF even if overflow
-pnpm export:all
+bun run export:pdf --product example-uk-ug
+bun run export:pdf --product example-uk-ug --force   # debug: write PDF even if overflow
+bun run export:all
 ```
 
-Pipeline: Zod-validate `content/products/<id>.json` (same `mergeProductContent` → `parseProduct` → `applyChromeDefaults` as the app) → `pnpm build` → `vite preview` on `127.0.0.1:4173` → open `/print/<id>?export=1` → wait `load` + `document.fonts.ready` → measure overflow on `[data-page=a4]` → one retry with `?density=compact` (real compact CSS) → on still-overflow write `output/failures/<id>.png` and exit 1 → else write `output/<id>.pdf`, set PDF **Creator** to `poster_business-export`, verify A4 MediaBox via **pdf-lib**.
+Pipeline: Zod-validate `content/products/<id>.json` (same `mergeProductContent` → `parseProduct` → `applyChromeDefaults` as the app) → `bun run build` → `vite preview` on `127.0.0.1:4173` → open `/print/<id>?export=1` → wait `load` + `document.fonts.ready` → measure overflow on `[data-page=a4]` → one retry with `?density=compact` (real compact CSS) → on still-overflow write `output/failures/<id>.png` and exit 1 → else write `output/<id>.pdf`, set PDF **Creator** to `poster_business-export`, verify A4 MediaBox via **pdf-lib**.
 
 **Metadata note:** pdf-lib overwrites the PDF **Producer** field on every `save()` with its own banner (`pdf-lib (https://github.com/Hopding/pdf-lib)`). The export tool stamps **Creator** (and document title) instead — trust Creator for tool identity.
 
@@ -103,22 +103,22 @@ Pipeline: Zod-validate `content/products/<id>.json` (same `mergeProductContent` 
 | `fixture-overflow-compact` | JSON already sets `density: compact` (first paint is compact CSS). Still over-long → exit 1 + failure PNG. Compact is **not** a free pass. CLI may re-open with `?density=compact` after a measure fail, but there is **no denser-than-compact** third step. |
 
 ```bash
-pnpm export:pdf --product fixture-overflow
+bun run export:pdf --product fixture-overflow
 # → exit 1, screenshot under output/failures/
 
-pnpm export:pdf --product fixture-overflow-compact
+bun run export:pdf --product fixture-overflow-compact
 # → exit 1 (product already compact; still too long)
 ```
 
-`pnpm export:all` skips any id matching `fixture-overflow*` unless `--force`.
+`bun run export:all` skips any id matching `fixture-overflow*` unless `--force`.
 
-Overflow fixtures are **manual** gate checks (`pnpm export:pdf --product …`); smoke tests cover the happy path only. `pnpm validate:content` Zod-parses both fixtures and asserts compact density on the second.
+Overflow fixtures are **manual** gate checks (`bun run export:pdf --product …`); smoke tests cover the happy path only. `bun run validate:content` Zod-parses both fixtures and asserts compact density on the second.
 
 ### Screenshot smoke
 
 ```bash
-pnpm test:smoke
-# or: pnpm build && pnpm exec playwright test
+bun run test:smoke
+# or: bun run build && bunx playwright test
 ```
 
 Happy path: `/print/example-uk-ug` shows CN+EN, measures no overflow, writes `output/smoke/example-uk-ug.png` (human-review artifact, not visual-diff baseline). Compact path (`?density=compact`) asserts `data-density=compact`, `text-print-body-sm` / SoftPanel padding classes, no overflow, and `output/smoke/example-uk-ug-compact.png`.
@@ -164,7 +164,7 @@ Default is **`stack`** (single column body). Opt in to a fixed 5/7 print grid wi
 "layout": { "variant": "split" }
 ```
 
-Smoke fixture: **`content/products/example-uk-ug-split.json`** (`pnpm export:pdf --product example-uk-ug-split`).
+Smoke fixture: **`content/products/example-uk-ug-split.json`** (`bun run export:pdf --product example-uk-ug-split`).
 
 Split math (content width **182 mm**, gutter **4 mm**, 12 columns). **TargetCustomer stays full-width** above the row; only Deliverables | Requirements split:
 
@@ -207,7 +207,7 @@ Accent color defaults to `#0071E3` (`brand.accentColor`) until brand confirms. C
 ```text
 ├── DESIGN.md                 # Full design document
 ├── package.json
-├── pnpm-lock.yaml
+├── bun.lock
 ├── playwright.config.ts      # webServer → vite preview :4173
 ├── tsconfig.json
 ├── tsconfig.node.json        # Vite / scripts / Playwright TS config
@@ -230,8 +230,8 @@ Accent color defaults to `#0071E3` (`brand.accentColor`) until brand confirms. C
 │   ├── check-print-classes.sh
 │   ├── fonts-subset.sh
 │   ├── validate-content.mjs
-│   ├── export-pdf.ts         # pnpm export:pdf
-│   └── export-all.ts         # pnpm export:all
+│   ├── export-pdf.ts         # bun run export:pdf
+│   └── export-all.ts         # bun run export:all
 ├── output/                   # gitignored PDFs + failures/ + smoke/
 ├── src/
 │   ├── main.tsx

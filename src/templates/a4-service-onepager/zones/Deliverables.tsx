@@ -22,6 +22,7 @@ function DeliverablesBody({
   const sectionTitle = title ?? BILINGUAL_CHROME.deliverablesSection;
   const listGap = compact ? "gap-mm-2" : "gap-mm-4";
   const bodyRole = compact ? "body-sm" : "body";
+  const numCls = compact ? "text-print-body-sm" : "text-print-body";
 
   return (
     <>
@@ -31,7 +32,7 @@ function DeliverablesBody({
         {items.map((item, index) => (
           <li key={item.id} className="flex gap-mm-4">
             <span
-              className="text-print-body text-accent shrink-0 tabular-nums"
+              className={`${numCls} text-accent shrink-0 tabular-nums`}
               aria-hidden
             >
               {String(index + 1).padStart(2, "0")}

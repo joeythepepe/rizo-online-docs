@@ -21,6 +21,11 @@ export const FONTS_READY_TIMEOUT_MS = 10_000;
 export const PAGE_LOAD_TIMEOUT_MS = 30_000;
 export const SERVER_READY_TIMEOUT_MS = 60_000;
 
+/**
+ * Intended PDF tool stamp. pdf-lib **overwrites Producer on every save** with
+ * its own banner; set **Creator** instead (that field sticks). Kept for docs /
+ * future non-pdf-lib writers.
+ */
 export const PDF_PRODUCER = "poster_business-export";
 export const PDF_CREATOR = "poster_business-export";
 
@@ -73,8 +78,8 @@ export const MEASURE_OVERFLOW_SOURCE = `({ toleranceMm = 0.5, a4HeightMm = 297 }
       style.overflow === "scroll";
     if (!clipsY) continue;
     if (el.clientHeight <= 0) continue;
-    // Ignore pure visual max-h zone bands that are still within the page frame
-    // only when the page itself is not overflowing — still report the worst clip.
+    // Always track worst vertical clip among overflow-clipping descendants
+    // (zone max-h bands included) so silent clip is never export success.
     const delta = el.scrollHeight - el.clientHeight;
     if (delta > maxDelta) {
       maxDelta = delta;

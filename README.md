@@ -90,7 +90,9 @@ pnpm export:pdf --product example-uk-ug --force   # debug: write PDF even if ove
 pnpm export:all
 ```
 
-Pipeline: Zod-validate `content/products/<id>.json` → `pnpm build` → `vite preview` on `127.0.0.1:4173` → open `/print/<id>?export=1` → wait `load` + `document.fonts.ready` → measure overflow on `[data-page=a4]` → one retry with `?density=compact` (real compact CSS) → on still-overflow write `output/failures/<id>.png` and exit 1 → else write `output/<id>.pdf`, set metadata (`poster_business-export`), verify A4 MediaBox via **pdf-lib**.
+Pipeline: Zod-validate `content/products/<id>.json` (same `mergeProductContent` → `parseProduct` → `applyChromeDefaults` as the app) → `pnpm build` → `vite preview` on `127.0.0.1:4173` → open `/print/<id>?export=1` → wait `load` + `document.fonts.ready` → measure overflow on `[data-page=a4]` → one retry with `?density=compact` (real compact CSS) → on still-overflow write `output/failures/<id>.png` and exit 1 → else write `output/<id>.pdf`, set PDF **Creator** to `poster_business-export`, verify A4 MediaBox via **pdf-lib**.
+
+**Metadata note:** pdf-lib overwrites the PDF **Producer** field on every `save()` with its own banner (`pdf-lib (https://github.com/Hopding/pdf-lib)`). The export tool stamps **Creator** (and document title) instead — trust Creator for tool identity.
 
 Overflow fixture (must exit non-zero):
 
@@ -106,8 +108,9 @@ pnpm export:pdf --product fixture-overflow
 3. If export fails on overflow: open `/print/<id>?density=compact` and check whether body uses `text-print-body-sm`, list `gap-mm-2`, tighter chips.
 4. Inspect `output/failures/<id>.png` for the clipped frame Playwright saw.
 5. Confirm fonts loaded (Noto Sans SC subset under `public/fonts/`); export waits on `document.fonts.ready` (10s timeout).
-6. MediaBox must be **210×297 mm** (±0.1 mm). If not, check `page.pdf` options vs CSS `@page` / `.a4-page`.
+6. MediaBox must be **210×297 mm** (±**0.15 mm**). Playwright’s A4 is often ~209.89×297.01 mm (~0.11 mm width delta), so a 0.1 mm gate would reject every happy-path export. If MediaBox fails, check `page.pdf` options vs CSS `@page` / `.a4-page`.
 7. Soft grays / accent: Chromium needs `printBackground: true` (set by CLI) and `print-color-adjust: exact` in CSS.
+8. Footer has **no ellipsis** — long contact/CTA lines wrap; vertical clip fails the overflow gate. Keep footer copy short enough for the 16 mm band.
 
 ### Compact density
 

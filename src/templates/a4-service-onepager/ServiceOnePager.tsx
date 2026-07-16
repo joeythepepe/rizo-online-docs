@@ -83,6 +83,7 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
           <Timeline
             title={content.timeline.title}
             steps={content.timeline.steps}
+            compact={compact}
           />
         ) : null}
       </div>

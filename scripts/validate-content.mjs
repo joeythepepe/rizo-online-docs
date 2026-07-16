@@ -116,7 +116,8 @@ async function main() {
     // Brand fill when product omits brand
     const noBrand = structuredClone(example);
     delete noBrand.brand;
-    const mergedNoBrand = mergeProductContent(noBrand);
+    const brandDefaults = getBrandDefaults();
+    const mergedNoBrand = mergeProductContent(noBrand, brandDefaults);
     const parsedNoBrand = parseProduct(mergedNoBrand);
     if (parsedNoBrand.brand.companyName.zh !== brand.companyName.zh) {
       fail("brand defaults not applied when product omits brand");
@@ -141,7 +142,7 @@ async function main() {
       companyName: brand.companyName,
       ctaLabel: { zh: "立即预约" },
     };
-    const mergedCta = mergeProductContent(partialCtaProduct);
+    const mergedCta = mergeProductContent(partialCtaProduct, brandDefaults);
     const brandAfter = mergedCta.brand;
     if (
       brandAfter.ctaLabel?.zh !== "立即预约" ||

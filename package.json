@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc -p tsconfig.node.json --noEmit",
     "check:print-classes": "bash scripts/check-print-classes.sh",
     "fonts:subset": "bash scripts/fonts-subset.sh",
     "validate:content": "node scripts/validate-content.mjs",
@@ -21,6 +21,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@types/node": "^22",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",

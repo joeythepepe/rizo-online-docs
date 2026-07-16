@@ -25,6 +25,7 @@ function RequirementsBody({
   const sectionTitle = title ?? BILINGUAL_CHROME.requirementsSection;
   const listGap = compact ? "gap-mm-2" : "gap-mm-4";
   const bodyRole = compact ? "body-sm" : "body";
+  const numCls = compact ? "text-print-body-sm" : "text-print-body";
 
   return (
     <>
@@ -34,7 +35,7 @@ function RequirementsBody({
         {items.map((item, index) => (
           <li key={item.id} className="flex gap-mm-4">
             <span
-              className={`text-print-body shrink-0 tabular-nums ${
+              className={`${numCls} shrink-0 tabular-nums ${
                 accentNumbers ? "text-accent" : "text-ink"
               }`}
               aria-hidden

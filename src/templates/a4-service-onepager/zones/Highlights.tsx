@@ -9,8 +9,8 @@ export interface HighlightsProps {
 }
 
 /**
- * Optional highlights zone — max 28 mm.
- * Items render as one-line "CN / EN" to stay within the bilingual height budget.
+ * Optional highlights zone — max 36 mm (bilingual one-line items).
+ * Items render as one-line "CN / EN" to stay within the height budget.
  */
 export function Highlights({ title, items, compact = false }: HighlightsProps) {
   if (!items.length) return null;

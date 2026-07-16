@@ -7,8 +7,9 @@
  *   pnpm export:pdf --product example-uk-ug --out output/custom.pdf
  *   pnpm export:pdf example-uk-ug
  *
- * Flow: Zod-validate product via FS → build → vite preview → Chromium →
- * measure overflow → one compact retry → PDF + MediaBox check (or fail screenshot).
+ * Flow: Zod-validate product via FS (same merge/chrome as app loadProduct) →
+ * build → vite preview → Chromium → measure overflow → one compact retry →
+ * PDF + MediaBox check (or fail screenshot).
  */
 
 import { spawn, type ChildProcess, execSync } from "node:child_process";
@@ -17,6 +18,7 @@ import {
   mkdirSync,
   readFileSync,
   readdirSync,
+  unlinkSync,
   writeFileSync,
 } from "node:fs";
 import { dirname, join, resolve } from "node:path";
@@ -26,6 +28,13 @@ import { chromium } from "playwright";
 import { PDFDocument } from "pdf-lib";
 import { brandConfigSchema, parseProduct } from "../src/content/schema.ts";
 import {
+  applyChromeDefaults,
+  mergeProductContent,
+} from "../src/content/merge.ts";
+import {
+  A4_HEIGHT_MM,
+  A4_MEDIABOX_TOLERANCE_MM,
+  A4_WIDTH_MM,
   checkA4MediaBox,
   documentTitleFromMeta,
   EXPORT_ORIGIN,
@@ -35,7 +44,6 @@ import {
   OVERFLOW_TOLERANCE_MM,
   PAGE_LOAD_TIMEOUT_MS,
   PDF_CREATOR,
-  PDF_PRODUCER,
   printUrl,
   SERVER_READY_TIMEOUT_MS,
   type OverflowMeasure,
@@ -128,11 +136,14 @@ export function listProductIdsFromFs(root = ROOT): string[] {
 
 /**
  * Load + Zod-validate product via filesystem (no Vite glob).
- * Merges brand defaults shallowly so omitted brand fields still validate.
+ * Same merge path as app `loadProduct`: mergeProductContent → parseProduct →
+ * applyChromeDefaults.
  */
 export function loadProductFromFs(productId: string, root = ROOT) {
   if (productId.startsWith("_")) {
-    throw new Error(`Unknown product: ${productId} (_-prefixed templates are not exportable)`);
+    throw new Error(
+      `Unknown product: ${productId} (_-prefixed templates are not exportable)`,
+    );
   }
   const file = join(root, "content/products", `${productId}.json`);
   if (!existsSync(file)) {
@@ -146,23 +157,9 @@ export function loadProductFromFs(productId: string, root = ROOT) {
     JSON.parse(readFileSync(brandPath, "utf8")),
   );
 
-  const rawBrand =
-    raw.brand && typeof raw.brand === "object"
-      ? (raw.brand as Record<string, unknown>)
-      : {};
-
-  const merged = {
-    ...raw,
-    brand: {
-      ...brandDefault,
-      ...rawBrand,
-      companyName:
-        (rawBrand.companyName as { zh?: string; en?: string } | undefined) ??
-        brandDefault.companyName,
-    },
-  };
-
-  return parseProduct(merged);
+  const merged = mergeProductContent(raw, brandDefault);
+  const parsed = parseProduct(merged);
+  return applyChromeDefaults(parsed);
 }
 
 async function waitForServer(url: string, timeoutMs: number): Promise<void> {
@@ -171,23 +168,33 @@ async function waitForServer(url: string, timeoutMs: number): Promise<void> {
   while (Date.now() - start < timeoutMs) {
     try {
       const res = await fetch(url, { signal: AbortSignal.timeout(2000) });
-      // SPA may 200 on any path once preview is up
-      if (res.ok || res.status === 404 || res.status === 200) return;
+      // SPA may 200 on any path once preview is up; 404 still means server is listening
+      if (res.ok || res.status === 404) return;
     } catch (e) {
       lastErr = e;
     }
     await new Promise((r) => setTimeout(r, 250));
   }
   throw new Error(
-    `Preview server not ready at ${url} within ${timeoutMs}ms: ${String(lastErr)}`,
+    `Preview server not ready at ${url} within ${timeoutMs}ms: ${String(lastErr)}. ` +
+      `If the port is stuck, free :${EXPORT_PORT} (previous vite preview may still be running).`,
   );
 }
 
+/**
+ * Spawn vite preview directly (not via pnpm) in its own process group so
+ * teardown can SIGTERM the whole tree and not leave :4173 occupied.
+ */
 function startPreview(root: string): ChildProcess {
+  const viteJs = join(root, "node_modules", "vite", "bin", "vite.js");
+  if (!existsSync(viteJs)) {
+    fail(`vite binary missing at ${viteJs}; run pnpm install`);
+  }
+
   const child = spawn(
-    "pnpm",
+    process.execPath,
     [
-      "vite",
+      viteJs,
       "preview",
       "--port",
       String(EXPORT_PORT),
@@ -199,6 +206,8 @@ function startPreview(root: string): ChildProcess {
       cwd: root,
       stdio: ["ignore", "pipe", "pipe"],
       env: { ...process.env },
+      // Own process group → kill(-pid) reaps vite children
+      detached: process.platform !== "win32",
     },
   );
   child.stdout?.on("data", (buf: Buffer) => {
@@ -208,20 +217,39 @@ function startPreview(root: string): ChildProcess {
   child.stderr?.on("data", (buf: Buffer) => {
     const s = buf.toString();
     if (process.env.EXPORT_DEBUG) process.stderr.write(`[preview] ${s}`);
+    if (/EADDRINUSE|already in use|StrictPort/i.test(s)) {
+      console.error(
+        `ERROR: port ${EXPORT_PORT} in use — stop the other preview or set a free port.`,
+      );
+    }
   });
   return child;
 }
 
+function killProcessTree(child: ChildProcess, signal: NodeJS.Signals): void {
+  if (child.pid == null) return;
+  try {
+    if (process.platform !== "win32" && child.pid) {
+      // Negative PID = process group (requires detached spawn)
+      process.kill(-child.pid, signal);
+      return;
+    }
+  } catch {
+    /* fall through to single-process kill */
+  }
+  try {
+    child.kill(signal);
+  } catch {
+    /* ignore */
+  }
+}
+
 async function stopPreview(child: ChildProcess | null): Promise<void> {
   if (!child || child.killed) return;
-  child.kill("SIGTERM");
+  killProcessTree(child, "SIGTERM");
   await new Promise<void>((resolveDone) => {
     const t = setTimeout(() => {
-      try {
-        child.kill("SIGKILL");
-      } catch {
-        /* ignore */
-      }
+      killProcessTree(child, "SIGKILL");
       resolveDone();
     }, 3000);
     child.once("exit", () => {
@@ -263,6 +291,7 @@ async function gotoAndMeasure(
   // Run measure from source string so tsx/esbuild helpers never enter Chromium.
   return page.evaluate(
     ({ source, opts }) => {
+      // eslint-disable-next-line no-eval -- measure source isolated from Node tooling
       const fn = eval(`(${source})`) as (o: {
         toleranceMm: number;
         a4HeightMm: number;
@@ -273,20 +302,32 @@ async function gotoAndMeasure(
       source: MEASURE_OVERFLOW_SOURCE,
       opts: {
         toleranceMm: OVERFLOW_TOLERANCE_MM,
-        a4HeightMm: 297,
+        a4HeightMm: A4_HEIGHT_MM,
       },
     },
   );
 }
 
+/**
+ * Apply metadata and verify MediaBox. Writes PDF only when MediaBox is OK
+ * (or when forceWrite is true after a soft check — not used currently).
+ *
+ * Note: pdf-lib overwrites PDF Producer on save with its own banner; we set
+ * Creator to poster_business-export (that field sticks). See README.
+ */
 async function writePdfWithMetadata(
   pdfBytes: Buffer,
   title: string,
   outPath: string,
-): Promise<{ bytes: number; mediaBoxOk: boolean; widthMm: number; heightMm: number }> {
+): Promise<{
+  bytes: number;
+  mediaBoxOk: boolean;
+  widthMm: number;
+  heightMm: number;
+}> {
   const doc = await PDFDocument.load(pdfBytes);
   doc.setTitle(title);
-  doc.setProducer(PDF_PRODUCER);
+  // Creator is the reliable tool stamp; Producer is forced to pdf-lib on save.
   doc.setCreator(PDF_CREATOR);
 
   const pages = doc.getPages();
@@ -296,13 +337,30 @@ async function writePdfWithMetadata(
   const { width, height } = pages[0].getSize();
   const box = checkA4MediaBox(width, height);
 
+  if (!box.ok) {
+    // Do not leave a bad PDF under output/ for CI collectors to pick up.
+    if (existsSync(outPath)) {
+      try {
+        unlinkSync(outPath);
+      } catch {
+        /* ignore */
+      }
+    }
+    return {
+      bytes: 0,
+      mediaBoxOk: false,
+      widthMm: box.widthMm,
+      heightMm: box.heightMm,
+    };
+  }
+
   const out = await doc.save();
   mkdirSync(dirname(outPath), { recursive: true });
   writeFileSync(outPath, out);
 
   return {
     bytes: out.byteLength,
-    mediaBoxOk: box.ok,
+    mediaBoxOk: true,
     widthMm: box.widthMm,
     heightMm: box.heightMm,
   };
@@ -339,7 +397,23 @@ export async function exportProduct(
   try {
     if (!options.baseUrl) {
       preview = startPreview(ROOT);
-      await waitForServer(base, SERVER_READY_TIMEOUT_MS);
+      try {
+        await waitForServer(base, SERVER_READY_TIMEOUT_MS);
+      } catch (err) {
+        await stopPreview(preview);
+        preview = null;
+        throw err;
+      }
+      // Spawn may have died (e.g. EADDRINUSE) while an old process still answered HTTP
+      if (preview.exitCode !== null || preview.signalCode !== null) {
+        const code = preview.exitCode ?? preview.signalCode;
+        await stopPreview(preview);
+        preview = null;
+        throw new Error(
+          `Preview process exited before export (code/signal=${String(code)}). ` +
+            `Port ${EXPORT_PORT} is likely held by another vite preview — free it and retry.`,
+        );
+      }
       log(`export: preview ready at ${base}`);
     }
 
@@ -355,7 +429,6 @@ export async function exportProduct(
       const page = await context.newPage();
 
       const normalUrl = printUrl(productId, { export: true });
-      // When baseUrl overrides origin, rebuild path only
       const urlNormal = options.baseUrl
         ? `${options.baseUrl.replace(/\/$/, "")}/print/${encodeURIComponent(productId)}?export=1`
         : normalUrl;
@@ -401,7 +474,6 @@ export async function exportProduct(
 
       if (overflows && options.force) {
         log("export: WARNING — overflow detected; writing PDF anyway (--force)");
-        // Ensure we are on compact if we retried
         if (usedCompact) {
           const compactUrl = options.baseUrl
             ? `${options.baseUrl.replace(/\/$/, "")}/print/${encodeURIComponent(productId)}?export=1&density=compact`
@@ -419,26 +491,32 @@ export async function exportProduct(
         landscape: false,
       });
 
+      const resolvedOut = resolve(outPath);
       const meta = await writePdfWithMetadata(
         Buffer.from(pdfBuffer),
         title,
-        resolve(outPath),
+        resolvedOut,
       );
 
       const durationMs = Date.now() - started;
+
+      if (!meta.mediaBoxOk) {
+        log(
+          `export: MediaBox check failed ${meta.widthMm.toFixed(3)}×${meta.heightMm.toFixed(3)}mm (no file written)`,
+        );
+        throw new Error(
+          `MediaBox not A4: ${meta.widthMm.toFixed(3)}×${meta.heightMm.toFixed(3)} mm ` +
+            `(expected ${A4_WIDTH_MM}×${A4_HEIGHT_MM} ±${A4_MEDIABOX_TOLERANCE_MM} mm)`,
+        );
+      }
+
       log(
         `export: wrote ${outPath} (${meta.bytes} bytes) mediaBox=${meta.widthMm.toFixed(2)}×${meta.heightMm.toFixed(2)}mm ok=${meta.mediaBoxOk} compact=${usedCompact} duration=${durationMs}ms`,
       );
 
-      if (!meta.mediaBoxOk) {
-        throw new Error(
-          `MediaBox not A4: ${meta.widthMm.toFixed(3)}×${meta.heightMm.toFixed(3)} mm (expected 210×297 ±0.1)`,
-        );
-      }
-
       return {
         productId,
-        pdfPath: resolve(outPath),
+        pdfPath: resolvedOut,
         bytes: meta.bytes,
         durationMs,
         usedCompact,
@@ -473,5 +551,5 @@ const isDirect =
   resolve(process.argv[1]) === fileURLToPath(import.meta.url);
 
 if (isDirect) {
-  main();
+  void main();
 }

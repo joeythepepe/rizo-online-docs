@@ -9,9 +9,9 @@ export type ZhString = string;
 
 /**
  * Exam pathway for filtering gallery cards.
- * Product title pattern: 【路线标签】通【国家】 e.g. 高考通英国、DSE通香港.
+ * Product title pattern: 【路线】通【地区/类型】 e.g. 高考通英国、中考通深圳普高.
  */
-export type ExamPathway = "gaokao" | "dse" | "alevel" | "sat";
+export type ExamPathway = "gaokao" | "dse" | "alevel" | "sat" | "zhongkao";
 
 export interface BrandConfig {
   companyName: ZhString;
@@ -76,7 +76,7 @@ export interface ServiceOnePagerContent {
      */
     countryCode?: string;
     /**
-     * 考生路线：gaokao 高考 | dse 香港DSE | alevel 英国高考 | sat 美国高考
+     * 考生路线：gaokao | dse | alevel | sat | zhongkao（中考）
      */
     pathway?: ExamPathway;
     /** 路径优势（标题下展示，建议 2 条） */

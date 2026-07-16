@@ -19,6 +19,12 @@ export const EXAM_PATHWAYS: PathwayMeta[] = [
     categoryLabel: "高考本科出海",
   },
   {
+    id: "zhongkao",
+    label: "中考",
+    description: "深圳中考升学（普高/职高）",
+    categoryLabel: "中考升学规划",
+  },
+  {
     id: "dse",
     label: "DSE",
     description: "香港中学文凭考试",
@@ -44,16 +50,17 @@ export function pathwayMeta(id: ExamPathway): PathwayMeta {
   return found;
 }
 
-/** Title pattern: 【路线】通【国家】 */
+/** Title pattern helper */
 export function pathwayProductName(
   pathway: ExamPathway,
-  countryZh: string,
+  regionZh: string,
 ): string {
   const prefix: Record<ExamPathway, string> = {
     gaokao: "高考",
+    zhongkao: "中考",
     dse: "DSE",
     alevel: "A-Level",
     sat: "SAT",
   };
-  return `${prefix[pathway]}通${countryZh}`;
+  return `${prefix[pathway]}通${regionZh}`;
 }

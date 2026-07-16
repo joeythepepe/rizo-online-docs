@@ -1,0 +1,110 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "中考通深圳普高-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 中考批次",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为升学规划与申请辅导说明，不承诺录取结果，不涉及买卖公办学位；最终以当年招生政策及学校公示为准。"
+  },
+  "product": {
+    "name": "中考通深圳普高",
+    "categoryLabel": "中考升学规划",
+    "tagline": "志愿规划+民办/特色路径申请辅导（不承诺录取）",
+    "countryCode": "CN",
+    "pathway": "zhongkao",
+    "pros": [
+      "深圳普高体系完善，升学出口多元",
+      "可规划公办志愿与民办/特色班路径",
+      "离家近，适应与家庭陪伴成本低"
+    ],
+    "cons": [
+      "公办指标紧张，分数与排位竞争激烈",
+      "民办学费与入学条件需仔细甄别",
+      "政策每年调整，须以官方简章为准"
+    ]
+  },
+  "targetCustomer": {
+    "summary": "参加深圳中考、目标普通高中（含民办/国际特色方向）的初三学生及家长。",
+    "segments": [
+      "初三应届",
+      "目标普高",
+      "需志愿规划"
+    ]
+  },
+  "deliverables": {
+    "intro": "服务为规划与申请辅导，不保证进入任一指定学校。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "中考科目培优、冲刺提分与模考"
+      },
+      {
+        "id": "d2",
+        "label": "深圳普高梯度分析与志愿填报辅导"
+      },
+      {
+        "id": "d3",
+        "label": "民办高中/特色班/国际部申请辅导"
+      },
+      {
+        "id": "d4",
+        "label": "材料清单、面试准备与节点提醒"
+      },
+      {
+        "id": "d5",
+        "label": "全套申请文书撰写与多轮打磨"
+      },
+      {
+        "id": "d6",
+        "label": "考生背景提升与活动规划"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为参与服务的常见条件；不构成录取承诺。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "具备深圳中考报名/升学资格（按当年政策）",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "提供真实成绩、学籍与报名材料",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "家长确认志愿方案并按时完成填报",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "民办/特色项目需配合面试与缴费节点",
+        "mandatory": false
+      },
+      {
+        "id": "r5",
+        "label": "理解服务不承诺录取、不买卖公办学位",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "不承诺录取",
+      "公办志愿+民办路径",
+      "政策节点同步"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

@@ -80,7 +80,9 @@ export const productSchema = z
         .regex(/^[A-Za-z]{2}$/, "countryCode must be ISO alpha-2")
         .transform((s) => s.toUpperCase())
         .optional(),
-      pathway: z.enum(["gaokao", "dse", "alevel", "sat"]).optional(),
+      pathway: z
+        .enum(["gaokao", "dse", "alevel", "sat", "zhongkao"])
+        .optional(),
       /** 优势 / 劣势小介绍（标题下） */
       pros: z.array(zhStringMax(36)).min(1).max(3).optional(),
       cons: z.array(zhStringMax(36)).min(1).max(3).optional(),

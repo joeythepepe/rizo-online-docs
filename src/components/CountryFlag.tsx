@@ -1,6 +1,7 @@
 import {
   AU,
   CA,
+  CN,
   DE,
   GB,
   HK,
@@ -15,8 +16,9 @@ import {
   US,
 } from "country-flag-icons/react/3x2";
 
-/** ISO 3166-1 alpha-2 codes we ship flags for (高考通【国家】). */
+/** ISO 3166-1 alpha-2 codes we ship flags for. */
 export type CountryCode =
+  | "CN"
   | "HK"
   | "MO"
   | "SG"
@@ -35,6 +37,7 @@ export type CountryCode =
 type FlagComponent = typeof HK;
 
 const FLAG_BY_CODE: Record<CountryCode, FlagComponent> = {
+  CN,
   HK,
   MO,
   SG,
@@ -52,6 +55,7 @@ const FLAG_BY_CODE: Record<CountryCode, FlagComponent> = {
 };
 
 const TITLE_BY_CODE: Record<CountryCode, string> = {
+  CN: "中国",
   HK: "香港",
   MO: "澳门",
   SG: "新加坡",

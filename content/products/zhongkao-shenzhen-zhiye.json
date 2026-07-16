@@ -1,0 +1,110 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "中考通深圳职高-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 中考批次",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为升学规划与申请辅导说明，不承诺录取结果，不涉及买卖学位；校企合作推荐以学校与合作方正式公示为准。"
+  },
+  "product": {
+    "name": "中考通深圳职高",
+    "categoryLabel": "中考升学规划",
+    "tagline": "职高志愿匹配+校企合作推荐（不承诺录取）",
+    "countryCode": "CN",
+    "pathway": "zhongkao",
+    "pros": [
+      "技能培养与就业导向清晰",
+      "可衔接高职高考/对口升学",
+      "校企合作提供实习就业信息"
+    ],
+    "cons": [
+      "社会认知与普高路径不同，需家庭共识",
+      "专业冷热与就业质量差异大",
+      "合作推荐不等于录取或就业保证"
+    ]
+  },
+  "targetCustomer": {
+    "summary": "深圳中考后考虑职业高中/中职/技工路径，关注技能与升学衔接的学生及家长。",
+    "segments": [
+      "初三应届",
+      "目标职高",
+      "重技能就业"
+    ]
+  },
+  "deliverables": {
+    "intro": "含校企合作信息推荐；录取与录用均以官方结果为准，不作保证。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "中考科目培优、冲刺提分与模考"
+      },
+      {
+        "id": "d2",
+        "label": "职高/中职院校与专业匹配规划"
+      },
+      {
+        "id": "d3",
+        "label": "志愿填报辅导与材料清单管理"
+      },
+      {
+        "id": "d4",
+        "label": "校企合作项目解读与推荐对接"
+      },
+      {
+        "id": "d5",
+        "label": "全套申请文书撰写与多轮打磨"
+      },
+      {
+        "id": "d6",
+        "label": "高职高考/对口升学路径规划"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为参与服务的常见条件；不构成录取或就业承诺。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "具备深圳中考报名/升学资格（按当年政策）",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "提供真实成绩、学籍与报名材料",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "家长确认职高方向与志愿填报节点",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "参与校企推荐需配合面试/企业要求",
+        "mandatory": false
+      },
+      {
+        "id": "r5",
+        "label": "理解不承诺录取/就业、不买卖学位",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "不承诺录取",
+      "校企合作推荐",
+      "可衔接高职升学"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN-en",
+  "meta": {
+    "documentTitle": {
+      "zh": "高考通新加坡本-服务说明",
+      "en": "Gaokao to Singapore UG — Service Overview"
+    },
+    "version": "2026.07",
+    "cycleLabel": { "zh": "2026 秋季入学", "en": "2026 Fall intake" },
+    "priceBand": { "zh": "面议", "en": "Quote on request" },
+    "confidential": false
+  },
+  "product": {
+    "name": { "zh": "高考通新加坡本", "en": "Gaokao → SG UG" },
+    "categoryLabel": { "zh": "高考本科出海", "en": "Gaokao global UG" },
+    "tagline": {
+      "zh": "高考成绩冲击新国立/南洋等本科",
+      "en": "Gaokao path to NUS/NTU and peers"
+    }
+  },
+  "targetCustomer": {
+    "summary": {
+      "zh": "高考成绩突出、英语达标，希望进入新加坡公立或知名私立本科的学生。",
+      "en": "Top Gaokao scorers aiming for Singapore UG."
+    },
+    "segments": [
+      { "zh": "高三冲刺", "en": "G12 sprint" },
+      { "zh": "NUS/NTU/SMU", "en": "NUS/NTU/SMU" },
+      { "zh": "英语过硬", "en": "Strong English" }
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": {
+          "zh": "院校与专业匹配（公立/私立梯度）",
+          "en": "Public/private school tiers"
+        }
+      },
+      {
+        "id": "d2",
+        "label": {
+          "zh": "高考成绩换算与录取概率评估",
+          "en": "Score mapping and admit odds"
+        }
+      },
+      {
+        "id": "d3",
+        "label": {
+          "zh": "网申、文书/个人陈述与面试准备",
+          "en": "Application, PS, interview"
+        }
+      },
+      {
+        "id": "d4",
+        "label": {
+          "zh": "录取后学生准证与行前安排",
+          "en": "Student pass and pre-departure"
+        }
+      }
+    ]
+  },
+  "requirements": {
+    "intro": {
+      "zh": "新加坡顶尖校竞争激烈，条件为经验区间，以当年官网为准。",
+      "en": "Competitive; ranges are indicative only."
+    },
+    "items": [
+      {
+        "id": "r1",
+        "label": {
+          "zh": "参加普通高考；成绩达一本线以上为佳",
+          "en": "Gaokao; preferably above first-tier"
+        },
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": {
+          "zh": "冲刺NUS/NTU：建议全省前列或超特控线",
+          "en": "NUS/NTU: top provincial range"
+        },
+        "mandatory": false
+      },
+      {
+        "id": "r3",
+        "label": {
+          "zh": "英语：高考英语优异或雅思6.5+/托福同等",
+          "en": "Strong Gaokao English or IELTS 6.5+"
+        },
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": {
+          "zh": "完整高中成绩与毕业/在读证明",
+          "en": "Full high-school records"
+        },
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": {
+          "zh": "可参加面试/额外笔试（部分专业）",
+          "en": "Interview/test if required"
+        },
+        "mandatory": false
+      },
+      {
+        "id": "r6",
+        "label": {
+          "zh": "家庭能承担学费与生活费并配合签证",
+          "en": "Tuition/living funds and visa"
+        },
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      { "zh": "聚焦新三国立名校", "en": "Focus public unis" },
+      { "zh": "高考分+英语双门槛", "en": "Score + English" },
+      { "zh": "面试辅导可加购", "en": "Interview optional" }
+    ]
+  },
+  "layout": {
+    "variant": "stack",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

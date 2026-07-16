@@ -1,0 +1,135 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN-en",
+  "meta": {
+    "documentTitle": {
+      "zh": "高考通澳门本-服务说明",
+      "en": "Gaokao to Macao UG — Service Overview"
+    },
+    "version": "2026.07",
+    "cycleLabel": { "zh": "2026 秋季入学", "en": "2026 Fall intake" },
+    "priceBand": { "zh": "面议", "en": "Quote on request" },
+    "confidential": false
+  },
+  "product": {
+    "name": { "zh": "高考通澳门本", "en": "Gaokao → Macao UG" },
+    "categoryLabel": { "zh": "高考本科出海", "en": "Gaokao global UG" },
+    "tagline": {
+      "zh": "高考直通澳门高校本科的稳健通道",
+      "en": "Stable Gaokao path to Macao UG"
+    }
+  },
+  "targetCustomer": {
+    "summary": {
+      "zh": "希望以高考成绩进入澳门高校、兼顾粤港澳生活圈的学生与家长。",
+      "en": "Students aiming Macao UG via Gaokao near GBA."
+    },
+    "segments": [
+      { "zh": "高三应届", "en": "G12 cohort" },
+      { "zh": "澳大/澳科大等", "en": "UM / MUST…" },
+      { "zh": "稳健升学", "en": "Steady path" }
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": {
+          "zh": "澳门院校与专业梯度规划",
+          "en": "Macao school/major tiers"
+        }
+      },
+      {
+        "id": "d2",
+        "label": {
+          "zh": "高考成绩对标与填报/网申策略",
+          "en": "Score mapping and apply plan"
+        }
+      },
+      {
+        "id": "d3",
+        "label": {
+          "zh": "材料清单、文书与面试辅导",
+          "en": "Docs, essays, interview"
+        }
+      },
+      {
+        "id": "d4",
+        "label": {
+          "zh": "录取确认、赴澳手续与行前指导",
+          "en": "Offer, entry, pre-departure"
+        }
+      }
+    ]
+  },
+  "requirements": {
+    "intro": {
+      "zh": "澳门高校普遍接受内地高考，门槛相对港校更灵活。",
+      "en": "Macao unis accept Gaokao; bars often below HK."
+    },
+    "items": [
+      {
+        "id": "r1",
+        "label": {
+          "zh": "参加普通高考并取得有效成绩",
+          "en": "Valid national Gaokao score"
+        },
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": {
+          "zh": "总分建议达二本线以上（名校更高）",
+          "en": "Usually 2nd-tier+; top unis higher"
+        },
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": {
+          "zh": "英语满足校方最低要求（高考或雅思）",
+          "en": "English min via Gaokao/IELTS"
+        },
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": {
+          "zh": "高中毕业或应届在读证明齐全",
+          "en": "Graduation or enrollment proof"
+        },
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": {
+          "zh": "部分专业需面试/加试，需可配合",
+          "en": "Interview/extra test if needed"
+        },
+        "mandatory": false
+      },
+      {
+        "id": "r6",
+        "label": {
+          "zh": "可办理赴澳逗留/入学相关手续",
+          "en": "Macao entry/stay paperwork"
+        },
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      { "zh": "高考友好、路径清晰", "en": "Gaokao-friendly" },
+      { "zh": "粤港澳生活便利", "en": "GBA convenience" },
+      { "zh": "冲稳保名单配置", "en": "Tiered list" }
+    ]
+  },
+  "layout": {
+    "variant": "stack",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

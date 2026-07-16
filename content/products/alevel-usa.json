@@ -27,22 +27,26 @@
     "items": [
       {
         "id": "d1",
-        "label": "美本选校与专业规划"
+        "label": "A-Level科目培训与预估分提升"
       },
       {
         "id": "d2",
-        "label": "A-Level+SAT/托福路径设计"
+        "label": "美本选校与专业规划"
       },
       {
         "id": "d3",
-        "label": "Common App文书与活动"
+        "label": "A-Level+SAT/托福路径设计"
       },
       {
         "id": "d4",
-        "label": "推荐信与递交节点管理"
+        "label": "Common App文书与活动"
       },
       {
         "id": "d5",
+        "label": "推荐信与递交节点管理"
+      },
+      {
+        "id": "d6",
         "label": "签证与行前指导"
       }
     ]
@@ -84,6 +88,7 @@
   },
   "highlights": {
     "items": [
+      "配套A-Level科目培训",
       "对标A-Level成绩要求",
       "预估分与最终分策略",
       "多国申请可并行"

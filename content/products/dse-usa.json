@@ -27,22 +27,26 @@
     "items": [
       {
         "id": "d1",
-        "label": "美本选校与专业方向规划"
+        "label": "DSE核心/选修培训与阶段性模考"
       },
       {
         "id": "d2",
-        "label": "DSE+SAT/ACT/托福路径设计"
+        "label": "美本选校与专业方向规划"
       },
       {
         "id": "d3",
-        "label": "Common App文书与活动列表"
+        "label": "DSE+SAT/ACT/托福路径设计"
       },
       {
         "id": "d4",
-        "label": "推荐信、认证与递交管理"
+        "label": "Common App文书与活动列表"
       },
       {
         "id": "d5",
+        "label": "推荐信、认证与递交管理"
+      },
+      {
+        "id": "d6",
         "label": "签证与行前指导"
       }
     ]
@@ -84,6 +88,7 @@
   },
   "highlights": {
     "items": [
+      "配套DSE科目培训",
       "DSE+美本双轨评估",
       "标化策略可定制",
       "综合背景包装"

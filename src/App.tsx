@@ -46,7 +46,6 @@ function GalleryPage() {
                 ) : null}
                 <p className="text-base font-medium text-ink">{titleZh}</p>
               </div>
-              <p className="mt-2 font-mono text-xs text-ink-tertiary">{id}</p>
               <div className="mt-4 flex flex-wrap gap-3 text-sm">
                 <Link
                   className="text-accent underline-offset-2 hover:underline"

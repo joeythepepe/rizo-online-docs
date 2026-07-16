@@ -95,8 +95,8 @@ test.describe("print screenshot smoke", () => {
       "compact density should apply text-print-body-sm to list/body copy",
     ).toBeGreaterThan(0);
 
-    // SoftPanel on requirements defaults to compact padding class
-    await expect(a4.locator(".p-mm-4").first()).toBeVisible();
+    // Requirements section still present (no SoftPanel gray box)
+    await expect(a4.getByText("客户需具备").first()).toBeVisible();
 
     mkdirSync(SMOKE_OUT, { recursive: true });
     const shotPath = join(SMOKE_OUT, "gaokao-uk-compact.png");

@@ -56,7 +56,7 @@ function DeliverablesBody({
 
 /**
  * Service deliverables — Chinese numbered list (matches requirements style).
- * SoftPanel optional (default: none; SoftPanel is on requirements by default).
+ * SoftPanel optional (default: none for column parity).
  */
 export function Deliverables(props: DeliverablesProps) {
   const body = <DeliverablesBody {...props} />;

@@ -12,6 +12,20 @@ You may embed, subset, and redistribute these fonts under the OFL. Do not sell t
 
 Raw full faces are **not** committed (`fonts/raw/` is gitignored). Only **subset WOFF2** files under `fonts/subset/` and `public/fonts/` are shipped.
 
+## Upstream pin (reproducible downloads)
+
+Raw OFTs are fetched from a **fixed release tag**, not floating `main`:
+
+| Field | Value |
+|-------|--------|
+| Repo | `notofonts/noto-cjk` |
+| Tag | **`Sans2.004`** |
+| Commit | `523d033d6cb47f4a80c58a35753646f5c3608a78` |
+| Path | `Sans/SubsetOTF/SC/NotoSansSC-{Regular,Medium,Bold}.otf` |
+| Release | https://github.com/notofonts/noto-cjk/releases/tag/Sans2.004 |
+
+`scripts/fonts-subset.sh` sets `NOTO_CJK_REF` / `NOTO_CJK_SHA`. Bump both together when intentionally upgrading.
+
 ## Shipped weights (CSS mapping)
 
 | CSS `font-weight` | Face file | Use |
@@ -58,7 +72,7 @@ Requirements:
 - `curl`
 - Python 3 + **fonttools** with WOFF2:  
   `pip3 install --user 'fonttools[woff]' brotli`
-- `pyftsubset` on `PATH` (or under `~/Library/Python/*/bin` / `~/.local/bin` — the script resolves these)
+- `pyftsubset` on `PATH`, under `~/Library/Python/*/bin`, `~/.local/bin`, or via `python3 -m fontTools.subset` (the script globs these and logs which resolver won)
 
 Then:
 
@@ -69,8 +83,11 @@ pnpm fonts:subset
 
 The script will:
 
-1. Download raw `NotoSansSC-{Regular,Medium,Bold}.otf` into `fonts/raw/` if missing (OFL sources from notofonts/noto-cjk SubsetOTF/SC).
+1. Download raw `NotoSansSC-{Regular,Medium,Bold}.otf` into `fonts/raw/` if missing (pinned `Sans2.004` SubsetOTF/SC; validates ≥ 1 MB + OTF magic).
 2. Run `pyftsubset` with `--text-file=fonts/charset/gb2312-plus.txt` → WOFF2.
+   - Layout features: `ccmp,locl,kern,liga,calt,mark,mkmk` (not `*`)
+   - `--desubroutinize` + `--no-hinting` for compact print embed
+   - No `--glyph-names`
 3. Copy subsets to `public/fonts/`.
 4. Fail if total subset size **> 6 MB** (soft target **≤ 4 MB**).
 
@@ -83,7 +100,16 @@ After changing the charset, re-run the script and commit the updated files under
 | Soft target | ≤ 4 MB total (all three weights) |
 | Hard fail | ≤ 6 MB total |
 
-Current committed subsets should stay under the hard cap. Check with:
+### Measured committed subsets (post subset pipeline)
+
+| Face | Approx. size |
+|------|----------------|
+| Regular (400) | ~1.04 MB |
+| Medium (500) | ~1.05 MB |
+| Bold (700) | ~1.06 MB |
+| **Total** | **~3.15 MB** (under soft target) |
+
+Re-check after re-subset:
 
 ```bash
 du -ch fonts/subset/*.woff2 | tail -1

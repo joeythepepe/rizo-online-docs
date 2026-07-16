@@ -58,7 +58,7 @@ export function Deliverables(props: DeliverablesProps) {
   if (props.softPanel) {
     return (
       <section className="min-h-0">
-        <SoftPanel>{body}</SoftPanel>
+        <SoftPanel compact={props.compact}>{body}</SoftPanel>
       </section>
     );
   }

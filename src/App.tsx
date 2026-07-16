@@ -1,5 +1,14 @@
-import { BrowserRouter, Link, Navigate, Route, Routes, useParams } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Navigate,
+  Route,
+  Routes,
+  useParams,
+  useSearchParams,
+} from "react-router-dom";
 import { listProductIds, loadProduct } from "./content/loadProduct";
+import type { ServiceOnePagerContent } from "./content/types";
 import { ServiceOnePager } from "./templates/a4-service-onepager/ServiceOnePager";
 
 function GalleryPage() {
@@ -105,15 +114,40 @@ function ProductPreviewPage() {
 }
 
 /**
+ * Apply `?density=compact` export override (Promotes compact CSS for overflow retry).
+ * Query wins over product `layout.density`.
+ */
+function applyDensityOverride(
+  content: ServiceOnePagerContent,
+  densityParam: string | null,
+): ServiceOnePagerContent {
+  if (densityParam !== "compact" && densityParam !== "normal") {
+    return content;
+  }
+  return {
+    ...content,
+    layout: {
+      ...content.layout,
+      density: densityParam,
+    },
+  };
+}
+
+/**
  * Chrome-less print root — no nav, no page shadow (export / designer print).
+ * Query: `?export=1` (marker for tooling), `?density=compact` (overflow retry).
  */
 function ProductPrintPage() {
   const { id } = useParams<{ id: string }>();
+  const [searchParams] = useSearchParams();
   if (!id) return <Navigate to="/" replace />;
 
-  let content;
+  let content: ServiceOnePagerContent;
   try {
-    content = loadProduct(id);
+    content = applyDensityOverride(
+      loadProduct(id),
+      searchParams.get("density"),
+    );
   } catch (err) {
     return (
       <div className="bg-paper p-mm-14 text-ink">
@@ -125,8 +159,10 @@ function ProductPrintPage() {
     );
   }
 
+  const density = content.layout?.density ?? "normal";
+
   return (
-    <div className="bg-paper">
+    <div className="bg-paper" data-export={searchParams.get("export") ?? undefined} data-density={density}>
       <ServiceOnePager content={content} />
     </div>
   );

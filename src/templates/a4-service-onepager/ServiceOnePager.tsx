@@ -37,6 +37,10 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
   const showTimeline =
     showOptionalBlock && Boolean(content.timeline?.steps?.length);
 
+  // Dense stack: bilingual body needs tighter inter-zone gaps than mm-12 to fit A4.
+  const sectionGap = compact ? "gap-mm-4" : "gap-mm-6";
+  const sectionTop = compact ? "mt-mm-6" : "mt-mm-8";
+
   return (
     <A4Page>
       <Header brand={content.brand} />
@@ -45,8 +49,11 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
       <Hero product={content.product} />
 
       {/* Body flex column: target → deliverables → requirements → optional */}
-      <div className="mt-mm-12 flex min-h-0 flex-1 flex-col gap-mm-12 overflow-hidden">
-        <TargetCustomer data={content.targetCustomer} />
+      <div
+        className={`${sectionTop} flex min-h-0 flex-1 flex-col ${sectionGap}`}
+        data-density={compact ? "compact" : "normal"}
+      >
+        <TargetCustomer data={content.targetCustomer} compact={compact} />
 
         <Deliverables
           title={content.deliverables.title}
@@ -68,6 +75,7 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
           <Highlights
             title={content.highlights.title}
             items={content.highlights.items}
+            compact={compact}
           />
         ) : null}
 
@@ -79,7 +87,7 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
         ) : null}
       </div>
 
-      <div className="mt-mm-12 shrink-0">
+      <div className={`${sectionTop} shrink-0`}>
         <Disclaimer value={content.meta.disclaimer} />
       </div>
 

@@ -62,8 +62,14 @@ async function main() {
 
     // --- Real listProductIds / loadProduct (Vite glob) ---
     const ids = listProductIds();
-    if (JSON.stringify(ids) !== JSON.stringify(["example-uk-ug"])) {
-      fail(`listProductIds expected ["example-uk-ug"], got ${JSON.stringify(ids)}`);
+    if (!ids.includes("example-uk-ug")) {
+      fail(`listProductIds missing example-uk-ug, got ${JSON.stringify(ids)}`);
+    }
+    if (!ids.includes("fixture-overflow")) {
+      fail(`listProductIds missing fixture-overflow, got ${JSON.stringify(ids)}`);
+    }
+    if (ids.some((id) => id.startsWith("_"))) {
+      fail(`listProductIds must skip _-prefixed, got ${JSON.stringify(ids)}`);
     }
     ok(`listProductIds(): ${JSON.stringify(ids)}`);
 
@@ -239,12 +245,25 @@ async function main() {
     // pure helpers
     const fromKeys = listProductIdsFromKeys([
       "../../content/products/example-uk-ug.json",
+      "../../content/products/fixture-overflow.json",
       "../../content/products/_template.json",
     ]);
-    if (JSON.stringify(fromKeys) !== JSON.stringify(["example-uk-ug"])) {
+    if (
+      JSON.stringify(fromKeys) !==
+      JSON.stringify(["example-uk-ug", "fixture-overflow"])
+    ) {
       fail(`listProductIdsFromKeys failed: ${JSON.stringify(fromKeys)}`);
     }
     ok("listProductIdsFromKeys pure helper");
+
+    // Overflow fixture must parse (export CLI fails on layout measure, not Zod)
+    const overflowRaw = JSON.parse(
+      readFileSync(join(root, "content/products/fixture-overflow.json"), "utf8"),
+    );
+    if (!safeParseProduct(overflowRaw).success) {
+      fail(`fixture-overflow.json failed Zod: ${safeParseProduct(overflowRaw).error}`);
+    }
+    ok("fixture-overflow.json parses");
 
     // applyChromeDefaults on parsed without titles/disclaimer
     const bare = structuredClone(example);

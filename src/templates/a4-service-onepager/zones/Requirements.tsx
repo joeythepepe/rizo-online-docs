@@ -59,15 +59,16 @@ function RequirementsBody({
  */
 export function Requirements({
   softPanel = true,
+  compact,
   ...rest
 }: RequirementsProps) {
-  const body = <RequirementsBody {...rest} />;
+  const body = <RequirementsBody compact={compact} {...rest} />;
   if (softPanel) {
     return (
-      <section className="min-h-0 flex-1">
-        <SoftPanel className="h-full">{body}</SoftPanel>
+      <section className="min-h-0 shrink-0">
+        <SoftPanel compact={compact}>{body}</SoftPanel>
       </section>
     );
   }
-  return <section className="min-h-0 flex-1">{body}</section>;
+  return <section className="min-h-0 shrink-0">{body}</section>;
 }

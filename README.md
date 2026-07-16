@@ -15,8 +15,17 @@ pnpm dev
 - **Typecheck:** `pnpm typecheck`
 - **Print class denylist:** `pnpm check:print-classes`
 - **Font subset (Noto SC):** `pnpm fonts:subset` — see [fonts/README.md](./fonts/README.md)
+- **Validate product JSON:** `pnpm validate:content`
 - **Production build:** `pnpm build`
 - **Preview build:** `pnpm preview`
+- **Export PDF:** `pnpm export:pdf --product example-uk-ug` → `output/<id>.pdf`
+- **Export all products:** `pnpm export:all` (skips overflow fixtures)
+
+First-time PDF export needs Chromium for Playwright:
+
+```bash
+pnpm exec playwright install chromium
+```
 
 ## Frozen design tokens
 
@@ -71,41 +80,87 @@ Shadows and decorative chrome **are** allowed on gallery/screen routes (`/`, `/p
 
 **Enforcement (lightweight):** `pnpm check:print-classes` runs `scripts/check-print-classes.sh`, which greps `src/templates/**` and `src/components/**` for breakpoints, `font-semibold`, shadows/rings/gradients/blur, and `min-h-screen` / `h-screen` / `vh`. (Dirs may be empty until later PRs; the script still exits 0.)
 
+## PDF export
+
+Canonical artifact is Playwright PDF (not browser Print → Save as PDF).
+
+```bash
+pnpm export:pdf --product example-uk-ug
+pnpm export:pdf --product example-uk-ug --force   # debug: write PDF even if overflow
+pnpm export:all
+```
+
+Pipeline: Zod-validate `content/products/<id>.json` → `pnpm build` → `vite preview` on `127.0.0.1:4173` → open `/print/<id>?export=1` → wait `load` + `document.fonts.ready` → measure overflow on `[data-page=a4]` → one retry with `?density=compact` (real compact CSS) → on still-overflow write `output/failures/<id>.png` and exit 1 → else write `output/<id>.pdf`, set metadata (`poster_business-export`), verify A4 MediaBox via **pdf-lib**.
+
+Overflow fixture (must exit non-zero):
+
+```bash
+pnpm export:pdf --product fixture-overflow
+# → exit 1, screenshot under output/failures/
+```
+
+### Debug print issues
+
+1. Compare **`/print/:id` only** to the PDF (not the scaled gallery card on `/p/:id`).
+2. Browser zoom **100%**; OS print dialog margins can lie — trust Playwright PDF.
+3. If export fails on overflow: open `/print/<id>?density=compact` and check whether body uses `text-print-body-sm`, list `gap-mm-2`, tighter chips.
+4. Inspect `output/failures/<id>.png` for the clipped frame Playwright saw.
+5. Confirm fonts loaded (Noto Sans SC subset under `public/fonts/`); export waits on `document.fonts.ready` (10s timeout).
+6. MediaBox must be **210×297 mm** (±0.1 mm). If not, check `page.pdf` options vs CSS `@page` / `.a4-page`.
+7. Soft grays / accent: Chromium needs `printBackground: true` (set by CLI) and `print-color-adjust: exact` in CSS.
+
+### Compact density
+
+Set `layout.density: "compact"` in product JSON, or let export promote via `?density=compact` after a failed normal measure. Compact applies:
+
+- body copy → `text-print-body-sm`
+- list gaps → `gap-mm-2` (or tighter on highlights)
+- chips → shorter min-height / tighter padding and wrap gaps
+- section stack gaps slightly reduced
+
 ## Project layout
 
 ```text
 ├── DESIGN.md                 # Full design document
 ├── package.json
 ├── pnpm-lock.yaml
+├── playwright.config.ts      # webServer → vite preview :4173
 ├── tsconfig.json
-├── tsconfig.node.json        # Vite / Tailwind tooling TS config
+├── tsconfig.node.json        # Vite / scripts / Playwright TS config
 ├── vite.config.ts
 ├── tailwind.config.ts        # Frozen color / type / mm-* tokens
 ├── postcss.config.js
 ├── index.html
+├── content/
+│   ├── brand/default.json
+│   └── products/             # product JSON (example-uk-ug, fixture-overflow)
 ├── fonts/
 │   ├── README.md             # OFL license + re-subset docs
 │   ├── charset/              # GB2312-plus inventory for pyftsubset
 │   └── subset/               # Committed Noto SC WOFF2 (400/500/700)
 ├── public/
+│   ├── brand/
 │   └── fonts/                # Vite-served copies of subset WOFF2
 ├── scripts/
 │   ├── check-print-classes.sh
-│   └── fonts-subset.sh       # pnpm fonts:subset
+│   ├── fonts-subset.sh
+│   ├── validate-content.mjs
+│   ├── export-pdf.ts         # pnpm export:pdf
+│   └── export-all.ts         # pnpm export:all
+├── output/                   # gitignored PDFs + failures/
 ├── src/
 │   ├── main.tsx
-│   ├── App.tsx               # A4Page + token/font smoke demo
-│   ├── index.css             # Tailwind layers
-│   ├── vite-env.d.ts
-│   ├── components/
-│   │   └── A4Page.tsx        # 210×297 + 14 mm safe area shell
+│   ├── App.tsx               # gallery / preview / print routes
+│   ├── index.css
+│   ├── export/pdf.ts         # shared export constants + measure helper
+│   ├── content/              # Zod schema + loader
+│   ├── components/           # A4Page, BiText, Chip, …
+│   ├── templates/a4-service-onepager/
 │   └── design-tokens/
-│       ├── fonts.css         # @font-face Noto Sans SC
-│       └── print.css         # @page A4 + .a4-page shell
+│       ├── fonts.css
+│       └── print.css
 └── README.md
 ```
-
-Later PRs add content schema, templates, routes, and PDF export.
 
 ## License
 

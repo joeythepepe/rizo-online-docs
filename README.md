@@ -20,8 +20,9 @@ pnpm dev
 - **Preview build:** `pnpm preview`
 - **Export PDF:** `pnpm export:pdf --product example-uk-ug` → `output/<id>.pdf`
 - **Export all products:** `pnpm export:all` (skips overflow fixtures)
+- **Screenshot smoke:** `pnpm test:smoke` → builds, previews, asserts example product A4 + writes `output/smoke/*.png`
 
-First-time PDF export needs Chromium for Playwright:
+First-time PDF export / smoke needs Chromium for Playwright:
 
 ```bash
 pnpm exec playwright install chromium
@@ -94,12 +95,31 @@ Pipeline: Zod-validate `content/products/<id>.json` (same `mergeProductContent` 
 
 **Metadata note:** pdf-lib overwrites the PDF **Producer** field on every `save()` with its own banner (`pdf-lib (https://github.com/Hopding/pdf-lib)`). The export tool stamps **Creator** (and document title) instead — trust Creator for tool identity.
 
-Overflow fixture (must exit non-zero):
+### Overflow fixtures (must exit non-zero)
+
+| Product id | Role |
+|------------|------|
+| `fixture-overflow` | Starts at `density: normal`. Export should compact-retry once, still overflow, exit 1, write `output/failures/fixture-overflow.png`. |
+| `fixture-overflow-compact` | Already `density: compact` in JSON. Documents that compact is **not** a free pass — export still fails (no second density step). |
 
 ```bash
 pnpm export:pdf --product fixture-overflow
 # → exit 1, screenshot under output/failures/
+
+pnpm export:pdf --product fixture-overflow-compact
+# → exit 1 (starts compact; still too long)
 ```
+
+`pnpm export:all` skips any id matching `fixture-overflow*` unless `--force`.
+
+### Screenshot smoke
+
+```bash
+pnpm test:smoke
+# or: pnpm build && pnpm exec playwright test
+```
+
+Happy path: `/print/example-uk-ug` shows CN+EN, measures no overflow, writes `output/smoke/example-uk-ug.png`. Also checks `?density=compact` sets `data-density=compact`.
 
 ### Debug print issues
 
@@ -112,14 +132,27 @@ pnpm export:pdf --product fixture-overflow
 7. Soft grays / accent: Chromium needs `printBackground: true` (set by CLI) and `print-color-adjust: exact` in CSS.
 8. Footer has **no ellipsis** — long contact/CTA lines wrap; vertical clip fails the overflow gate. Keep footer copy short enough for the 16 mm band.
 
-### Compact density
+### Compact density (author guide)
 
 Set `layout.density: "compact"` in product JSON, or let export promote via `?density=compact` after a failed normal measure. Compact applies:
 
+- hero tagline → `body-sm` + tighter category/name/tagline stack
 - body copy → `text-print-body-sm`
-- list gaps → `gap-mm-2` (or tighter on highlights)
+- list / intro stack margins → `mt-mm-2` (vs `mt-mm-4`)
+- list item row gaps → `gap-mm-2` (or tighter on highlights)
 - chips → shorter min-height / tighter padding and wrap gaps
-- section stack gaps slightly reduced
+- SoftPanel → `p-mm-4` instead of `p-mm-8`
+- section stack gaps slightly reduced (`gap-mm-4` / `mt-mm-6`)
+
+**Author tips to stay on one A4:**
+
+1. Prefer short EN (scan lines, not full translation). Long EN is the main overflow risk.
+2. Keep deliverables ≤4 and requirements ≤5 when bilingual + details are on.
+3. Omit `item.detail` unless essential; details use meta type but still cost height.
+4. Drop `highlights` / set `showHighlights: false` before cutting core lists.
+5. Set `layout.density: "compact"` proactively for dense bilingual products.
+6. Preview `/print/<id>?density=compact` before export; do not rely on silent clip.
+7. Compact still fails if content is too long — see `fixture-overflow-compact`.
 
 ## Project layout
 
@@ -136,7 +169,8 @@ Set `layout.density: "compact"` in product JSON, or let export promote via `?den
 ├── index.html
 ├── content/
 │   ├── brand/default.json
-│   └── products/             # product JSON (example-uk-ug, fixture-overflow)
+│   └── products/             # example-uk-ug + fixture-overflow*
+├── e2e/                      # Playwright screenshot smoke
 ├── fonts/
 │   ├── README.md             # OFL license + re-subset docs
 │   ├── charset/              # GB2312-plus inventory for pyftsubset
@@ -150,7 +184,7 @@ Set `layout.density: "compact"` in product JSON, or let export promote via `?den
 │   ├── validate-content.mjs
 │   ├── export-pdf.ts         # pnpm export:pdf
 │   └── export-all.ts         # pnpm export:all
-├── output/                   # gitignored PDFs + failures/
+├── output/                   # gitignored PDFs + failures/ + smoke/
 ├── src/
 │   ├── main.tsx
 │   ├── App.tsx               # gallery / preview / print routes

@@ -3,26 +3,26 @@
   "locale": "zh-CN-en",
   "meta": {
     "documentTitle": {
-      "zh": "溢出测试夹具-服务说明",
-      "en": "Overflow Fixture — Service Overview"
+      "zh": "紧凑密度溢出夹具-服务说明",
+      "en": "Compact Overflow Fixture — Service Overview"
     },
-    "version": "2026.07-overflow",
+    "version": "2026.07-overflow-compact",
     "cycleLabel": { "zh": "2026 秋季入学", "en": "2026 Fall intake" },
     "priceBand": { "zh": "面议", "en": "Quote on request" },
     "confidential": true
   },
   "product": {
-    "name": { "zh": "超长内容溢出测试", "en": "Deliberate Overflow Fixture" },
+    "name": { "zh": "紧凑密度仍溢出", "en": "Compact Still Overflows" },
     "categoryLabel": { "zh": "测试专用服务方案", "en": "Test-only service plan" },
     "tagline": {
-      "zh": "正常密度起步；compact 重试后仍应失败",
-      "en": "Starts normal; fails after one compact retry"
+      "zh": "已声明 compact；仍应导出失败并截图",
+      "en": "Already compact; export still fails + PNG"
     }
   },
   "targetCustomer": {
     "summary": {
-      "zh": "本夹具面向工程验收：在紧凑密度重试后仍应溢出单页 A4，确保导出以非零退出并写入失败截图。",
-      "en": "Must still overflow one A4 after compact retry so export exits non-zero with a screenshot."
+      "zh": "第二夹具：JSON 已声明 compact。紧凑密度不是免死金牌，超长内容仍应 exit 1 并写失败截图。",
+      "en": "Second fixture: already compact in JSON. Still exit 1 + failure PNG if too long."
     },
     "segments": [
       { "zh": "高一至高三", "en": "G10–G12 students" },
@@ -258,7 +258,7 @@
     "variant": "stack",
     "showHighlights": true,
     "showQr": true,
-    "density": "normal",
+    "density": "compact",
     "bilingual": true,
     "softPanelOn": "requirements"
   }

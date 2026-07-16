@@ -21,16 +21,20 @@ function DeliverablesBody({
 }: Omit<DeliverablesProps, "softPanel">) {
   const sectionTitle = title ?? BILINGUAL_CHROME.deliverablesSection;
   const listGap = compact ? "gap-mm-2" : "gap-mm-4";
+  const stackMt = compact ? "mt-mm-2" : "mt-mm-4";
+  const itemGap = compact ? "gap-mm-2" : "gap-mm-4";
   const bodyRole = compact ? "body-sm" : "body";
   const numCls = compact ? "text-print-body-sm" : "text-print-body";
 
   return (
     <>
       <SectionLabel value={sectionTitle} />
-      {intro ? <BiText value={intro} role={bodyRole} className="mt-mm-4" /> : null}
-      <ol className={`mt-mm-4 flex list-none flex-col ${listGap} p-0`}>
+      {intro ? (
+        <BiText value={intro} role={bodyRole} className={stackMt} />
+      ) : null}
+      <ol className={`${stackMt} flex list-none flex-col ${listGap} p-0`}>
         {items.map((item, index) => (
-          <li key={item.id} className="flex gap-mm-4">
+          <li key={item.id} className={`flex ${itemGap}`}>
             <span
               className={`${numCls} text-accent shrink-0 tabular-nums`}
               aria-hidden

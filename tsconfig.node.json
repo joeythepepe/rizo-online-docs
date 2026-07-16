@@ -22,6 +22,7 @@
     "vite.config.ts",
     "tailwind.config.ts",
     "playwright.config.ts",
+    "e2e/**/*.ts",
     "scripts/**/*.ts",
     "src/export/**/*.ts",
     "src/content/schema.ts",

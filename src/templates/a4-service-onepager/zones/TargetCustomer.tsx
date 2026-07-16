@@ -20,14 +20,15 @@ export function TargetCustomer({ data, compact = false }: TargetCustomerProps) {
   const profiles = data.profiles ?? [];
   const bodyRole = compact ? "body-sm" : "body";
   const chipGap = compact ? "gap-mm-1" : "gap-mm-2";
+  const stackMt = compact ? "mt-mm-2" : "mt-mm-4";
 
   return (
     <section className="max-h-[52mm] shrink-0 overflow-hidden">
       <SectionLabel value={title} />
-      <BiText value={data.summary} role={bodyRole} className="mt-mm-4" />
+      <BiText value={data.summary} role={bodyRole} className={stackMt} />
 
       {segments.length > 0 ? (
-        <div className={`mt-mm-4 flex flex-col ${chipGap}`}>
+        <div className={`${stackMt} flex flex-col ${chipGap}`}>
           <div className={`flex flex-wrap ${chipGap}`}>
             {segments.map((seg, i) => (
               <Chip key={`seg-zh-${i}`} tone="zh" compact={compact}>

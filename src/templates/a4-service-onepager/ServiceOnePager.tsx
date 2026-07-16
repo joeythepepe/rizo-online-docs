@@ -46,7 +46,7 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
       <Header brand={content.brand} />
       <Hairline className="mb-mm-4" />
 
-      <Hero product={content.product} />
+      <Hero product={content.product} compact={compact} />
 
       {/* Body flex column: target → deliverables → requirements → optional */}
       <div

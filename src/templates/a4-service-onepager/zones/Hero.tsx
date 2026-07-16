@@ -3,13 +3,18 @@ import { BiText } from "../../../components/BiText";
 
 export interface HeroProps {
   product: ServiceOnePagerContent["product"];
+  /** Compact density: tighter category → name → tagline gaps. */
+  compact?: boolean;
 }
 
 /**
  * Hero max 54 mm: category, name CN+EN, optional tagline.
  * cycle/price live in Footer only.
  */
-export function Hero({ product }: HeroProps) {
+export function Hero({ product, compact = false }: HeroProps) {
+  const stackMt = compact ? "mt-mm-1" : "mt-mm-2";
+  const taglineRole = compact ? "body-sm" : "body";
+
   return (
     <section className="max-h-[54mm] shrink-0 overflow-hidden">
       {product.categoryLabel ? (
@@ -19,11 +24,15 @@ export function Hero({ product }: HeroProps) {
       <BiText
         value={product.name}
         role="display"
-        className={product.categoryLabel ? "mt-mm-2" : undefined}
+        className={product.categoryLabel ? stackMt : undefined}
       />
 
       {product.tagline ? (
-        <BiText value={product.tagline} role="body" className="mt-mm-2" />
+        <BiText
+          value={product.tagline}
+          role={taglineRole}
+          className={stackMt}
+        />
       ) : null}
     </section>
   );

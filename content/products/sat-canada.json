@@ -1,0 +1,85 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "SAT通加拿大-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "SAT通加拿大",
+    "categoryLabel": "SAT本科出海",
+    "tagline": "SAT成绩申请加拿大本科",
+    "countryCode": "CA",
+    "pathway": "sat"
+  },
+  "targetCustomer": {
+    "summary": "以SAT及高中成绩申请加本的学生。",
+    "segments": [
+      "高中在读",
+      "加本主申",
+      "标化辅助"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "加本院校与专业匹配"
+      },
+      {
+        "id": "d2",
+        "label": "SAT与英语成绩策略"
+      },
+      {
+        "id": "d3",
+        "label": "网申材料与文书辅导"
+      },
+      {
+        "id": "d4",
+        "label": "学签与行前支持"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "高中成绩完整可认证",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "SAT与英语达目标校要求",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "可接受桥梁课程",
+        "mandatory": false
+      },
+      {
+        "id": "r4",
+        "label": "资金与学签可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "SAT分数段策略",
+      "综合背景提升",
+      "多国可用同一套标化"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

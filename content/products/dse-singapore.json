@@ -1,0 +1,85 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "DSE通新加坡-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "DSE通新加坡",
+    "categoryLabel": "DSE本科出海",
+    "tagline": "DSE成绩申请新加坡公立/私立本科",
+    "countryCode": "SG",
+    "pathway": "dse"
+  },
+  "targetCustomer": {
+    "summary": "以DSE申请新加坡本科的中六学生及家长。",
+    "segments": [
+      "中六冲刺",
+      "NUS/NTU等",
+      "英语过硬"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "目标国家院校与专业梯度规划"
+      },
+      {
+        "id": "d2",
+        "label": "DSE科目组合与预估分策略"
+      },
+      {
+        "id": "d3",
+        "label": "网申/联招材料与文书辅导"
+      },
+      {
+        "id": "d4",
+        "label": "面试准备与录取后手续指导"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "完成DSE并达目标校等级要求",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "英语科目/雅思满足校方要求",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "可配合面试或额外测试",
+        "mandatory": false
+      },
+      {
+        "id": "r4",
+        "label": "资金与学生准证可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "对标新国招生要求",
+      "面试可专项辅导",
+      "公私立梯度配置"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

@@ -135,28 +135,20 @@ async function main() {
     }
     ok("gaokao-uk uses split layout");
 
-    for (const id of [
-      "gaokao-hongkong",
-      "gaokao-macao",
-      "gaokao-singapore",
-      "gaokao-uk",
-      "gaokao-usa",
-      "gaokao-canada",
-      "gaokao-japan",
-      "gaokao-korea",
-      "gaokao-malaysia",
-      "gaokao-australia",
-      "gaokao-newzealand",
-      "gaokao-netherlands",
-      "gaokao-germany",
-      "gaokao-ireland",
-    ]) {
+    const allIds = listProductIds();
+    for (const id of allIds) {
       const p = loadProduct(id);
       if (!p.product.name || typeof p.product.name !== "string") {
         fail(`${id} name must be Chinese string`);
       }
-      ok(`loadProduct('${id}') ok — ${p.product.name}`);
+      if (!p.product.pathway) {
+        fail(`${id} missing product.pathway`);
+      }
+      if (!p.product.countryCode) {
+        fail(`${id} missing product.countryCode`);
+      }
     }
+    ok(`all ${allIds.length} products load with pathway + countryCode`);
 
     const brandResult = brandConfigSchema.safeParse(brand);
     if (!brandResult.success) {

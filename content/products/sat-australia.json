@@ -1,0 +1,85 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "SAT通澳大利亚-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "SAT通澳大利亚",
+    "categoryLabel": "SAT本科出海",
+    "tagline": "SAT/美高路径申请澳大利亚本科",
+    "countryCode": "AU",
+    "pathway": "sat"
+  },
+  "targetCustomer": {
+    "summary": "以SAT等高中背景申请澳本的学生。",
+    "segments": [
+      "国际/美高",
+      "澳本方向",
+      "可预科"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "澳本选校与专业规划"
+      },
+      {
+        "id": "d2",
+        "label": "SAT与英语要求对标"
+      },
+      {
+        "id": "d3",
+        "label": "网申与材料辅导"
+      },
+      {
+        "id": "d4",
+        "label": "签证与行前指导"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "高中成绩完整可认证",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "SAT/英语达目标校要求",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "可接受 foundation",
+        "mandatory": false
+      },
+      {
+        "id": "r4",
+        "label": "资金与签证可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "SAT分数段策略",
+      "综合背景提升",
+      "多国可用同一套标化"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

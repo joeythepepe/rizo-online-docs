@@ -1,0 +1,90 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "A-Level通荷兰-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "A-Level通荷兰",
+    "categoryLabel": "A-Level本科出海",
+    "tagline": "A-Level申请荷兰英授本科",
+    "countryCode": "NL",
+    "pathway": "alevel"
+  },
+  "targetCustomer": {
+    "summary": "以A-Level申请荷兰英授本科学位的学生。",
+    "segments": [
+      "Y12/Y13",
+      "英授本科",
+      "欧洲路径"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "荷兰英授专业与院校匹配"
+      },
+      {
+        "id": "d2",
+        "label": "A-Level资格与预科评估"
+      },
+      {
+        "id": "d3",
+        "label": "动机信与网申辅导"
+      },
+      {
+        "id": "d4",
+        "label": "签证与行前指导"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "完成认可A-Level课程",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "科目组合符合专业先修要求",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "雅思通常6.0–6.5+（按校）",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "可接受预科衔接",
+        "mandatory": false
+      },
+      {
+        "id": "r5",
+        "label": "资金与居留手续可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "对标A-Level成绩要求",
+      "预估分与最终分策略",
+      "多国申请可并行"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

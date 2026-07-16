@@ -1,0 +1,85 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "DSE通日本-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "DSE通日本",
+    "categoryLabel": "DSE本科出海",
+    "tagline": "DSE后赴日语言/英授项目升学",
+    "countryCode": "JP",
+    "pathway": "dse"
+  },
+  "targetCustomer": {
+    "summary": "DSE体系学生计划赴日读本科，可语校或英授。",
+    "segments": [
+      "中六/毕业",
+      "日语或英授",
+      "衔接灵活"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "语校/英授项目与大学匹配"
+      },
+      {
+        "id": "d2",
+        "label": "日语/EJU或英授标化规划"
+      },
+      {
+        "id": "d3",
+        "label": "出愿材料与面试辅导"
+      },
+      {
+        "id": "d4",
+        "label": "在留资格与行前安排"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "具备高中阶段学历（DSE）",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "愿学日语或选择英授项目",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "英授需雅思/托福达校要求",
+        "mandatory": false
+      },
+      {
+        "id": "r4",
+        "label": "资金与在留审查可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "DSE学历可衔接",
+      "语校路径成熟",
+      "费用相对可控"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

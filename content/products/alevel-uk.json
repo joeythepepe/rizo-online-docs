@@ -1,0 +1,99 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "A-Level通英国-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "A-Level通英国",
+    "categoryLabel": "A-Level本科出海",
+    "tagline": "A-Level预估分/实考分申请英国本科",
+    "countryCode": "GB",
+    "pathway": "alevel"
+  },
+  "targetCustomer": {
+    "summary": "以A-Level冲击英国本科（含G5/罗素）的学生及家长。",
+    "segments": [
+      "Y12/Y13",
+      "G5/罗素",
+      "预估分关键"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "英本选校与专业方向规划"
+      },
+      {
+        "id": "d2",
+        "label": "A-Level科目与预估分策略"
+      },
+      {
+        "id": "d3",
+        "label": "UCAS、文书与推荐信管理"
+      },
+      {
+        "id": "d4",
+        "label": "面试/入学考试辅导（按需）"
+      },
+      {
+        "id": "d5",
+        "label": "签证与行前全流程支持"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "就读认可A-Level课程中心",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "预估分达目标校条件性录取线",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "实考分需兑现录取条件",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "雅思达校方要求（或豁免政策）",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "可配合面试/笔试/作品集",
+        "mandatory": false
+      },
+      {
+        "id": "r6",
+        "label": "资金证明与学生签证可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "UCAS节点专业管理",
+      "预估分动态校准",
+      "G5策略可专项"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

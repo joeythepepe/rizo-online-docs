@@ -12,7 +12,8 @@
     "name": "高考通澳门",
     "categoryLabel": "高考本科出海",
     "tagline": "高考直通澳门高校本科的稳健升学通道",
-    "countryCode": "MO"
+    "countryCode": "MO",
+    "pathway": "gaokao"
   },
   "targetCustomer": {
     "summary": "希望以高考进入澳门高校、兼顾粤港澳生活圈的学生与家长。",

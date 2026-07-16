@@ -12,7 +12,8 @@
     "name": "高考通英国",
     "categoryLabel": "高考本科出海",
     "tagline": "高考/预科双路径申请英国本科院校",
-    "countryCode": "GB"
+    "countryCode": "GB",
+    "pathway": "gaokao"
   },
   "targetCustomer": {
     "summary": "以高考或预科衔接冲刺英国本科的高三/毕业学生及家长。",

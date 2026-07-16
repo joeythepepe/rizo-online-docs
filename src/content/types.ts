@@ -7,6 +7,12 @@ export type TemplateId = "a4-service-onepager-v1";
  */
 export type ZhString = string;
 
+/**
+ * Exam pathway for filtering gallery cards.
+ * Product title pattern: 【路线标签】通【国家】 e.g. 高考通英国、DSE通香港.
+ */
+export type ExamPathway = "gaokao" | "dse" | "alevel" | "sat";
+
 export interface BrandConfig {
   companyName: ZhString;
   /** SVG preferred; PNG min width 600px if used */
@@ -69,6 +75,10 @@ export interface ServiceOnePagerContent {
      * (e.g. HK, GB, US). Rendered via country-flag-icons.
      */
     countryCode?: string;
+    /**
+     * 考生路线：gaokao 高考 | dse 香港DSE | alevel 英国高考 | sat 美国高考
+     */
+    pathway?: ExamPathway;
   };
   targetCustomer: TargetCustomer;
   deliverables: {

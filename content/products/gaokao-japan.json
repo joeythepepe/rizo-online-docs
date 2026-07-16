@@ -12,7 +12,8 @@
     "name": "高考通日本",
     "categoryLabel": "高考本科出海",
     "tagline": "高考后赴日语言+EJU/英语项目升学",
-    "countryCode": "JP"
+    "countryCode": "JP",
+    "pathway": "gaokao"
   },
   "targetCustomer": {
     "summary": "高考后计划赴日读本科，可接受语言学校或英授项目的学生。",

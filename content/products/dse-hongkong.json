@@ -1,0 +1,90 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "DSE通香港-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "DSE通香港",
+    "categoryLabel": "DSE本科出海",
+    "tagline": "DSE成绩通过JUPAS/非联招申请港本",
+    "countryCode": "HK",
+    "pathway": "dse"
+  },
+  "targetCustomer": {
+    "summary": "以DSE冲击港八大或自资院校的中五至中六学生及家长。",
+    "segments": [
+      "中五/中六",
+      "JUPAS主申",
+      "冲刺港八大"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "JUPAS与非联招双路径规划"
+      },
+      {
+        "id": "d2",
+        "label": "DSE科目组合与等级目标设定"
+      },
+      {
+        "id": "d3",
+        "label": "个人陈述、面试与OEA辅导"
+      },
+      {
+        "id": "d4",
+        "label": "录取确认、宿舍与行前指导"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "就读认可中学并报考DSE",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "核心科与选修达目标校最低等级",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "英语能力满足校方/专业要求",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "可配合面试与补充材料提交",
+        "mandatory": false
+      },
+      {
+        "id": "r5",
+        "label": "家长确认选校志愿与节点决策",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "JUPAS策略专业",
+      "预估分动态调整",
+      "面试可专项加强"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

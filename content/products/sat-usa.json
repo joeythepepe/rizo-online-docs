@@ -1,0 +1,99 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "SAT通美国-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "SAT通美国",
+    "categoryLabel": "SAT本科出海",
+    "tagline": "SAT/美高路径申请美国本科",
+    "countryCode": "US",
+    "pathway": "sat"
+  },
+  "targetCustomer": {
+    "summary": "以SAT及美高/国际课程背景申请美本的学生及家长。",
+    "segments": [
+      "G10启动佳",
+      "美本主申",
+      "标化关键"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "美本选校与专业定位"
+      },
+      {
+        "id": "d2",
+        "label": "SAT备考规划与标化组合"
+      },
+      {
+        "id": "d3",
+        "label": "Common App文书与活动"
+      },
+      {
+        "id": "d4",
+        "label": "推荐信、认证与递交管理"
+      },
+      {
+        "id": "d5",
+        "label": "签证与行前指导"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "具备高中阶段完整成绩单",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "SAT达目标校竞争分数段",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "托福/雅思达校方要求",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "活动/竞赛/科研可呈现",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "能完成多轮文书与推荐信",
+        "mandatory": true
+      },
+      {
+        "id": "r6",
+        "label": "资金与F-1签证可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "标化提分路径清晰",
+      "综合评估全案",
+      "冲稳保校单"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

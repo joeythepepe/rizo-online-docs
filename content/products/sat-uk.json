@@ -1,0 +1,90 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "SAT通英国-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "SAT通英国",
+    "categoryLabel": "SAT本科出海",
+    "tagline": "SAT/美高背景申请英国本科或预科",
+    "countryCode": "GB",
+    "pathway": "sat"
+  },
+  "targetCustomer": {
+    "summary": "美高或国际课程学生以SAT等申请英本。",
+    "segments": [
+      "美高/国际课",
+      "英本方向",
+      "可预科"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "英本选校与专业规划"
+      },
+      {
+        "id": "d2",
+        "label": "SAT/AP与英本要求对标"
+      },
+      {
+        "id": "d3",
+        "label": "UCAS/文书与节点管理"
+      },
+      {
+        "id": "d4",
+        "label": "签证与行前支持"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "高中学历被英本认可",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "SAT/AP等达目标校要求",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "雅思达校方线（或豁免）",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "可接受预科衔接",
+        "mandatory": false
+      },
+      {
+        "id": "r5",
+        "label": "资金与签证可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "SAT分数段策略",
+      "综合背景提升",
+      "多国可用同一套标化"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

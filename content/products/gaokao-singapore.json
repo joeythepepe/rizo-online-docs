@@ -12,7 +12,8 @@
     "name": "高考通新加坡",
     "categoryLabel": "高考本科出海",
     "tagline": "高考冲击新加坡公立与知名私立本科",
-    "countryCode": "SG"
+    "countryCode": "SG",
+    "pathway": "gaokao"
   },
   "targetCustomer": {
     "summary": "高考成绩突出、英语达标，目标新加坡本科的学生与家长。",

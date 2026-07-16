@@ -1,0 +1,85 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "A-Level通香港-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "A-Level通香港",
+    "categoryLabel": "A-Level本科出海",
+    "tagline": "A-Level成绩申请香港院校本科",
+    "countryCode": "HK",
+    "pathway": "alevel"
+  },
+  "targetCustomer": {
+    "summary": "以A-Level申请港八大或自资院校的国际课程学生。",
+    "segments": [
+      "Y12/Y13",
+      "港八大",
+      "国际课程"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "港本选校与专业匹配"
+      },
+      {
+        "id": "d2",
+        "label": "A-Level成绩要求对标"
+      },
+      {
+        "id": "d3",
+        "label": "网申/面试与材料辅导"
+      },
+      {
+        "id": "d4",
+        "label": "录取后签证与行前指导"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "就读A-Level并达目标校科目要求",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "英语能力满足校方要求",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "可配合面试",
+        "mandatory": false
+      },
+      {
+        "id": "r4",
+        "label": "护照与赴港手续时间充足",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "国际课程友好",
+      "面试可加强",
+      "冲稳保配置"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

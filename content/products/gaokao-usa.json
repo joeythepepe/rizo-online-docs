@@ -12,7 +12,8 @@
     "name": "高考通美国",
     "categoryLabel": "高考本科出海",
     "tagline": "高考叠加标化与背景提升的美本方案",
-    "countryCode": "US"
+    "countryCode": "US",
+    "pathway": "gaokao"
   },
   "targetCustomer": {
     "summary": "计划用高考成绩叠加标化、活动与文书申请美国本科的学生。",

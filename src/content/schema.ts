@@ -80,6 +80,7 @@ export const productSchema = z
         .regex(/^[A-Za-z]{2}$/, "countryCode must be ISO alpha-2")
         .transform((s) => s.toUpperCase())
         .optional(),
+      pathway: z.enum(["gaokao", "dse", "alevel", "sat"]).optional(),
     }),
     targetCustomer: z.object({
       title: zhStringSchema.optional(),

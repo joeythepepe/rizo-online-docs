@@ -1,0 +1,90 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "DSE通澳大利亚-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "DSE通澳大利亚",
+    "categoryLabel": "DSE本科出海",
+    "tagline": "DSE申请澳大利亚本科或预科",
+    "countryCode": "AU",
+    "pathway": "dse"
+  },
+  "targetCustomer": {
+    "summary": "以DSE冲击澳本八大或 foundation 的学生及家长。",
+    "segments": [
+      "中五/中六",
+      "八大/非八大",
+      "可预科"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "目标国家院校与专业梯度规划"
+      },
+      {
+        "id": "d2",
+        "label": "DSE科目组合与预估分策略"
+      },
+      {
+        "id": "d3",
+        "label": "网申/联招材料与文书辅导"
+      },
+      {
+        "id": "d4",
+        "label": "面试准备与录取后手续指导"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校/考试局当年要求为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "完成或在读DSE",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "DSE总分/等级达目标校线",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "雅思通常6.0–6.5+（按校）",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "可接受 foundation 衔接",
+        "mandatory": false
+      },
+      {
+        "id": "r5",
+        "label": "资金与学生签证可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "对标DSE计分规则",
+      "预估分与冲稳保",
+      "多国同步申请可选"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

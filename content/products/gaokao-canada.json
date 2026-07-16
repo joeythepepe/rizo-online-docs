@@ -12,7 +12,8 @@
     "name": "高考通加拿大",
     "categoryLabel": "高考本科出海",
     "tagline": "高考成绩申请加拿大本科与桥梁课程",
-    "countryCode": "CA"
+    "countryCode": "CA",
+    "pathway": "gaokao"
   },
   "targetCustomer": {
     "summary": "希望以高考进入加拿大本科或桥梁/国际大一的学生与家长。",

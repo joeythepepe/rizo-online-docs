@@ -12,7 +12,8 @@
     "name": "高考通新西兰",
     "categoryLabel": "高考本科出海",
     "tagline": "高考申请新西兰八大及预科路径",
-    "countryCode": "NZ"
+    "countryCode": "NZ",
+    "pathway": "gaokao"
   },
   "targetCustomer": {
     "summary": "希望以高考进入新西兰本科或预科的高三/毕业学生及家长。",

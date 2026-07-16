@@ -40,13 +40,28 @@ export function listProductIds(): string[] {
   return listProductIdsFromKeys(Object.keys(modules));
 }
 
-function mergeBiString(
-  primary?: BiString | null,
-  fallback?: BiString | null,
+function nonEmptyLang(value?: string | null): string | undefined {
+  if (value == null) return undefined;
+  const trimmed = value.trim();
+  return trimmed.length > 0 ? trimmed : undefined;
+}
+
+/**
+ * Per-language BiString merge: product side wins when non-empty after trim;
+ * otherwise fall back. Returns undefined only when both sides contribute nothing.
+ * Zod enforces both langs non-empty for required fields after merge.
+ */
+export function mergeBiString(
+  primary?: { zh?: string; en?: string } | null,
+  fallback?: { zh?: string; en?: string } | null,
 ): BiString | undefined {
-  if (primary?.zh && primary?.en) return primary;
-  if (fallback?.zh && fallback?.en) return fallback;
-  return primary ?? fallback ?? undefined;
+  if (primary == null && fallback == null) return undefined;
+
+  const zh = nonEmptyLang(primary?.zh) ?? nonEmptyLang(fallback?.zh) ?? "";
+  const en = nonEmptyLang(primary?.en) ?? nonEmptyLang(fallback?.en) ?? "";
+
+  if (!zh && !en) return undefined;
+  return { zh, en };
 }
 
 /**
@@ -64,21 +79,26 @@ export function mergeProductContent(
       ? (raw.brand as Record<string, unknown>)
       : {};
 
+  const companyName = mergeBiString(
+    rawBrand.companyName as { zh?: string; en?: string } | undefined,
+    brandBase.companyName,
+  );
+
   const brand: BrandConfig = {
     ...brandBase,
     ...rawBrand,
-    companyName: (rawBrand.companyName as BiString | undefined) ??
-      brandBase.companyName,
+    // Always deep-merge required companyName (never leave a partial product pair)
+    companyName: companyName ?? brandBase.companyName,
     legalLine: mergeBiString(
-      rawBrand.legalLine as BiString | undefined,
+      rawBrand.legalLine as { zh?: string; en?: string } | undefined,
       brandBase.legalLine,
     ),
     ctaLabel: mergeBiString(
-      rawBrand.ctaLabel as BiString | undefined,
+      rawBrand.ctaLabel as { zh?: string; en?: string } | undefined,
       brandBase.ctaLabel,
     ),
     ctaDetail: mergeBiString(
-      rawBrand.ctaDetail as BiString | undefined,
+      rawBrand.ctaDetail as { zh?: string; en?: string } | undefined,
       brandBase.ctaDetail,
     ),
   };
@@ -98,28 +118,45 @@ export function applyChromeDefaults(
 ): ServiceOnePagerContent {
   const brand: BrandConfig = {
     ...content.brand,
-    ctaLabel: content.brand.ctaLabel ?? BILINGUAL_CHROME.ctaLabel,
-    ctaDetail: content.brand.ctaDetail ?? BILINGUAL_CHROME.ctaDetail,
+    ctaLabel:
+      mergeBiString(content.brand.ctaLabel, BILINGUAL_CHROME.ctaLabel) ??
+      BILINGUAL_CHROME.ctaLabel,
+    ctaDetail:
+      mergeBiString(content.brand.ctaDetail, BILINGUAL_CHROME.ctaDetail) ??
+      BILINGUAL_CHROME.ctaDetail,
   };
 
   const next: ServiceOnePagerContent = {
     ...content,
     meta: {
       ...content.meta,
-      disclaimer: content.meta.disclaimer ?? BILINGUAL_CHROME.disclaimer,
+      disclaimer:
+        mergeBiString(content.meta.disclaimer, BILINGUAL_CHROME.disclaimer) ??
+        BILINGUAL_CHROME.disclaimer,
     },
     targetCustomer: {
       ...content.targetCustomer,
-      title: content.targetCustomer.title ?? BILINGUAL_CHROME.targetSection,
+      title:
+        mergeBiString(
+          content.targetCustomer.title,
+          BILINGUAL_CHROME.targetSection,
+        ) ?? BILINGUAL_CHROME.targetSection,
     },
     deliverables: {
       ...content.deliverables,
-      title: content.deliverables.title ?? BILINGUAL_CHROME.deliverablesSection,
+      title:
+        mergeBiString(
+          content.deliverables.title,
+          BILINGUAL_CHROME.deliverablesSection,
+        ) ?? BILINGUAL_CHROME.deliverablesSection,
     },
     requirements: {
       ...content.requirements,
       title:
-        content.requirements.title ?? BILINGUAL_CHROME.requirementsSection,
+        mergeBiString(
+          content.requirements.title,
+          BILINGUAL_CHROME.requirementsSection,
+        ) ?? BILINGUAL_CHROME.requirementsSection,
     },
     brand,
     layout: {
@@ -132,14 +169,18 @@ export function applyChromeDefaults(
   if (next.highlights) {
     next.highlights = {
       ...next.highlights,
-      title: next.highlights.title ?? BILINGUAL_CHROME.highlights,
+      title:
+        mergeBiString(next.highlights.title, BILINGUAL_CHROME.highlights) ??
+        BILINGUAL_CHROME.highlights,
     };
   }
 
   if (next.timeline) {
     next.timeline = {
       ...next.timeline,
-      title: next.timeline.title ?? BILINGUAL_CHROME.timeline,
+      title:
+        mergeBiString(next.timeline.title, BILINGUAL_CHROME.timeline) ??
+        BILINGUAL_CHROME.timeline,
     };
   }
 
@@ -148,10 +189,11 @@ export function applyChromeDefaults(
 
 /**
  * Load, merge brand defaults, validate with Zod, apply chrome defaults.
- * Throws if id unknown or validation fails.
+ * Throws if id unknown (including `_`-prefixed templates) or validation fails.
+ * Shares source of truth with `listProductIds` via `productIdFromPath`.
  */
 export function loadProduct(id: string): ServiceOnePagerContent {
-  const key = Object.keys(modules).find((k) => k.endsWith(`/${id}.json`));
+  const key = Object.keys(modules).find((k) => productIdFromPath(k) === id);
   if (!key) {
     throw new Error(
       `Unknown product: ${id}. Known: ${listProductIds().join(", ") || "(none)"}`,

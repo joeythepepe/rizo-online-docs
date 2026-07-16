@@ -26,11 +26,19 @@ export function biStringMinMax(
   });
 }
 
-const listItemSchema = z.object({
+const deliverableItemSchema = z.object({
   id: z.string().trim().min(1),
   label: biStringMax(32, 48),
   detail: biStringSchema.optional(),
   mandatory: z.boolean().optional(),
+});
+
+/** Requirements items default mandatory to true at parse time. */
+const requirementItemSchema = z.object({
+  id: z.string().trim().min(1),
+  label: biStringMax(32, 48),
+  detail: biStringSchema.optional(),
+  mandatory: z.boolean().default(true),
 });
 
 const brandSchema = z.object({
@@ -93,12 +101,12 @@ export const productSchema = z
     deliverables: z.object({
       title: biStringSchema.optional(),
       intro: biStringSchema.optional(),
-      items: z.array(listItemSchema).min(1).max(6),
+      items: z.array(deliverableItemSchema).min(1).max(6),
     }),
     requirements: z.object({
       title: biStringSchema.optional(),
       intro: biStringSchema.optional(),
-      items: z.array(listItemSchema).min(1).max(8),
+      items: z.array(requirementItemSchema).min(1).max(8),
     }),
     highlights: z
       .object({
@@ -152,9 +160,25 @@ export const productSchema = z
 
 export type ProductSchemaOutput = z.infer<typeof productSchema>;
 
+/**
+ * Type-level guard: schema output must remain assignable to the hand-written
+ * ServiceOnePagerContent interface (catches drift without a cast at call sites).
+ */
+type AssertAssignable<T, U extends T> = U;
+type _SchemaMatchesTypes = AssertAssignable<
+  ServiceOnePagerContent,
+  ProductSchemaOutput
+>;
+// Touch the type so unused-type elimination does not drop the check in some tools.
+const _schemaMatchesTypes: _SchemaMatchesTypes | undefined = undefined;
+void _schemaMatchesTypes;
+
 /** Validate raw JSON; throws ZodError on failure. */
 export function parseProduct(raw: unknown): ServiceOnePagerContent {
-  return productSchema.parse(raw) as ServiceOnePagerContent;
+  const parsed: ProductSchemaOutput = productSchema.parse(raw);
+  // Assignability checked above; explicit annotation keeps return type stable.
+  const content: ServiceOnePagerContent = parsed;
+  return content;
 }
 
 /** Safe parse for tooling / tests. */

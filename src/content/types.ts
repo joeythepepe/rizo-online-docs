@@ -41,7 +41,10 @@ export interface ListItem {
   /** both required */
   label: BiString;
   detail?: BiString;
-  /** requirements; default true */
+  /**
+   * Requirements: Zod defaults omitted values to `true` at parse time
+   * (`requirementItemSchema`). Deliverables may leave this undefined.
+   */
   mandatory?: boolean;
 }
 

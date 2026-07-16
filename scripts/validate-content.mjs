@@ -1,32 +1,17 @@
 /**
- * Smoke validation for PR 3 content schema (no Vite required).
- * - example-uk-ug parses
- * - missing .en / .zh fails
- * - product id list includes example-uk-ug (skips _template)
- * - chrome defaults applied for omitted disclaimer
+ * Smoke validation for PR 3 content schema + loader.
+ * Uses Vite `ssrLoadModule` so `import.meta.glob` and real `loadProduct` /
+ * `listProductIds` are exercised (no undeclared esbuild dependency).
  *
- * Run: node scripts/validate-content.mjs
+ * Run: node scripts/validate-content.mjs  (or pnpm validate:content)
  */
-import { readFileSync, readdirSync } from "node:fs";
+import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
-import { fileURLToPath, pathToFileURL } from "node:url";
-import { build } from "esbuild";
+import { fileURLToPath } from "node:url";
+import { createServer } from "vite";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
-
-async function bundleTs(entry, outfile) {
-  await build({
-    entryPoints: [entry],
-    outfile,
-    bundle: true,
-    platform: "node",
-    format: "esm",
-    packages: "external",
-    logLevel: "silent",
-  });
-  return pathToFileURL(outfile).href;
-}
 
 function fail(msg) {
   console.error("FAIL:", msg);
@@ -37,111 +22,257 @@ function ok(msg) {
   console.log("OK:", msg);
 }
 
+function chars(s) {
+  return [...s].length;
+}
+
 async function main() {
-  const outDir = join(root, "node_modules", ".cache", "validate-content");
-  const { mkdirSync } = await import("node:fs");
-  mkdirSync(outDir, { recursive: true });
+  const server = await createServer({
+    root,
+    server: { middlewareMode: true },
+    appType: "custom",
+    logLevel: "error",
+  });
 
-  const schemaUrl = await bundleTs(
-    join(root, "src/content/schema.ts"),
-    join(outDir, "schema.mjs"),
-  );
-  const defaultsUrl = await bundleTs(
-    join(root, "src/content/defaults/bilingual.ts"),
-    join(outDir, "defaults.mjs"),
-  );
+  try {
+    const {
+      listProductIds,
+      loadProduct,
+      mergeProductContent,
+      applyChromeDefaults,
+      mergeBiString,
+      getBrandDefaults,
+      listProductIdsFromKeys,
+      productIdFromPath,
+    } = await server.ssrLoadModule("/src/content/loadProduct.ts");
 
-  // loadProduct uses import.meta.glob — exercise pure helpers via small inline copy
-  const { parseProduct, safeParseProduct, productSchema } = await import(
-    schemaUrl
-  );
-  const { BILINGUAL_CHROME } = await import(defaultsUrl);
+    const { parseProduct, safeParseProduct, productSchema, brandConfigSchema } =
+      await server.ssrLoadModule("/src/content/schema.ts");
 
-  const productsDir = join(root, "content/products");
-  const brandPath = join(root, "content/brand/default.json");
-  const examplePath = join(productsDir, "example-uk-ug.json");
+    const { BILINGUAL_CHROME } = await server.ssrLoadModule(
+      "/src/content/defaults/bilingual.ts",
+    );
 
-  const brand = JSON.parse(readFileSync(brandPath, "utf8"));
-  const example = JSON.parse(readFileSync(examplePath, "utf8"));
+    const example = JSON.parse(
+      readFileSync(join(root, "content/products/example-uk-ug.json"), "utf8"),
+    );
+    const brand = JSON.parse(
+      readFileSync(join(root, "content/brand/default.json"), "utf8"),
+    );
 
-  // listProductIds semantics (fs mirror of glob keys)
-  const files = readdirSync(productsDir).filter((f) => f.endsWith(".json"));
-  const ids = files
-    .map((f) => f.replace(/\.json$/, ""))
-    .filter((id) => !id.startsWith("_"))
-    .sort();
-  if (!ids.includes("example-uk-ug")) {
-    fail(`listProductIds-equivalent missing example-uk-ug; got ${ids.join(",")}`);
+    // --- Real listProductIds / loadProduct (Vite glob) ---
+    const ids = listProductIds();
+    if (JSON.stringify(ids) !== JSON.stringify(["example-uk-ug"])) {
+      fail(`listProductIds expected ["example-uk-ug"], got ${JSON.stringify(ids)}`);
+    }
+    ok(`listProductIds(): ${JSON.stringify(ids)}`);
+
+    if (productIdFromPath("content/products/_template.json") !== null) {
+      fail("productIdFromPath must skip _template");
+    }
+    ok("productIdFromPath skips _-prefixed files");
+
+    let templateLoadFailed = false;
+    try {
+      loadProduct("_template");
+    } catch {
+      templateLoadFailed = true;
+    }
+    if (!templateLoadFailed) {
+      fail("loadProduct('_template') must throw");
+    }
+    ok("loadProduct('_template') rejected");
+
+    const loaded = loadProduct("example-uk-ug");
+    if (loaded.product.name.zh !== "英本冲刺计划") {
+      fail("loadProduct example name mismatch");
+    }
+    if (
+      loaded.meta.disclaimer?.zh !== BILINGUAL_CHROME.disclaimer.zh ||
+      loaded.meta.disclaimer?.en !== BILINGUAL_CHROME.disclaimer.en
+    ) {
+      fail("loadProduct did not apply default disclaimer");
+    }
+    if (loaded.targetCustomer.title?.zh !== "适合人群") {
+      fail("loadProduct missing target section chrome default");
+    }
+    if (loaded.deliverables.title?.zh !== "服务内容") {
+      fail("loadProduct missing deliverables chrome default");
+    }
+    if (loaded.requirements.title?.zh !== "客户需具备") {
+      fail("loadProduct missing requirements chrome default");
+    }
+    if (loaded.highlights?.title?.zh !== "方案要点") {
+      fail("loadProduct missing highlights chrome default");
+    }
+    ok("loadProduct('example-uk-ug') applies chrome defaults");
+
+    // Brand fill when product omits brand
+    const noBrand = structuredClone(example);
+    delete noBrand.brand;
+    const mergedNoBrand = mergeProductContent(noBrand);
+    const parsedNoBrand = parseProduct(mergedNoBrand);
+    if (parsedNoBrand.brand.companyName.zh !== brand.companyName.zh) {
+      fail("brand defaults not applied when product omits brand");
+    }
+    ok("mergeProductContent fills brand from defaults when omitted");
+
+    // Deep-merge BiString: product zh + brand en
+    const partialCompany = mergeBiString(
+      { zh: "新公司" },
+      { zh: "示例升学咨询", en: "Example Admissions Consulting" },
+    );
+    if (
+      partialCompany?.zh !== "新公司" ||
+      partialCompany?.en !== "Example Admissions Consulting"
+    ) {
+      fail(`mergeBiString partial failed: ${JSON.stringify(partialCompany)}`);
+    }
+    ok("mergeBiString deep-merges per language");
+
+    const partialCtaProduct = structuredClone(example);
+    partialCtaProduct.brand = {
+      companyName: brand.companyName,
+      ctaLabel: { zh: "立即预约" },
+    };
+    const mergedCta = mergeProductContent(partialCtaProduct);
+    const brandAfter = mergedCta.brand;
+    if (
+      brandAfter.ctaLabel?.zh !== "立即预约" ||
+      brandAfter.ctaLabel?.en !== brand.ctaLabel.en
+    ) {
+      fail(`partial ctaLabel merge failed: ${JSON.stringify(brandAfter.ctaLabel)}`);
+    }
+    ok("product partial ctaLabel.zh keeps brand .en");
+
+    // --- Schema hard limits ---
+    const parsed = parseProduct(example);
+    if (parsed.product.name.zh !== "英本冲刺计划") {
+      fail("example product name mismatch");
+    }
+    ok("example-uk-ug parses");
+
+    const brandResult = brandConfigSchema.safeParse(brand);
+    if (!brandResult.success) {
+      fail(`brand/default.json invalid: ${brandResult.error}`);
+    }
+    ok("brand/default.json parses");
+
+    const missingEn = structuredClone(example);
+    delete missingEn.product.name.en;
+    if (safeParseProduct(missingEn).success) {
+      fail("expected missing product.name.en to fail");
+    }
+    ok("missing .en fails Zod");
+
+    const missingZh = structuredClone(example);
+    delete missingZh.targetCustomer.summary.zh;
+    if (safeParseProduct(missingZh).success) {
+      fail("expected missing summary.zh to fail");
+    }
+    ok("missing .zh fails Zod");
+
+    const emptyZh = structuredClone(example);
+    emptyZh.product.name.zh = "   ";
+    if (safeParseProduct(emptyZh).success) {
+      fail("expected whitespace-only zh to fail");
+    }
+    ok("whitespace-only BiString fails Zod");
+
+    const both = structuredClone(example);
+    both.timeline = {
+      steps: [{ id: "t1", label: { zh: "步骤一", en: "Step one" } }],
+    };
+    if (safeParseProduct(both).success) {
+      fail("expected highlights+timeline to fail");
+    }
+    ok("highlights XOR timeline enforced");
+
+    // name.zh boundaries
+    const name16Tag = structuredClone(example);
+    name16Tag.product.name.zh = "一二三四五六七八九十一二三四五六"; // 16
+    if (chars(name16Tag.product.name.zh) !== 16) {
+      fail(`setup: expected 16 chars, got ${chars(name16Tag.product.name.zh)}`);
+    }
+    if (!safeParseProduct(name16Tag).success) {
+      fail("expected name.zh length 16 with tagline to pass");
+    }
+    ok("name.zh length 16 with tagline passes");
+
+    const name17Tag = structuredClone(example);
+    name17Tag.product.name.zh = "一二三四五六七八九十一二三四五六七"; // 17
+    if (safeParseProduct(name17Tag).success) {
+      fail("expected name.zh length 17 with tagline to fail");
+    }
+    ok("name.zh length 17 with tagline fails");
+
+    const name17NoTag = structuredClone(example);
+    delete name17NoTag.product.tagline;
+    name17NoTag.product.name.zh = "一二三四五六七八九十一二三四五六七"; // 17
+    if (!safeParseProduct(name17NoTag).success) {
+      fail("expected name.zh length 17 without tagline to pass");
+    }
+    ok("name.zh length 17 without tagline passes");
+
+    const name25NoTag = structuredClone(example);
+    delete name25NoTag.product.tagline;
+    name25NoTag.product.name.zh = "一二三四五六七八九十一二三四五六七八九十一二三四五"; // 25
+    if (chars(name25NoTag.product.name.zh) !== 25) {
+      fail(`setup: expected 25 chars, got ${chars(name25NoTag.product.name.zh)}`);
+    }
+    if (safeParseProduct(name25NoTag).success) {
+      fail("expected name.zh length 25 without tagline to fail");
+    }
+    ok("name.zh length 25 without tagline fails");
+
+    // requirements mandatory default
+    const noMandatory = structuredClone(example);
+    for (const item of noMandatory.requirements.items) {
+      delete item.mandatory;
+    }
+    const reqParsed = parseProduct(noMandatory);
+    if (!reqParsed.requirements.items.every((i) => i.mandatory === true)) {
+      fail("requirements.mandatory should default to true");
+    }
+    ok("requirements.mandatory defaults to true");
+
+    // pure helpers
+    const fromKeys = listProductIdsFromKeys([
+      "../../content/products/example-uk-ug.json",
+      "../../content/products/_template.json",
+    ]);
+    if (JSON.stringify(fromKeys) !== JSON.stringify(["example-uk-ug"])) {
+      fail(`listProductIdsFromKeys failed: ${JSON.stringify(fromKeys)}`);
+    }
+    ok("listProductIdsFromKeys pure helper");
+
+    // applyChromeDefaults on parsed without titles/disclaimer
+    const bare = structuredClone(example);
+    delete bare.meta.disclaimer;
+    const withChrome = applyChromeDefaults(parseProduct(bare));
+    if (!withChrome.meta.disclaimer?.zh || !withChrome.meta.disclaimer?.en) {
+      fail("applyChromeDefaults did not set disclaimer");
+    }
+    ok("applyChromeDefaults fills omitted disclaimer");
+
+    if (!BILINGUAL_CHROME.disclaimer.zh || !BILINGUAL_CHROME.disclaimer.en) {
+      fail("BILINGUAL_CHROME.disclaimer incomplete");
+    }
+    ok("bilingual chrome defaults present");
+
+    // brandConfigSchema / productSchema still importable
+    if (typeof productSchema.parse !== "function") {
+      fail("productSchema missing");
+    }
+    if (typeof getBrandDefaults().companyName.zh !== "string") {
+      fail("getBrandDefaults broken");
+    }
+    ok("schema + brand defaults module exports ok");
+
+    console.log("\nAll content validation checks passed.");
+  } finally {
+    await server.close();
   }
-  if (ids.includes("_template")) {
-    fail("_template must be excluded from product ids");
-  }
-  ok(`product ids: ${ids.join(", ")}`);
-
-  // Happy path
-  const parsed = parseProduct(example);
-  if (parsed.product.name.zh !== "英本冲刺计划") {
-    fail("example product name mismatch");
-  }
-  ok("example-uk-ug parses");
-
-  // Brand defaults parse
-  const brandResult = productSchema.shape.brand.safeParse(brand);
-  if (!brandResult.success) {
-    fail(`brand/default.json invalid: ${brandResult.error}`);
-  }
-  ok("brand/default.json parses");
-
-  // Missing .en fails
-  const missingEn = structuredClone(example);
-  delete missingEn.product.name.en;
-  const r1 = safeParseProduct(missingEn);
-  if (r1.success) fail("expected missing product.name.en to fail");
-  ok("missing .en fails Zod");
-
-  // Missing .zh fails
-  const missingZh = structuredClone(example);
-  delete missingZh.targetCustomer.summary.zh;
-  const r2 = safeParseProduct(missingZh);
-  if (r2.success) fail("expected missing summary.zh to fail");
-  ok("missing .zh fails Zod");
-
-  // Empty string after trim fails
-  const emptyZh = structuredClone(example);
-  emptyZh.product.name.zh = "   ";
-  const r3 = safeParseProduct(emptyZh);
-  if (r3.success) fail("expected whitespace-only zh to fail");
-  ok("whitespace-only BiString fails Zod");
-
-  // highlights XOR timeline
-  const both = structuredClone(example);
-  both.timeline = {
-    steps: [{ id: "t1", label: { zh: "步骤一", en: "Step one" } }],
-  };
-  const r4 = safeParseProduct(both);
-  if (r4.success) fail("expected highlights+timeline to fail");
-  ok("highlights XOR timeline enforced");
-
-  // name.zh max 16 with tagline (17 chars)
-  const longName = structuredClone(example);
-  longName.product.name.zh = "一二三四五六七八九十一二三四五六七";
-  const r5 = safeParseProduct(longName);
-  if (r5.success) fail("expected long name.zh with tagline to fail");
-  ok("product.name.zh max 16 with tagline");
-
-  // Disclaimer default chrome present
-  if (!BILINGUAL_CHROME.disclaimer.zh || !BILINGUAL_CHROME.disclaimer.en) {
-    fail("BILINGUAL_CHROME.disclaimer incomplete");
-  }
-  ok("bilingual chrome defaults present (disclaimer + sections)");
-
-  // Template file existence
-  if (!files.includes("_template.json")) {
-    fail("missing content/products/_template.json");
-  }
-  ok("_template.json present (not listed as product id)");
-
-  console.log("\nAll content validation checks passed.");
 }
 
 main().catch((err) => {

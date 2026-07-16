@@ -23,9 +23,9 @@ function RequirementsBody({
   accentNumbers = true,
 }: Omit<RequirementsProps, "softPanel">) {
   const sectionTitle = title ?? BILINGUAL_CHROME.requirementsSection;
-  const listGap = compact ? "gap-mm-2" : "gap-mm-4";
+  // Vertical list + horizontal number↔text share the same mm step today.
+  const gap = compact ? "gap-mm-2" : "gap-mm-4";
   const stackMt = compact ? "mt-mm-2" : "mt-mm-4";
-  const itemGap = compact ? "gap-mm-2" : "gap-mm-4";
   const bodyRole = compact ? "body-sm" : "body";
   const numCls = compact ? "text-print-body-sm" : "text-print-body";
 
@@ -35,9 +35,9 @@ function RequirementsBody({
       {intro ? (
         <BiText value={intro} role={bodyRole} className={stackMt} />
       ) : null}
-      <ol className={`${stackMt} flex list-none flex-col ${listGap} p-0`}>
+      <ol className={`${stackMt} flex list-none flex-col ${gap} p-0`}>
         {items.map((item, index) => (
-          <li key={item.id} className={`flex ${itemGap}`}>
+          <li key={item.id} className={`flex ${gap}`}>
             <span
               className={`${numCls} shrink-0 tabular-nums ${
                 accentNumbers ? "text-accent" : "text-ink"

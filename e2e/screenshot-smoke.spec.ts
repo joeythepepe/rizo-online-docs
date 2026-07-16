@@ -2,9 +2,12 @@
  * Happy-path screenshot smoke for the example product print route.
  * Prerequisite: `pnpm build` (webServer runs vite preview against dist/).
  *
+ * Screenshots under `output/smoke/` are human-review artifacts (not visual-diff
+ * baselines). Paths are asserted to exist after write.
+ *
  * Run: pnpm test:smoke
  */
-import { mkdirSync } from "node:fs";
+import { existsSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { test, expect } from "@playwright/test";
 import {
@@ -66,6 +69,7 @@ test.describe("print screenshot smoke", () => {
     mkdirSync(SMOKE_OUT, { recursive: true });
     const shotPath = join(SMOKE_OUT, "example-uk-ug.png");
     await a4.screenshot({ path: shotPath });
+    expect(existsSync(shotPath), `smoke PNG missing: ${shotPath}`).toBe(true);
 
     const measure = await measureOverflow(page);
     expect(
@@ -84,9 +88,26 @@ test.describe("print screenshot smoke", () => {
     await expect(a4).toBeVisible();
     await expect(page.locator("[data-density=compact]").first()).toBeVisible();
 
+    // Compact CSS signal: body-sm tokens applied (not data-density alone)
+    const bodySmCount = await a4.locator(".text-print-body-sm").count();
+    expect(
+      bodySmCount,
+      "compact density should apply text-print-body-sm to list/body copy",
+    ).toBeGreaterThan(0);
+
+    // SoftPanel on requirements defaults to compact padding class
+    await expect(a4.locator(".p-mm-4").first()).toBeVisible();
+
     mkdirSync(SMOKE_OUT, { recursive: true });
-    await a4.screenshot({
-      path: join(SMOKE_OUT, "example-uk-ug-compact.png"),
-    });
+    const shotPath = join(SMOKE_OUT, "example-uk-ug-compact.png");
+    await a4.screenshot({ path: shotPath });
+    expect(existsSync(shotPath), `smoke PNG missing: ${shotPath}`).toBe(true);
+
+    // Compact only shrinks; example product must still fit
+    const measure = await measureOverflow(page);
+    expect(
+      measure.overflows,
+      `example-uk-ug compact should fit A4 (deltaMm=${measure.deltaMm.toFixed(3)}, worst=${measure.worstSelector})`,
+    ).toBe(false);
   });
 });

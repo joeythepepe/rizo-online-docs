@@ -68,6 +68,11 @@ async function main() {
     if (!ids.includes("fixture-overflow")) {
       fail(`listProductIds missing fixture-overflow, got ${JSON.stringify(ids)}`);
     }
+    if (!ids.includes("fixture-overflow-compact")) {
+      fail(
+        `listProductIds missing fixture-overflow-compact, got ${JSON.stringify(ids)}`,
+      );
+    }
     if (ids.some((id) => id.startsWith("_"))) {
       fail(`listProductIds must skip _-prefixed, got ${JSON.stringify(ids)}`);
     }
@@ -257,7 +262,7 @@ async function main() {
     }
     ok("listProductIdsFromKeys pure helper");
 
-    // Overflow fixture must parse (export CLI fails on layout measure, not Zod)
+    // Overflow fixtures must parse (export CLI fails on layout measure, not Zod)
     const overflowRaw = JSON.parse(
       readFileSync(join(root, "content/products/fixture-overflow.json"), "utf8"),
     );
@@ -265,6 +270,25 @@ async function main() {
       fail(`fixture-overflow.json failed Zod: ${safeParseProduct(overflowRaw).error}`);
     }
     ok("fixture-overflow.json parses");
+
+    const overflowCompactRaw = JSON.parse(
+      readFileSync(
+        join(root, "content/products/fixture-overflow-compact.json"),
+        "utf8",
+      ),
+    );
+    const overflowCompactParse = safeParseProduct(overflowCompactRaw);
+    if (!overflowCompactParse.success) {
+      fail(
+        `fixture-overflow-compact.json failed Zod: ${overflowCompactParse.error}`,
+      );
+    }
+    if (overflowCompactParse.data.layout?.density !== "compact") {
+      fail(
+        `fixture-overflow-compact must set layout.density === "compact", got ${JSON.stringify(overflowCompactParse.data.layout?.density)}`,
+      );
+    }
+    ok("fixture-overflow-compact.json parses with density=compact");
 
     // applyChromeDefaults on parsed without titles/disclaimer
     const bare = structuredClone(example);

@@ -100,17 +100,19 @@ Pipeline: Zod-validate `content/products/<id>.json` (same `mergeProductContent` 
 | Product id | Role |
 |------------|------|
 | `fixture-overflow` | Starts at `density: normal`. Export should compact-retry once, still overflow, exit 1, write `output/failures/fixture-overflow.png`. |
-| `fixture-overflow-compact` | Already `density: compact` in JSON. Documents that compact is **not** a free pass — export still fails (no second density step). |
+| `fixture-overflow-compact` | JSON already sets `density: compact` (first paint is compact CSS). Still over-long → exit 1 + failure PNG. Compact is **not** a free pass. CLI may re-open with `?density=compact` after a measure fail, but there is **no denser-than-compact** third step. |
 
 ```bash
 pnpm export:pdf --product fixture-overflow
 # → exit 1, screenshot under output/failures/
 
 pnpm export:pdf --product fixture-overflow-compact
-# → exit 1 (starts compact; still too long)
+# → exit 1 (product already compact; still too long)
 ```
 
 `pnpm export:all` skips any id matching `fixture-overflow*` unless `--force`.
+
+Overflow fixtures are **manual** gate checks (`pnpm export:pdf --product …`); smoke tests cover the happy path only. `pnpm validate:content` Zod-parses both fixtures and asserts compact density on the second.
 
 ### Screenshot smoke
 
@@ -119,7 +121,7 @@ pnpm test:smoke
 # or: pnpm build && pnpm exec playwright test
 ```
 
-Happy path: `/print/example-uk-ug` shows CN+EN, measures no overflow, writes `output/smoke/example-uk-ug.png`. Also checks `?density=compact` sets `data-density=compact`.
+Happy path: `/print/example-uk-ug` shows CN+EN, measures no overflow, writes `output/smoke/example-uk-ug.png` (human-review artifact, not visual-diff baseline). Compact path (`?density=compact`) asserts `data-density=compact`, `text-print-body-sm` / SoftPanel padding classes, no overflow, and `output/smoke/example-uk-ug-compact.png`.
 
 ### Debug print issues
 

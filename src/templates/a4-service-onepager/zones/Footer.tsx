@@ -73,6 +73,8 @@ export function Footer({ brand, meta, showQr = true }: FooterProps) {
           src={brand.qrSrc}
           alt=""
           className="h-[14mm] w-[14mm] shrink-0 object-contain"
+          width={120}
+          height={120}
         />
       ) : null}
     </footer>

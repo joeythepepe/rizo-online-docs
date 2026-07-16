@@ -164,7 +164,9 @@ Default is **`stack`** (single column body). Opt in to a fixed 5/7 print grid wi
 "layout": { "variant": "split" }
 ```
 
-Split math (content width **182 mm**, gutter **4 mm**, 12 columns):
+Smoke fixture: **`content/products/example-uk-ug-split.json`** (`pnpm export:pdf --product example-uk-ug-split`).
+
+Split math (content width **182 mm**, gutter **4 mm**, 12 columns). **TargetCustomer stays full-width** above the row; only Deliverables | Requirements split:
 
 | Zone | Span | Width |
 |------|------|--------|
@@ -173,14 +175,24 @@ Split math (content width **182 mm**, gutter **4 mm**, 12 columns):
 
 `col = (182 − 11×4) / 12 = 11.5 mm` → 5-col = 5×11.5 + 4×4 = 73.5; 7-col = 7×11.5 + 6×4 = 104.5.
 
+**Author guidance (split):**
+
+- Prefer shorter **deliverable** labels (~**22 CN** / short EN per line at body size). Zod still allows up to 32 zh / 48 en, but long lines wrap and grow height — overflow risk is higher than stack.
+- Keep SoftPanel on **requirements** (default, wider 7-col). Avoid `softPanelOn: "deliverables"` in split: `p-mm-8` eats ~16 mm horizontal inside 73.5 mm (~57.5 mm left for bilingual lists). If you must, use `density: "compact"` (SoftPanel `p-mm-4`).
+- Long lists: set `density: "compact"` or trim items before export.
+
+Grid columns stretch equally tall by default (SoftPanel fills the taller column) — intentional for print balance.
+
 ### Brand assets
+
+**Current repo art is intentional placeholders** (professional stand-ins, not final brand). Real logo/QR land by replacing files + paths below — no schema change.
 
 Static files are served from **`public/brand/`**:
 
 | File | Role |
 |------|------|
-| `public/brand/logo.svg` | Placeholder mark + wordmark (professional stand-in). **Replace with real logo** (SVG preferred; PNG min width **600px**). Header renders ≤ **8 mm** tall / ≤ **36 mm** wide. |
-| `public/brand/wechat-qr.svg` | Placeholder QR for demos. **Replace with real WeChat QR** (PNG or SVG). Footer shows ≤ **14 mm**. |
+| `public/brand/logo.svg` | Placeholder mark + wordmark. **Replace with real logo** (SVG preferred; PNG min width **600px**). Header caps: max **8 mm** tall / **36 mm** wide (`object-contain`). |
+| `public/brand/wechat-qr.svg` | Placeholder QR for demos (**not scannable**). **Replace with real WeChat QR** (PNG or SVG). Footer shows **14 mm**. |
 
 Wire paths in content (not by renaming only):
 
@@ -205,7 +217,7 @@ Accent color defaults to `#0071E3` (`brand.accentColor`) until brand confirms. C
 ├── index.html
 ├── content/
 │   ├── brand/default.json
-│   └── products/             # example-uk-ug + fixture-overflow*
+│   └── products/             # example-uk-ug, example-uk-ug-split, fixture-overflow*
 ├── e2e/                      # Playwright screenshot smoke
 ├── fonts/
 │   ├── README.md             # OFL license + re-subset docs

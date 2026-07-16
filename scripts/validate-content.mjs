@@ -65,6 +65,11 @@ async function main() {
     if (!ids.includes("example-uk-ug")) {
       fail(`listProductIds missing example-uk-ug, got ${JSON.stringify(ids)}`);
     }
+    if (!ids.includes("example-uk-ug-split")) {
+      fail(
+        `listProductIds missing example-uk-ug-split, got ${JSON.stringify(ids)}`,
+      );
+    }
     if (!ids.includes("fixture-overflow")) {
       fail(`listProductIds missing fixture-overflow, got ${JSON.stringify(ids)}`);
     }
@@ -163,6 +168,22 @@ async function main() {
       fail("example product name mismatch");
     }
     ok("example-uk-ug parses");
+
+    const splitRaw = JSON.parse(
+      readFileSync(
+        join(root, "content/products/example-uk-ug-split.json"),
+        "utf8",
+      ),
+    );
+    const splitParsed = parseProduct(
+      mergeProductContent(splitRaw, brandDefaults),
+    );
+    if (splitParsed.layout?.variant !== "split") {
+      fail(
+        `example-uk-ug-split must use layout.variant=split, got ${JSON.stringify(splitParsed.layout)}`,
+      );
+    }
+    ok("example-uk-ug-split parses with variant=split");
 
     const brandResult = brandConfigSchema.safeParse(brand);
     if (!brandResult.success) {

@@ -1,20 +1,34 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 32" role="img" aria-label="Brand logo placeholder">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 32" role="img" aria-label="Brand logo placeholder">
   <!--
-    Placeholder logo (professional mark + wordmark).
+    PLACEHOLDER (not production brand art). Professional stand-in only.
     Replace with real brand art: drop SVG/PNG into public/brand/ and set brand.logoSrc
     in content/brand/default.json (and product brand overrides). Prefer SVG; PNG min width 600px.
-    Keep rendered height ≤ 8 mm (Header). Accent default #0071E3 until brand confirms.
+    Header cap: ≤8 mm tall, ≤36 mm wide (this viewBox 144×32 ≈ 4.5:1 fits 36×8 mm without height shrink).
+    Accent default #0071E3 until brand confirms.
   -->
   <defs>
     <style>
       .mark { fill: #0071E3; }
-      .mark-inner { fill: #FFFFFF; }
-      .word { fill: #1D1D1F; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.02em; }
+      .mark-stroke {
+        fill: none;
+        stroke: #FFFFFF;
+        stroke-width: 2.25;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .mark-dot { fill: #FFFFFF; }
+      .word {
+        fill: #1D1D1F;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
     </style>
   </defs>
   <!-- Rounded square mark with ascending path (education / progress) -->
   <rect class="mark" x="0" y="2" width="28" height="28" rx="6"/>
-  <path class="mark-inner" d="M7.5 21.5 V12.5 L12.5 17 L20.5 9.5" fill="none" stroke="#FFFFFF" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle class="mark-inner" cx="20.5" cy="9.5" r="1.6"/>
+  <path class="mark-stroke" d="M7.5 21.5 V12.5 L12.5 17 L20.5 9.5"/>
+  <circle class="mark-dot" cx="20.5" cy="9.5" r="1.6"/>
   <text class="word" x="36" y="21">Brand</text>
 </svg>

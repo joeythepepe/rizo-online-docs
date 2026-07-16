@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="WeChat QR placeholder">
   <!--
-    Placeholder QR for print demos only (not scannable).
+    PLACEHOLDER QR for print demos only (not scannable — intentional stand-in).
     Replace with real WeChat QR: public/brand/<file>.png|svg and set brand.qrSrc
     in content/brand/default.json (or product brand override). Footer size ≤14 mm.
   -->

@@ -85,14 +85,19 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
         <TargetCustomer data={content.targetCustomer} compact={compact} />
 
         {isSplit ? (
+          /* Equal-height stretch (default) fills SoftPanel to taller column — intentional. */
           <div
             className="grid min-h-0 grid-cols-12 gap-mm-4"
             data-split-grid="5-7"
           >
             {/* 5×11.5 + 4×4 = 73.5 mm */}
-            <div className="col-span-5 min-w-0">{deliverables}</div>
+            <div className="col-span-5 min-w-0" data-split-col="5">
+              {deliverables}
+            </div>
             {/* 7×11.5 + 6×4 = 104.5 mm */}
-            <div className="col-span-7 min-w-0">{requirements}</div>
+            <div className="col-span-7 min-w-0" data-split-col="7">
+              {requirements}
+            </div>
           </div>
         ) : (
           <>

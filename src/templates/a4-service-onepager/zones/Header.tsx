@@ -8,8 +8,9 @@ export interface HeaderProps {
 }
 
 /**
- * Fixed 16 mm header: logo (≤8 mm tall, ≤36 mm wide) + company BiString left,
- * doc label right. Logo art lives under `public/brand/` (see README Brand assets).
+ * Fixed 16 mm header: logo (max 8 mm tall, max 36 mm wide) + company BiString left,
+ * doc label right. `h-[8mm]` / `max-w-[36mm]` are caps; object-contain may render
+ * slightly shorter if the asset aspect is wider. Logo art: `public/brand/` (README).
  */
 export function Header({
   brand,
@@ -24,7 +25,7 @@ export function Header({
           src={logoSrc}
           alt=""
           className="h-[8mm] w-auto max-w-[36mm] object-contain object-left"
-          width={160}
+          width={144}
           height={32}
         />
         <BiText value={brand.companyName} role="label" className="min-w-0" />

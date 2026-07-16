@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN-en",
+  "meta": {
+    "documentTitle": {
+      "zh": "英本冲刺计划-服务说明（双栏）",
+      "en": "UK UG Sprint — Service Overview (split)"
+    },
+    "version": "2026.07",
+    "cycleLabel": { "zh": "2026 秋季入学", "en": "2026 Fall intake" },
+    "priceBand": { "zh": "面议", "en": "Quote on request" },
+    "confidential": false
+  },
+  "product": {
+    "name": { "zh": "英本冲刺计划", "en": "UK Undergraduate Sprint" },
+    "categoryLabel": { "zh": "本科申请服务", "en": "Undergraduate admissions" },
+    "tagline": {
+      "zh": "面向冲刺 G5 / 罗素集团的系统化申请方案",
+      "en": "Structured support for G5 / Russell Group targets"
+    }
+  },
+  "targetCustomer": {
+    "summary": {
+      "zh": "成绩优异、目标英国本科、需要结构化时间线与文书指导的高中生及家长。",
+      "en": "High-achieving students and parents targeting UK UG with timelines and essay support."
+    },
+    "segments": [
+      { "zh": "高二–高三", "en": "G11–G12" },
+      { "zh": "A-Level/国际课程", "en": "A-Level / intl." },
+      { "zh": "冲刺顶尖院校", "en": "Top-tier targets" }
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": {
+          "zh": "选校定位与名单策略",
+          "en": "School list & major fit"
+        }
+      },
+      {
+        "id": "d2",
+        "label": {
+          "zh": "主文书与补充文书修改",
+          "en": "PS & supplements"
+        }
+      },
+      {
+        "id": "d3",
+        "label": {
+          "zh": "推荐信与递交清单",
+          "en": "Reference & checklist"
+        }
+      },
+      {
+        "id": "d4",
+        "label": {
+          "zh": "节点规划与家长同步",
+          "en": "Milestones & parent sync"
+        }
+      }
+    ]
+  },
+  "requirements": {
+    "items": [
+      {
+        "id": "r1",
+        "label": {
+          "zh": "提供近两年成绩单与标化考试规划",
+          "en": "Provide two-year transcripts and testing plan"
+        },
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": {
+          "zh": "按节点完成活动与文书素材收集",
+          "en": "Meet activity and essay material deadlines"
+        },
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": {
+          "zh": "家长参与关键节点确认（选校/递交）",
+          "en": "Parent confirmation at key milestones"
+        },
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      { "zh": "一对一顾问", "en": "1:1 counselor" },
+      { "zh": "节点制管理", "en": "Milestone management" },
+      { "zh": "模拟面试加购可选", "en": "Mock interview (optional add-on)" }
+    ]
+  },
+  "brand": {
+    "companyName": { "zh": "示例升学咨询", "en": "Example Admissions Consulting" },
+    "logoSrc": "/brand/logo.svg",
+    "contactLine": "example.com",
+    "wechatId": "example_edu",
+    "qrSrc": "/brand/wechat-qr.svg",
+    "ctaLabel": { "zh": "预约顾问", "en": "Book a consultation" },
+    "ctaDetail": { "zh": "扫码添加顾问微信", "en": "Scan to add counselor WeChat" }
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements",
+    "bilingual": true
+  }
+}

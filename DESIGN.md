@@ -325,10 +325,12 @@ A4 210 × 297 mm
 colWidth = (182 − 11×4) / 12 = (182 − 44) / 12 = 11.5 mm
 ```
 
-  - Target: `col-span-5` → 5×11.5 + 4×4 = **73.5 mm**
+  - **TargetCustomer stays full-width** above the split row (not a grid column).
+  - Deliverables: `col-span-5` → 5×11.5 + 4×4 = **73.5 mm**
   - Requirements: `col-span-7` → 7×11.5 + 6×4 = **104.5 mm**
   - Variant is **data-driven only** (`layout.variant: "split"`); **no viewport breakpoints**.
   - Max ~22 CN chars per line in 5-col at body size (guide for authors); Zod does not enforce per-column measure.
+  - Smoke product: `content/products/example-uk-ug-split.json`.
 
 **Mermaid — page zone model**
 

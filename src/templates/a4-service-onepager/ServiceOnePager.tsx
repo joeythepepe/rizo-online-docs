@@ -8,7 +8,6 @@ import { Deliverables } from "./zones/Deliverables";
 import { Requirements } from "./zones/Requirements";
 import { Highlights } from "./zones/Highlights";
 import { Timeline } from "./zones/Timeline";
-import { Disclaimer } from "./zones/Disclaimer";
 import { Footer } from "./zones/Footer";
 
 export interface ServiceOnePagerProps {
@@ -123,15 +122,7 @@ export function ServiceOnePager({ content }: ServiceOnePagerProps) {
         ) : null}
       </div>
 
-      <div className={`${sectionTop} shrink-0`}>
-        <Disclaimer value={content.meta.disclaimer} />
-      </div>
-
-      <Footer
-        brand={content.brand}
-        meta={content.meta}
-        showQr={layout.showQr !== false}
-      />
+      <Footer brand={content.brand} showQr={layout.showQr !== false} />
     </A4Page>
   );
 }

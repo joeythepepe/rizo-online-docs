@@ -145,8 +145,6 @@ Default is **`split`**: 服务内容 (left) | 客户需具备 SoftPanel (right),
 "layout": { "variant": "stack" }
 ```
 
-Smoke fixture: **`content/products/example-uk-ug-split.json`** (`bun run export:pdf --product example-uk-ug-split`).
-
 Split math (content width **182 mm**, gutter **4 mm**, 12 columns). **TargetCustomer stays full-width** above the row; only Deliverables | Requirements split:
 
 | Zone | Span | Width |

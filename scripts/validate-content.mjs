@@ -122,22 +122,14 @@ async function main() {
     }
     ok("mergeZhString product wins / fallback works");
 
-    parseProduct(example);
+    const parsedExample = parseProduct(example);
     ok("example-uk-ug parses");
-
-    const splitRaw = JSON.parse(
-      readFileSync(
-        join(root, "content/products/example-uk-ug-split.json"),
-        "utf8",
-      ),
-    );
-    const splitParsed = parseProduct(
-      mergeProductContent(splitRaw, brandDefaults),
-    );
-    if (splitParsed.layout?.variant !== "split") {
-      fail(`example-uk-ug-split must use layout.variant=split`);
+    if (parsedExample.layout?.variant !== "split") {
+      fail(
+        `example-uk-ug must use layout.variant=split, got ${JSON.stringify(parsedExample.layout)}`,
+      );
     }
-    ok("example-uk-ug-split parses with variant=split");
+    ok("example-uk-ug uses split layout");
 
     for (const id of [
       "gaokao-hk-ug",

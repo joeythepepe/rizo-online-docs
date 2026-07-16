@@ -1,0 +1,46 @@
+/* A4 print root document styles — frozen geometry for export fidelity */
+
+@page {
+  size: A4 portrait;
+  margin: 0;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #e8e8ed;
+}
+
+.a4-page {
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden; /* preview frame; export measures scroll overflow and fails */
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.a4-safe {
+  padding: 14mm;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+@media print {
+  html,
+  body {
+    margin: 0;
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .a4-page {
+    break-after: page;
+    box-shadow: none !important;
+  }
+}

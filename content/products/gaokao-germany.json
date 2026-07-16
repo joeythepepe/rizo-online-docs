@@ -1,0 +1,93 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高考通德国-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "高考通德国",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考过线+APS/语言申请德国本科"
+  },
+  "targetCustomer": {
+    "summary": "目标德国公立本科，可投入德语或选择英授项目的学生。",
+    "segments": [
+      "高三/毕业",
+      "德语或英授",
+      "性价比高"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "德本资格评估与专业匹配"
+      },
+      {
+        "id": "d2",
+        "label": "APS/审核与材料清单管理"
+      },
+      {
+        "id": "d3",
+        "label": "德语/英授路径与预科规划"
+      },
+      {
+        "id": "d4",
+        "label": "签证、保险与行前支持"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "高考达德国承认的本科入学资格线",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "需完成APS等审核手续（按要求）",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "德语授课：德福/DSH等达校要求",
+        "mandatory": false
+      },
+      {
+        "id": "r4",
+        "label": "英授项目：雅思/托福达校要求",
+        "mandatory": false
+      },
+      {
+        "id": "r5",
+        "label": "可接受预科（Studienkolleg）衔接",
+        "mandatory": false
+      },
+      {
+        "id": "r6",
+        "label": "资金（如冻结账户）与签证可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "公立学费优势明显",
+      "审核路径需提前规划",
+      "德/英授双轨可选"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

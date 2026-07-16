@@ -1,0 +1,97 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高考通英国-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "高考通英国",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考/预科双路径申请英国本科院校"
+  },
+  "targetCustomer": {
+    "summary": "以高考或预科衔接冲刺英国本科的高三/毕业学生及家长。",
+    "segments": [
+      "高三/毕业党",
+      "G5/罗素",
+      "可接受预科"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "英本选校定位与专业方向规划"
+      },
+      {
+        "id": "d2",
+        "label": "高考直录与预科/国际大一评估"
+      },
+      {
+        "id": "d3",
+        "label": "UCAS/文书与推荐信节点管理"
+      },
+      {
+        "id": "d4",
+        "label": "签证、住宿与行前全流程支持"
+      },
+      {
+        "id": "d5",
+        "label": "语言班与学术衔接方案设计"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "参加普通高考或具备同等学历资格",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "直录：总分与单科达目标校公布线",
+        "mandatory": false
+      },
+      {
+        "id": "r3",
+        "label": "英语：雅思通常6.0–6.5+（按校）",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "高中成绩单可认证；材料真实完整",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "可接受预科/国际大一衔接路径",
+        "mandatory": false
+      },
+      {
+        "id": "r6",
+        "label": "资金证明与学生签证材料可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "直录+预科双通道",
+      "对标英本招生要求",
+      "文书与语言可补强"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

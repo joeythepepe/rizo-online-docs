@@ -1,0 +1,93 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高考通加拿大-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "高考通加拿大",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考成绩申请加拿大本科与桥梁课程"
+  },
+  "targetCustomer": {
+    "summary": "希望以高考进入加拿大本科或桥梁/国际大一的学生与家长。",
+    "segments": [
+      "高三/毕业",
+      "加本主申",
+      "稳健留学"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "加本院校与专业省份匹配"
+      },
+      {
+        "id": "d2",
+        "label": "高考直录与桥梁课程路径评估"
+      },
+      {
+        "id": "d3",
+        "label": "网申、文书与材料清单辅导"
+      },
+      {
+        "id": "d4",
+        "label": "学签、资金证明与行前支持"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "参加普通高考并取得有效成绩",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "总分与英语达目标校公布要求",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "英语：雅思/托福达校方最低线",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "高中成绩单完整，可做认证",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "可接受桥梁/国际大一衔接",
+        "mandatory": false
+      },
+      {
+        "id": "r6",
+        "label": "资金证明与学签材料可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "直录+桥梁双路径",
+      "省校梯度清晰",
+      "学签材料同步指导"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

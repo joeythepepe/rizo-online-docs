@@ -18,7 +18,7 @@ bun run dev
 - **Validate product JSON:** `bun run validate:content`
 - **Production build:** `bun run build`
 - **Preview build:** `bun run preview`
-- **Export PDF:** `bun run export:pdf --product gaokao-uk-ug` → `output/<id>.pdf`
+- **Export PDF:** `bun run export:pdf --product gaokao-uk` → `output/<id>.pdf`
 - **Export all products:** `bun run export:all` (skips overflow fixtures)
 - **Screenshot smoke:** `bun run test:smoke` → builds, previews, asserts example product A4 + writes `output/smoke/*.png`
 
@@ -86,8 +86,8 @@ Shadows and decorative chrome **are** allowed on gallery/screen routes (`/`, `/p
 Canonical artifact is Playwright PDF (not browser Print → Save as PDF).
 
 ```bash
-bun run export:pdf --product gaokao-uk-ug
-bun run export:pdf --product gaokao-uk-ug --force   # debug: write PDF even if overflow
+bun run export:pdf --product gaokao-uk
+bun run export:pdf --product gaokao-uk --force   # debug: write PDF even if overflow
 bun run export:all
 ```
 
@@ -102,7 +102,7 @@ bun run test:smoke
 # or: bun run build && bunx playwright test
 ```
 
-Happy path: `/print/gaokao-uk-ug` shows Chinese content, measures no overflow, writes `output/smoke/gaokao-uk-ug.png` (human-review artifact, not visual-diff baseline). Compact path (`?density=compact`) asserts `data-density=compact`, `text-print-body-sm` / SoftPanel padding classes, no overflow, and `output/smoke/gaokao-uk-ug-compact.png`.
+Happy path: `/print/gaokao-uk` shows Chinese content, measures no overflow, writes `output/smoke/gaokao-uk.png` (human-review artifact, not visual-diff baseline). Compact path (`?density=compact`) asserts `data-density=compact`, `text-print-body-sm` / SoftPanel padding classes, no overflow, and `output/smoke/gaokao-uk-compact.png`.
 
 ### Debug print issues
 

@@ -51,18 +51,18 @@ async function main() {
     );
 
     const example = JSON.parse(
-      readFileSync(join(root, "content/products/gaokao-uk-ug.json"), "utf8"),
+      readFileSync(join(root, "content/products/gaokao-uk.json"), "utf8"),
     );
     const brand = JSON.parse(
       readFileSync(join(root, "content/brand/default.json"), "utf8"),
     );
 
     const ids = listProductIds();
-    if (!ids.includes("gaokao-uk-ug")) {
-      fail(`listProductIds missing gaokao-uk-ug, got ${JSON.stringify(ids)}`);
+    if (!ids.includes("gaokao-uk")) {
+      fail(`listProductIds missing gaokao-uk, got ${JSON.stringify(ids)}`);
     }
-    if (!ids.includes("gaokao-hk-ug")) {
-      fail(`listProductIds missing gaokao-hk-ug, got ${JSON.stringify(ids)}`);
+    if (!ids.includes("gaokao-hongkong")) {
+      fail(`listProductIds missing gaokao-hongkong, got ${JSON.stringify(ids)}`);
     }
     if (ids.some((id) => id.startsWith("_"))) {
       fail(`listProductIds must skip _-prefixed, got ${JSON.stringify(ids)}`);
@@ -85,8 +85,8 @@ async function main() {
     }
     ok("loadProduct('_template') rejected");
 
-    const loaded = loadProduct("gaokao-uk-ug");
-    if (loaded.product.name !== "高考通英本") {
+    const loaded = loadProduct("gaokao-uk");
+    if (loaded.product.name !== "高考通英国") {
       fail("loadProduct example name mismatch");
     }
     if (loaded.meta.disclaimer !== BILINGUAL_CHROME.disclaimer) {
@@ -101,7 +101,7 @@ async function main() {
     if (loaded.requirements.title !== "客户需具备") {
       fail("loadProduct missing requirements chrome default");
     }
-    ok("loadProduct('gaokao-uk-ug') applies chrome defaults");
+    ok("loadProduct('gaokao-uk') applies chrome defaults");
 
     const brandDefaults = getBrandDefaults();
     const noBrand = structuredClone(example);
@@ -123,20 +123,29 @@ async function main() {
     ok("mergeZhString product wins / fallback works");
 
     const parsedExample = parseProduct(example);
-    ok("gaokao-uk-ug parses");
+    ok("gaokao-uk parses");
     if (parsedExample.layout?.variant !== "split") {
       fail(
-        `gaokao-uk-ug must use layout.variant=split, got ${JSON.stringify(parsedExample.layout)}`,
+        `gaokao-uk must use layout.variant=split, got ${JSON.stringify(parsedExample.layout)}`,
       );
     }
-    ok("gaokao-uk-ug uses split layout");
+    ok("gaokao-uk uses split layout");
 
     for (const id of [
-      "gaokao-hk-ug",
-      "gaokao-us-ca-ug",
-      "gaokao-sg-ug",
-      "gaokao-mo-ug",
-      "gaokao-eu-ug",
+      "gaokao-hongkong",
+      "gaokao-macao",
+      "gaokao-singapore",
+      "gaokao-uk",
+      "gaokao-usa",
+      "gaokao-canada",
+      "gaokao-japan",
+      "gaokao-korea",
+      "gaokao-malaysia",
+      "gaokao-australia",
+      "gaokao-newzealand",
+      "gaokao-netherlands",
+      "gaokao-germany",
+      "gaokao-ireland",
     ]) {
       const p = loadProduct(id);
       if (!p.product.name || typeof p.product.name !== "string") {

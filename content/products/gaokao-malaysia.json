@@ -1,0 +1,93 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高考通马来西亚-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "高考通马来西亚",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考直录/预科/国际分校的性价比通道"
+  },
+  "targetCustomer": {
+    "summary": "预算友好、希望英语环境升学或作跳板的高考生与家长。",
+    "segments": [
+      "高三/毕业",
+      "性价比优先",
+      "可跳板英澳"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "公立/私立/分校类型匹配"
+      },
+      {
+        "id": "d2",
+        "label": "高考直录与预科/国际大一评估"
+      },
+      {
+        "id": "d3",
+        "label": "网申材料与英语要求辅导"
+      },
+      {
+        "id": "d4",
+        "label": "签证、住宿与行前支持"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "参加普通高考或具备高中学历",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "总分达目标校公布的高考要求",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "英语：雅思/校内测达最低线",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "成绩单与学历证明真实完整",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "可接受预科或国际大一衔接",
+        "mandatory": false
+      },
+      {
+        "id": "r6",
+        "label": "学费生活费预算与签证可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "费用友好入学灵活",
+      "英语授课环境",
+      "可衔接英澳名校"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

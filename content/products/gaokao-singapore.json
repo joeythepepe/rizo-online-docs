@@ -2,19 +2,19 @@
   "templateId": "a4-service-onepager-v1",
   "locale": "zh-CN",
   "meta": {
-    "documentTitle": "高考通新加坡本-服务说明",
+    "documentTitle": "高考通新加坡-服务说明",
     "version": "2026.07",
     "cycleLabel": "2026 秋季入学",
     "priceBand": "面议",
     "confidential": false
   },
   "product": {
-    "name": "高考通新加坡本",
+    "name": "高考通新加坡",
     "categoryLabel": "高考本科出海",
-    "tagline": "高考成绩冲击新国立/南洋等本科"
+    "tagline": "高考冲击新加坡公立与知名私立本科"
   },
   "targetCustomer": {
-    "summary": "高考成绩突出、英语达标，希望进入新加坡公立或知名私立本科的学生。",
+    "summary": "高考成绩突出、英语达标，目标新加坡本科的学生与家长。",
     "segments": [
       "高三冲刺",
       "NUS/NTU/SMU",
@@ -25,38 +25,38 @@
     "items": [
       {
         "id": "d1",
-        "label": "院校与专业匹配（公立/私立梯度）"
+        "label": "公立/私立院校与专业匹配"
       },
       {
         "id": "d2",
-        "label": "高考成绩换算与录取概率评估"
+        "label": "高考分换算与录取概率评估"
       },
       {
         "id": "d3",
-        "label": "网申、文书/个人陈述与面试准备"
+        "label": "网申、文书与面试全流程辅导"
       },
       {
         "id": "d4",
-        "label": "录取后学生准证与行前安排"
+        "label": "学生准证、住宿与行前安排"
       }
     ]
   },
   "requirements": {
-    "intro": "新加坡顶尖校竞争激烈，条件为经验区间，以当年官网为准。",
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
     "items": [
       {
         "id": "r1",
-        "label": "参加普通高考；成绩达一本线以上为佳",
+        "label": "参加普通高考；建议达一本线以上",
         "mandatory": true
       },
       {
         "id": "r2",
-        "label": "冲刺NUS/NTU：建议全省前列或超特控线",
+        "label": "冲刺NUS/NTU：建议全省前列分数段",
         "mandatory": false
       },
       {
         "id": "r3",
-        "label": "英语：高考英语优异或雅思6.5+/托福同等",
+        "label": "英语：高考英语优异或雅思6.5+",
         "mandatory": true
       },
       {
@@ -66,21 +66,21 @@
       },
       {
         "id": "r5",
-        "label": "可参加面试/额外笔试（部分专业）",
+        "label": "可参加面试或额外笔试",
         "mandatory": false
       },
       {
         "id": "r6",
-        "label": "家庭能承担学费与生活费并配合签证",
+        "label": "家庭能承担学费生活费并配合签证",
         "mandatory": true
       }
     ]
   },
   "highlights": {
     "items": [
-      "聚焦新三国立名校",
+      "聚焦新加坡主流本科",
       "高考分+英语双门槛",
-      "面试辅导可加购"
+      "面试辅导可专项加强"
     ]
   },
   "layout": {

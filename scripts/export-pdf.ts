@@ -2,10 +2,10 @@
  * Playwright PDF export CLI with overflow gate.
  *
  * Usage:
- *   bun run export:pdf --product gaokao-uk-ug
- *   bun run export:pdf --product gaokao-uk-ug --force
- *   bun run export:pdf --product gaokao-uk-ug --out output/custom.pdf
- *   bun run export:pdf gaokao-uk-ug
+ *   bun run export:pdf --product gaokao-uk
+ *   bun run export:pdf --product gaokao-uk --force
+ *   bun run export:pdf --product gaokao-uk --out output/custom.pdf
+ *   bun run export:pdf gaokao-uk
  *
  * Flow: Zod-validate product via FS (same merge/chrome as app loadProduct) →
  * build → vite preview → Chromium → measure overflow → one compact retry →

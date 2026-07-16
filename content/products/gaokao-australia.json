@@ -1,0 +1,93 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高考通澳大利亚-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "高考通澳大利亚",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考分直录八大或预科衔接澳本"
+  },
+  "targetCustomer": {
+    "summary": "以高考成绩申请澳大利亚本科或 foundation 的学生与家长。",
+    "segments": [
+      "高三/毕业",
+      "八大/非八大",
+      "英语授课"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "澳本选校与专业方向规划"
+      },
+      {
+        "id": "d2",
+        "label": "高考直录分数线与预科评估"
+      },
+      {
+        "id": "d3",
+        "label": "网申、文书与材料认证辅导"
+      },
+      {
+        "id": "d4",
+        "label": "学生签证、OSHC与行前指导"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "参加普通高考并取得有效成绩",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "总分达目标校高考直录公布线",
+        "mandatory": false
+      },
+      {
+        "id": "r3",
+        "label": "英语：雅思通常6.0–6.5+（按校）",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "高中成绩单可认证，材料齐全",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "分数不足可接受 foundation 路径",
+        "mandatory": false
+      },
+      {
+        "id": "r6",
+        "label": "资金证明与学生签证可配合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "直录线公开透明",
+      "预科保底路径清晰",
+      "热门专业单独评估"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

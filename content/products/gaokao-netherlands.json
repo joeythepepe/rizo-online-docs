@@ -1,0 +1,93 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高考通荷兰-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "高考通荷兰",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考+英语申请荷兰英授本科学位"
+  },
+  "targetCustomer": {
+    "summary": "目标荷兰英授本科，接受预科或直接入学评估的学生与家长。",
+    "segments": [
+      "高三/毕业",
+      "英授本科",
+      "欧洲跳板"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "荷兰英授专业与院校匹配"
+      },
+      {
+        "id": "d2",
+        "label": "高考资格与预科必要性评估"
+      },
+      {
+        "id": "d3",
+        "label": "网申、动机信与材料辅导"
+      },
+      {
+        "id": "d4",
+        "label": "签证、保险与行前指导"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "具备高中毕业资格与高考成绩",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "英语：雅思通常6.0–6.5+（按校）",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "部分专业要求特定高中课程背景",
+        "mandatory": false
+      },
+      {
+        "id": "r4",
+        "label": "可接受大学预科/foundation",
+        "mandatory": false
+      },
+      {
+        "id": "r5",
+        "label": "材料真实；可按节点提交申请",
+        "mandatory": true
+      },
+      {
+        "id": "r6",
+        "label": "资金与居留手续可配合办理",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "英授项目选择多",
+      "申请节点清晰",
+      "可衔接欧洲就业"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

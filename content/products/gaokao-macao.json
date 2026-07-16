@@ -2,22 +2,22 @@
   "templateId": "a4-service-onepager-v1",
   "locale": "zh-CN",
   "meta": {
-    "documentTitle": "高考通澳门本-服务说明",
+    "documentTitle": "高考通澳门-服务说明",
     "version": "2026.07",
     "cycleLabel": "2026 秋季入学",
     "priceBand": "面议",
     "confidential": false
   },
   "product": {
-    "name": "高考通澳门本",
+    "name": "高考通澳门",
     "categoryLabel": "高考本科出海",
-    "tagline": "高考直通澳门高校本科的稳健通道"
+    "tagline": "高考直通澳门高校本科的稳健升学通道"
   },
   "targetCustomer": {
-    "summary": "希望以高考成绩进入澳门高校、兼顾粤港澳生活圈的学生与家长。",
+    "summary": "希望以高考进入澳门高校、兼顾粤港澳生活圈的学生与家长。",
     "segments": [
       "高三应届",
-      "澳大/澳科大等",
+      "澳大/科大等",
       "稳健升学"
     ]
   },
@@ -29,7 +29,7 @@
       },
       {
         "id": "d2",
-        "label": "高考成绩对标与填报/网申策略"
+        "label": "高考成绩对标与网申策略"
       },
       {
         "id": "d3",
@@ -37,12 +37,12 @@
       },
       {
         "id": "d4",
-        "label": "录取确认、赴澳手续与行前指导"
+        "label": "录取确认、赴澳手续与行前"
       }
     ]
   },
   "requirements": {
-    "intro": "澳门高校普遍接受内地高考，门槛相对港校更灵活。",
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
     "items": [
       {
         "id": "r1",
@@ -56,7 +56,7 @@
       },
       {
         "id": "r3",
-        "label": "英语满足校方最低要求（高考或雅思）",
+        "label": "英语达校方最低要求（高考或雅思）",
         "mandatory": true
       },
       {
@@ -66,12 +66,12 @@
       },
       {
         "id": "r5",
-        "label": "部分专业需面试/加试，需可配合",
+        "label": "部分专业面试/加试可配合参加",
         "mandatory": false
       },
       {
         "id": "r6",
-        "label": "可办理赴澳逗留/入学相关手续",
+        "label": "可办理赴澳逗留与入学相关手续",
         "mandatory": true
       }
     ]

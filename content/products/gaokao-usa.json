@@ -2,22 +2,22 @@
   "templateId": "a4-service-onepager-v1",
   "locale": "zh-CN",
   "meta": {
-    "documentTitle": "高考通美加本-服务说明",
+    "documentTitle": "高考通美国-服务说明",
     "version": "2026.07",
-    "cycleLabel": "2026–2027 入学季",
+    "cycleLabel": "2026 秋季入学",
     "priceBand": "面议",
     "confidential": false
   },
   "product": {
-    "name": "高考通美加本",
+    "name": "高考通美国",
     "categoryLabel": "高考本科出海",
-    "tagline": "高考+标化+文书路径进美加本科"
+    "tagline": "高考叠加标化与背景提升的美本方案"
   },
   "targetCustomer": {
-    "summary": "计划用高考成绩叠加标化与活动，申请美国或加拿大本科的学生与家长。",
+    "summary": "计划用高考成绩叠加标化、活动与文书申请美国本科的学生。",
     "segments": [
       "高二启动佳",
-      "美本/加本",
+      "美本综合申请",
       "可投入活动"
     ]
   },
@@ -25,19 +25,19 @@
     "items": [
       {
         "id": "d1",
-        "label": "美加选校定位与专业/州省策略"
+        "label": "美本选校与专业/州策略规划"
       },
       {
         "id": "d2",
-        "label": "标化路径规划（托福/雅思/SAT等）"
+        "label": "托福/雅思/SAT等标化路径设计"
       },
       {
         "id": "d3",
-        "label": "Common App/OUAC 等主文书与活动表"
+        "label": "Common App文书与活动列表打磨"
       },
       {
         "id": "d4",
-        "label": "推荐信、成绩认证与递交节点管理"
+        "label": "推荐信、成绩认证与递交管理"
       },
       {
         "id": "d5",
@@ -46,7 +46,7 @@
     ]
   },
   "requirements": {
-    "intro": "美加极少只看高考；下列为可执行的组合条件草案。",
+    "intro": "美本极少只看高考；下列为可执行的组合条件。",
     "items": [
       {
         "id": "r1",
@@ -55,22 +55,22 @@
       },
       {
         "id": "r2",
-        "label": "英语标化：托福≥80或雅思≥6.5（目标校）",
+        "label": "英语：托福≥80或雅思≥6.5（按校）",
         "mandatory": true
       },
       {
         "id": "r3",
-        "label": "美本建议SAT/ACT或走标化可选政策校",
+        "label": "建议SAT/ACT或选择标化可选院校",
         "mandatory": false
       },
       {
         "id": "r4",
-        "label": "高中成绩单+在读证明；可办成绩认证",
+        "label": "高中成绩单可做认证；材料齐全",
         "mandatory": true
       },
       {
         "id": "r5",
-        "label": "可沉淀活动/竞赛/科研等背景材料",
+        "label": "可沉淀活动/竞赛/科研等背景",
         "mandatory": true
       },
       {
@@ -80,16 +80,16 @@
       },
       {
         "id": "r7",
-        "label": "资金证明与留学签证材料可配合",
+        "label": "资金证明与F-1签证材料可配合",
         "mandatory": true
       }
     ]
   },
   "highlights": {
     "items": [
-      "高考不是唯一路径",
-      "美加双轨选校",
-      "标化与活动可并行"
+      "高考非唯一路径",
+      "标化与活动并行",
+      "综合背景包装"
     ]
   },
   "layout": {

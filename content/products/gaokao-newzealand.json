@@ -1,0 +1,93 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高考通新西兰-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "高考通新西兰",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考申请新西兰八大及预科路径"
+  },
+  "targetCustomer": {
+    "summary": "希望以高考进入新西兰本科或预科的高三/毕业学生及家长。",
+    "segments": [
+      "高三/毕业",
+      "八大为主",
+      "安全宜居"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "新西兰院校与专业匹配"
+      },
+      {
+        "id": "d2",
+        "label": "高考直录与预科路径评估"
+      },
+      {
+        "id": "d3",
+        "label": "网申材料与英语要求辅导"
+      },
+      {
+        "id": "d4",
+        "label": "学生签证与行前安排"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "参加普通高考并取得有效成绩",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "总分达目标校高考录取要求",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "英语：雅思达校方最低要求",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "学历与成绩证明真实完整",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "可接受预科/桥梁课程衔接",
+        "mandatory": false
+      },
+      {
+        "id": "r6",
+        "label": "资金与签证材料可配合准备",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "教育质量稳定",
+      "环境安全宜居",
+      "直录+预科可选"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

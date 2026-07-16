@@ -1,0 +1,93 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高考通韩国-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "高考通韩国",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考成绩结合韩语申请韩国本科"
+  },
+  "targetCustomer": {
+    "summary": "希望赴韩读本科，可参加语学院或TOPIK备考的高三/毕业学生。",
+    "segments": [
+      "高三/毕业",
+      "首尔/地方校",
+      "韩语提升"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "语学院与大学本科梯度规划"
+      },
+      {
+        "id": "d2",
+        "label": "TOPIK备考与入学时间节点"
+      },
+      {
+        "id": "d3",
+        "label": "网申材料、自我介绍与面试"
+      },
+      {
+        "id": "d4",
+        "label": "签证、住宿与行前指导"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "高中毕业或应届，材料真实齐全",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "韩语：建议TOPIK 3级起（名校更高）",
+        "mandatory": false
+      },
+      {
+        "id": "r3",
+        "label": "部分项目可用英语授课成绩申请",
+        "mandatory": false
+      },
+      {
+        "id": "r4",
+        "label": "可提供高考成绩作辅助材料",
+        "mandatory": false
+      },
+      {
+        "id": "r5",
+        "label": "可接受语学院衔接后再升学",
+        "mandatory": false
+      },
+      {
+        "id": "r6",
+        "label": "资金与签证材料可配合准备",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "语学院衔接成熟",
+      "申请批次灵活",
+      "距离近、适应快"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

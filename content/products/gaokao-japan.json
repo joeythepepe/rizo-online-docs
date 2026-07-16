@@ -1,0 +1,93 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高考通日本-服务说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 秋季入学",
+    "priceBand": "面议",
+    "confidential": false
+  },
+  "product": {
+    "name": "高考通日本",
+    "categoryLabel": "高考本科出海",
+    "tagline": "高考后赴日语言+EJU/英语项目升学"
+  },
+  "targetCustomer": {
+    "summary": "高考后计划赴日读本科，可接受语言学校或英授项目的学生。",
+    "segments": [
+      "高三/毕业",
+      "日语或英授",
+      "性价比留学"
+    ]
+  },
+  "deliverables": {
+    "items": [
+      {
+        "id": "d1",
+        "label": "语言学校/别科与大学匹配规划"
+      },
+      {
+        "id": "d2",
+        "label": "日语学习与EJU/英授路径设计"
+      },
+      {
+        "id": "d3",
+        "label": "大学选校、出愿与面试辅导"
+      },
+      {
+        "id": "d4",
+        "label": "在留资格、签证与行前安排"
+      }
+    ]
+  },
+  "requirements": {
+    "intro": "以下为常见申请条件，最终以目标院校当年招生简章为准。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "具备高中毕业或应届毕业资格",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "愿学习日语（目标N2前后较稳）",
+        "mandatory": false
+      },
+      {
+        "id": "r3",
+        "label": "英授项目需雅思/托福达校要求",
+        "mandatory": false
+      },
+      {
+        "id": "r4",
+        "label": "可提供高考成绩作背景参考",
+        "mandatory": false
+      },
+      {
+        "id": "r5",
+        "label": "资金与在留资格审查材料可配合",
+        "mandatory": true
+      },
+      {
+        "id": "r6",
+        "label": "可接受语言学校1–2年衔接",
+        "mandatory": false
+      }
+    ]
+  },
+  "highlights": {
+    "items": [
+      "语言+考试双路径",
+      "院校层次丰富",
+      "费用相对可控"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "requirements"
+  }
+}

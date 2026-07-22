@@ -1,0 +1,17 @@
+/**
+ * Gallery / preview chrome — Precision-Minimal with chartreuse accent.
+ * Does not affect A4 print tokens (see print.css + Tailwind paper/ink/accent).
+ */
+
+:root {
+  --ui-background: #f0eee8;
+  --ui-foreground: #0e0e0d;
+  --ui-card: #ffffff;
+  --ui-muted: #e8e6df;
+  --ui-muted-foreground: #7a7870;
+  --ui-accent: #bcff47;
+  --ui-accent-foreground: #0e0e0d;
+  --ui-border: rgba(14, 14, 13, 0.1);
+  --ui-input: #eceae3;
+  --ui-radius: 0.75rem;
+}

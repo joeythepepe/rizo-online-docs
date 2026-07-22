@@ -15,6 +15,7 @@ export interface DownloadPdfButtonProps {
 
 /**
  * One-click「下载 PDF」— captures the print A4 and saves a file.
+ * Gallery chrome styling (ui-accent); keep utilities print-check safe.
  */
 export function DownloadPdfButton({
   productId,
@@ -43,9 +44,9 @@ export function DownloadPdfButton({
   }
 
   const baseLink =
-    "text-accent underline-offset-2 hover:underline disabled:opacity-50 disabled:no-underline";
+    "text-[11px] font-medium text-ui-foreground underline-offset-2 hover:underline disabled:opacity-50 disabled:no-underline";
   const baseButton =
-    "rounded-full bg-accent px-4 py-2 text-sm font-medium text-white hover:bg-accent/90 disabled:opacity-60";
+    "inline-flex items-center gap-1.5 rounded-lg bg-ui-accent px-3 py-1.5 text-[11px] font-medium text-ui-accent-foreground hover:opacity-90 disabled:opacity-60";
 
   return (
     <span className="inline-flex flex-col items-start gap-1">

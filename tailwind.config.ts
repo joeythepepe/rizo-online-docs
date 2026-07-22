@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // A4 print tokens — frozen
         paper: "#FFFFFF",
         ink: {
           DEFAULT: "#1D1D1F",
@@ -18,9 +19,24 @@ const config: Config = {
         rule: "#D2D2D7",
         accent: "#0071E3",
         soft: "#F5F5F7",
+        // Gallery / preview chrome (Minimal Doc Management)
+        ui: {
+          background: "#F0EEE8",
+          foreground: "#0E0E0D",
+          card: "#FFFFFF",
+          muted: "#E8E6DF",
+          "muted-foreground": "#7A7870",
+          accent: "#BCFF47",
+          "accent-foreground": "#0E0E0D",
+          border: "rgba(14, 14, 13, 0.1)",
+          input: "#ECEAE3",
+        },
       },
       fontFamily: {
         sans: ['"Noto Sans SC"', "system-ui", "sans-serif"],
+        ui: ['"DM Sans"', '"Noto Sans SC"', "system-ui", "sans-serif"],
+        display: ['Inter', '"Noto Sans SC"', "system-ui", "sans-serif"],
+        mono: ['"DM Mono"', "ui-monospace", "monospace"],
       },
       fontSize: {
         // CJK needs generous line-height so glyphs are not clipped by tight boxes
@@ -49,6 +65,7 @@ const config: Config = {
       borderRadius: {
         chip: "2mm",
         none: "0",
+        ui: "0.75rem",
       },
     },
   },

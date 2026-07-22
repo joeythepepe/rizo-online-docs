@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "初中英语培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 中考备考",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "初中英语培训",
+    "categoryLabel": "初中学科培训",
+    "tagline": "中考听说读写分项突破",
+    "catalog": "training",
+    "trainingStage": "junior",
+    "trainingSubject": "english",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "听说互动更真实",
+      "作文互评找差距",
+      "统一模考节奏"
+    ],
+    "cons": [
+      "语法漏洞定点补",
+      "作文逐句改",
+      "听力精听陪练"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "初中学生，目标中考英语稳分提分：词汇语法扎实、阅读写作过关。",
+    "segments": [
+      "初一至初三",
+      "词汇薄弱",
+      "写作成绩低"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "对标中考英语卷面结构，分项训练并合成完整应试能力。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "高频词组与词性变形过关"
+      },
+      {
+        "id": "d2",
+        "label": "语法填空/改错专项网"
+      },
+      {
+        "id": "d3",
+        "label": "阅读四选一与任务型阅读"
+      },
+      {
+        "id": "d4",
+        "label": "听力场景词与速记符号"
+      },
+      {
+        "id": "d5",
+        "label": "中考作文模板与升格改"
+      },
+      {
+        "id": "d6",
+        "label": "套卷限时与错题归因"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标中考对英语的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "课标核心词汇与词性转换",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "时态语态从句等语法网",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "阅读细节推断与主旨概括",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "听力信息捕捉与速记",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "中考作文结构与得分句",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "分项可量化",
+      "作文可升格",
+      "对齐本地中考"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

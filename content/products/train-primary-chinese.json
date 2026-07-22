@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "小学语文培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 学年",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "小学语文培训",
+    "categoryLabel": "小学学科培训",
+    "tagline": "识字·阅读·作文·古诗文",
+    "catalog": "training",
+    "trainingStage": "primary",
+    "trainingSubject": "chinese",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "共读讨论开思路",
+      "范文互评有对照",
+      "氛围带动表达"
+    ],
+    "cons": [
+      "作文面批更细",
+      "阅读方法定制",
+      "薄弱点逐项补"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "小学中高年级学生，目标提升阅读理解与习作表达，衔接小升初语文。",
+    "segments": [
+      "3–6年级",
+      "阅读偏弱",
+      "作文吃力"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "以阅读方法与习作框架为核心，让孩子知道「读什么、写什么、怎么写」。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "课内精读与信息提取训练"
+      },
+      {
+        "id": "d2",
+        "label": "记叙文六要素与段落展开"
+      },
+      {
+        "id": "d3",
+        "label": "好词好句积累与仿写"
+      },
+      {
+        "id": "d4",
+        "label": "古诗古文诵读与释义"
+      },
+      {
+        "id": "d5",
+        "label": "看图/命题作文结构模板"
+      },
+      {
+        "id": "d6",
+        "label": "错字本与阶段阅读测评"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标小升初与校内测评对语文的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "识字写字与词语准确运用",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "阅读理解主旨与关键句",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "记叙文结构与细节描写",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "古诗文朗读背诵与大意",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "口语交际条理清晰",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "方法可迁移",
+      "作文可面批",
+      "与校内单元同步"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

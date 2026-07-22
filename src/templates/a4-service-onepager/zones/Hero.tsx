@@ -42,7 +42,9 @@ export function Hero({ product, compact = false }: HeroProps) {
         >
           {pros.length > 0 ? (
             <div className="min-w-0">
-              <p className="text-print-label font-medium text-accent">优势</p>
+              <p className="text-print-label font-medium text-accent">
+                {product.prosLabel ?? "优势"}
+              </p>
               <ul className="mt-mm-1 list-none space-y-[1mm] p-0">
                 {pros.map((item, i) => (
                   <li key={`pro-${i}`} className="flex gap-mm-2 text-ink">
@@ -58,7 +60,7 @@ export function Hero({ product, compact = false }: HeroProps) {
           {cons.length > 0 ? (
             <div className="min-w-0">
               <p className="text-print-label font-medium text-ink-secondary">
-                劣势
+                {product.consLabel ?? "劣势"}
               </p>
               <ul className="mt-mm-1 list-none space-y-[1mm] p-0">
                 {cons.map((item, i) => (

@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高中数学培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 高考备考",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "高中数学培训",
+    "categoryLabel": "高中学科培训",
+    "tagline": "高考核心考点·题型与思想",
+    "catalog": "training",
+    "trainingStage": "senior",
+    "trainingSubject": "math",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "体系串讲效率高",
+      "同卷讲评有对照",
+      "适合稳态提分"
+    ],
+    "cons": [
+      "知识漏洞扫描",
+      "压轴思路陪练",
+      "考前个性化清单"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "高中学生，目标高考数学：主干知识体系化，中高档题有路径。",
+    "segments": [
+      "高一至高三",
+      "函数薄弱",
+      "压轴难突破"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "按高考主干模块构建「考点—题型—思想」三层清单，强调通法与运算。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "函数导数极值零点与不等式"
+      },
+      {
+        "id": "d2",
+        "label": "三角恒等变换与解三角形"
+      },
+      {
+        "id": "d3",
+        "label": "立体几何证明与空间角"
+      },
+      {
+        "id": "d4",
+        "label": "圆锥曲线定义与联立运算"
+      },
+      {
+        "id": "d5",
+        "label": "数列通项求和与综合题"
+      },
+      {
+        "id": "d6",
+        "label": "概率统计与选填提速策略"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标高考对数学的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "函数导数与不等式综合",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "三角函数与平面向量",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "立体几何与空间想象",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "解析几何运算与设问",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "概率统计与数列综合",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "通法优先",
+      "运算可过关",
+      "高考真题对齐"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

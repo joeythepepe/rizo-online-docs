@@ -4,7 +4,7 @@
   "accentColor": "#0071E3",
   "contactLine": "example.com",
   "wechatId": "example_edu",
-  "qrSrc": "/brand/wechat-qr.svg",
+  "qrSrc": "/brand/wechat-qr.png",
   "ctaLabel": "预约顾问",
   "ctaDetail": "扫码添加顾问微信"
 }

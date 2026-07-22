@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "DSE物理培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 DSE 备考",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "DSE物理培训",
+    "categoryLabel": "DSE学科培训",
+    "tagline": "力学电学波动热学核心",
+    "catalog": "training",
+    "trainingStage": "dse",
+    "trainingSubject": "physics",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "模型串讲高效",
+      "实验题共练",
+      "同层对照快"
+    ],
+    "cons": [
+      "概念漏洞扫描",
+      "计算步骤陪练",
+      "长题得分定制"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "DSE 物理考生，目标概念模型清晰、计算规范、实验与长题得分稳定。",
+    "segments": [
+      "中四至中六",
+      "DSE 物理",
+      "计算/实验弱"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "按 DSE Physics 主干章节构建模型：概念图 → 公式选用 → 实验与综合题。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "运动学与牛顿定律综合"
+      },
+      {
+        "id": "d2",
+        "label": "功能量与动量守恒"
+      },
+      {
+        "id": "d3",
+        "label": "电路电磁与场的图像"
+      },
+      {
+        "id": "d4",
+        "label": "波动光学与热学核心"
+      },
+      {
+        "id": "d5",
+        "label": "实验设计与误差分析"
+      },
+      {
+        "id": "d6",
+        "label": "长题限时与单位规范"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标香港中学文凭考试（DSE）对物理的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "力学运动与能量守恒",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "电场电路与电磁基础",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "波动光学与热学模型",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "实验设计与数据处理",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "长题分步推理与单位",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "模型优先",
+      "实验可练",
+      "卷面可规范"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

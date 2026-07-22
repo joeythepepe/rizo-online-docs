@@ -13,16 +13,16 @@ export interface PathwayMeta {
 /** Ordered filter chips for gallery (考生路线). */
 export const EXAM_PATHWAYS: PathwayMeta[] = [
   {
-    id: "gaokao",
-    label: "高考",
-    description: "中国大陆普通高考",
-    categoryLabel: "高考本科出海",
-  },
-  {
     id: "zhongkao",
     label: "中考",
     description: "深圳中考升学（普高/职高）",
     categoryLabel: "中考升学规划",
+  },
+  {
+    id: "gaokao",
+    label: "高考",
+    description: "中国大陆普通高考",
+    categoryLabel: "高考本科出海",
   },
   {
     id: "dse",

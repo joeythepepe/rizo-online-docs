@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "初中数学培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 中考备考",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "初中数学培训",
+    "categoryLabel": "初中学科培训",
+    "tagline": "中考核心考点体系化精讲",
+    "catalog": "training",
+    "trainingStage": "junior",
+    "trainingSubject": "math",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "同步考点串讲",
+      "同层同学可对照",
+      "性价比更高"
+    ],
+    "cons": [
+      "专攻失分模块",
+      "解题路径定制",
+      "考前压轴陪练"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "初中学生及家长，目标中考数学提分：会做、做对、做快。",
+    "segments": [
+      "初一至初三",
+      "中考冲刺",
+      "计算/几何薄弱"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "按中考数学高频考点模块推进，每模块：概念→例题→变式→周测。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "一次二次函数与图象综合"
+      },
+      {
+        "id": "d2",
+        "label": "相似全等圆的综合证明"
+      },
+      {
+        "id": "d3",
+        "label": "方程不等式与应用建模"
+      },
+      {
+        "id": "d4",
+        "label": "锐角三角比与测量应用"
+      },
+      {
+        "id": "d5",
+        "label": "统计概率与实际问题"
+      },
+      {
+        "id": "d6",
+        "label": "压轴题分层突破与限时训"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标中考对数学的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "实数运算与整式分式方程",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "函数图象与性质综合",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "三角形圆与相似全等推理",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "统计概率与数据分析",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "综合压轴建模与规范书写",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "考点清单可查",
+      "错题闭环复盘",
+      "中考题型对齐"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "小学英语培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 学年",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "小学英语培训",
+    "categoryLabel": "小学学科培训",
+    "tagline": "词汇·拼读·听说·阅读习惯",
+    "catalog": "training",
+    "trainingStage": "primary",
+    "trainingSubject": "english",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "情境对话练开口",
+      "同伴互助记单词",
+      "班级节奏稳定"
+    ],
+    "cons": [
+      "发音纠音更细",
+      "阅读分级定制",
+      "作业一对一盯"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "小学中高年级学生，目标提升听说读写与小升初英语衔接能力。",
+    "segments": [
+      "3–6年级",
+      "听说薄弱",
+      "阅读起步"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "围绕小升初常见英语能力：听得懂、说得出、读得进、写得对。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "自然拼读与高频词巩固"
+      },
+      {
+        "id": "d2",
+        "label": "情景听说与语音语调"
+      },
+      {
+        "id": "d3",
+        "label": "时态句型与基础语法网"
+      },
+      {
+        "id": "d4",
+        "label": "分级阅读与信息定位"
+      },
+      {
+        "id": "d5",
+        "label": "看图写话与小短文结构"
+      },
+      {
+        "id": "d6",
+        "label": "听写打卡与阶段口语测"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标小升初与校内测评对英语的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "核心词汇与拼读规则掌握",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "课堂听说应答清晰自然",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "基础语法句型准确运用",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "短文阅读抓主旨与细节",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "简单书面表达与书写规范",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "听说读写全覆盖",
+      "可测可复盘",
+      "与校内进度同步"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

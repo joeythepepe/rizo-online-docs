@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "DSE数学培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 DSE 备考",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "DSE数学培训",
+    "categoryLabel": "DSE学科培训",
+    "tagline": "Compulsory 核心题型与策略",
+    "catalog": "training",
+    "trainingStage": "dse",
+    "trainingSubject": "math",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "卷面讲评效率高",
+      "同层进度好对照",
+      "模考节奏统一"
+    ],
+    "cons": [
+      "失分点定向清",
+      "压轴思路陪练",
+      "考前个性化清单"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "DSE 考生，目标数学必修稳分冲 5**：概念扎实、运算过关、卷面策略清晰。",
+    "segments": [
+      "中四至中六",
+      "DSE 数学",
+      "计算/综合薄弱"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "按 DSE Mathematics Compulsory Part 主干模块推进：通法优先，再练限时。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "二次函数与方程不等式"
+      },
+      {
+        "id": "d2",
+        "label": "指数对数与变化率"
+      },
+      {
+        "id": "d3",
+        "label": "三角比与二维测量"
+      },
+      {
+        "id": "d4",
+        "label": "圆直线与几何综合"
+      },
+      {
+        "id": "d5",
+        "label": "统计概率与数据解读"
+      },
+      {
+        "id": "d6",
+        "label": "Paper 限时与分步得分"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标香港中学文凭考试（DSE）对数学的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "数与代数运算准确流畅",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "函数图像与方程综合",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "几何测量与三角应用",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "统计概率解读与计算",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "长题分步得分与时间管理",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "对标 DSE 卷面",
+      "通法可迁移",
+      "小组/一对一可选"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

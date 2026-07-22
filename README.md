@@ -18,7 +18,9 @@ bun run dev
 - **Validate product JSON:** `bun run validate:content`
 - **Production build:** `bun run build`
 - **Preview build:** `bun run preview`
-- **Export PDF:** `bun run export:pdf --product gaokao-uk` → `output/<id>.pdf`
+- **产品体系：** 画廊顶部切换 **睿卓升学一站通**（考生路线）与 **睿卓课程培训**（小学/初中/高中 × 语数英）。
+- **Download PDF (UI):** gallery / preview 页点 **下载 PDF** 一键保存（浏览器端生成）。
+- **Export PDF (CLI, 印刷级):** `bun run export:pdf --product gaokao-uk` → `output/<id>.pdf`
 - **Export all products:** `bun run export:all` (skips overflow fixtures)
 - **Screenshot smoke:** `bun run test:smoke` → builds, previews, asserts example product A4 + writes `output/smoke/*.png`
 
@@ -83,7 +85,7 @@ Shadows and decorative chrome **are** allowed on gallery/screen routes (`/`, `/p
 
 ## PDF export
 
-Canonical artifact is Playwright PDF (not browser Print → Save as PDF).
+**UI「下载 PDF」** uses an in-browser capture of the A4 page (quick share). **Canonical print artifact** remains Playwright CLI export:
 
 ```bash
 bun run export:pdf --product gaokao-uk
@@ -171,7 +173,8 @@ Static files are served from **`public/brand/`**:
 | File | Role |
 |------|------|
 | `public/brand/logo.svg` | **Rizo** brand logo (from `rizologo.svg`). Header caps: max **12 mm** tall / **72 mm** wide (`object-contain`). Also mirrored as `public/brand/rizologo.svg`. Product content is **Chinese-only** plain strings (no `en` fields). |
-| `public/brand/wechat-qr.svg` | Placeholder QR for demos (**not scannable**). **Replace with real WeChat QR** (PNG or SVG). Footer shows **14 mm**. |
+| `public/brand/wechat-qr.png` | Consulting WeChat QR (scannable). Footer shows **14 mm**, bottom-right. |
+| `public/brand/watermark-matrix.svg` | **PDF-only** logo matrix watermark (baked). Web preview has no watermark. Regenerate: `bun run brand:watermark`. |
 
 Wire paths in content (not by renaming only):
 

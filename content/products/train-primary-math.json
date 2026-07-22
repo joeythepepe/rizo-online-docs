@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "小学数学培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 学年",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "小学数学培训",
+    "categoryLabel": "小学学科培训",
+    "tagline": "算理·图形·应用题·思维拓展",
+    "catalog": "training",
+    "trainingStage": "primary",
+    "trainingSubject": "math",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "同学互学有氛围",
+      "统一进度好跟进",
+      "费用更友好"
+    ],
+    "cons": [
+      "按薄弱点定制",
+      "错题精讲精练",
+      "节奏完全贴合"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "小学中高年级学生，目标夯实校内成绩并衔接小升初数学要求。",
+    "segments": [
+      "3–6年级",
+      "需夯实基础",
+      "小升初衔接"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "按小升初与校内测评高频能力设计模块，先会再熟再拓展。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "整数分数小数混合运算提速"
+      },
+      {
+        "id": "d2",
+        "label": "行程工程利润类应用题模板"
+      },
+      {
+        "id": "d3",
+        "label": "平面几何与立体图形核心量"
+      },
+      {
+        "id": "d4",
+        "label": "比与比例、浓度与百分数"
+      },
+      {
+        "id": "d5",
+        "label": "抽屉原理、容斥等高阶思维"
+      },
+      {
+        "id": "d6",
+        "label": "周测错题本与家长反馈"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标小升初与校内测评对数学的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "数感与四则运算准确流畅",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "分数小数百分数灵活互化",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "几何图形周长面积体积模型",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "应用题审题与等量关系建模",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "简单统计与规律探究表达",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "考点透明可核对",
+      "小组课/一对一可选",
+      "阶段测评可追踪"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "DSE化学培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 DSE 备考",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "DSE化学培训",
+    "categoryLabel": "DSE学科培训",
+    "tagline": "结构反应计算与实验",
+    "catalog": "training",
+    "trainingStage": "dse",
+    "trainingSubject": "chemistry",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "方程式共练",
+      "实验题对照",
+      "进度统一"
+    ],
+    "cons": [
+      "计算漏洞定点补",
+      "有机反应链梳理",
+      "实验题精讲"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "DSE 化学考生，目标微观结构理解、反应与计算过关、实验题稳定得分。",
+    "segments": [
+      "中四至中六",
+      "DSE 化学",
+      "计算/方程式弱"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "对标 DSE Chemistry：结构 → 反应 → 计算 → 实验，强调方程式与计量规范。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "原子分子与化学键模型"
+      },
+      {
+        "id": "d2",
+        "label": "计量学与氧化还原计算"
+      },
+      {
+        "id": "d3",
+        "label": "酸减平衡与反应速率"
+      },
+      {
+        "id": "d4",
+        "label": "有机官能团与转化链"
+      },
+      {
+        "id": "d5",
+        "label": "实验现象与误差分析"
+      },
+      {
+        "id": "d6",
+        "label": "套卷限时与方程式过关"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标香港中学文凭考试（DSE）对化学的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "原子结构与化学键",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "计量与氧化还原计算",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "酸减平衡与速率平衡",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "有机官能团与反应",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "实验操作与现象解释",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "计算可过关",
+      "实验可拆解",
+      "考纲章节对齐"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

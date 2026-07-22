@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit && tsc -p tsconfig.node.json --noEmit",
     "check:print-classes": "bash scripts/check-print-classes.sh",
     "fonts:subset": "bash scripts/fonts-subset.sh",
+    "brand:watermark": "bun scripts/bake-watermark.mjs",
     "validate:content": "bun scripts/validate-content.mjs",
     "export:pdf": "bun scripts/export-pdf.ts",
     "export:all": "bun scripts/export-all.ts",
@@ -17,6 +18,8 @@
   },
   "dependencies": {
     "country-flag-icons": "^1.6.20",
+    "html-to-image": "^1.11.13",
+    "jspdf": "^4.2.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.18.1",
@@ -24,6 +27,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.61.1",
+    "@types/jspdf": "^2.0.0",
     "@types/node": "^22",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",

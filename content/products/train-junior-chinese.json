@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "初中语文培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 中考备考",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "初中语文培训",
+    "categoryLabel": "初中学科培训",
+    "tagline": "中考阅读与作文得分方法",
+    "catalog": "training",
+    "trainingStage": "junior",
+    "trainingSubject": "chinese",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "范文共评开眼界",
+      "文言共译有节奏",
+      "答题规范统一"
+    ],
+    "cons": [
+      "答题术语定制练",
+      "作文全程面批",
+      "薄弱文体专训"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "初中学生，目标中考语文：文言文稳、现代文会答、作文有框架。",
+    "segments": [
+      "初一至初三",
+      "阅读失分多",
+      "作文缺结构"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "把「会读会写」拆成可训练的得分动作，对标中考题型。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "文言实词虚词与句式翻译"
+      },
+      {
+        "id": "d2",
+        "label": "现代文阅读答题术语库"
+      },
+      {
+        "id": "d3",
+        "label": "古诗文默写与理解性默写"
+      },
+      {
+        "id": "d4",
+        "label": "记叙议论作文结构升格"
+      },
+      {
+        "id": "d5",
+        "label": "名著考点提纲与运用"
+      },
+      {
+        "id": "d6",
+        "label": "中考模拟与踩分复盘"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标中考对语文的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "课内文言实词虚词与翻译",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "现代文信息筛选与鉴赏",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "名著与古诗文积累运用",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "中考作文立意结构与语言",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "规范答题术语与踩分点",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "答题有术语",
+      "作文有框架",
+      "默写可过关"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

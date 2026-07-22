@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高中英语培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 高考备考",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "高中英语培训",
+    "categoryLabel": "高中学科培训",
+    "tagline": "高考阅读完形写作系统提分",
+    "catalog": "training",
+    "trainingStage": "senior",
+    "trainingSubject": "english",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "阅读方法共练",
+      "写作互评对照",
+      "套卷讲评高效"
+    ],
+    "cons": [
+      "词汇漏洞清扫",
+      "长难句精析",
+      "作文个性化升格"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "高中学生，目标高考英语：词汇量上台阶，阅读速度与写作得分提升。",
+    "segments": [
+      "高一至高三",
+      "阅读慢",
+      "写作模板僵"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "按高考试卷板块训练：词→句→篇→写，强调可迁移方法而非死背。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "高考词表与熟词生义"
+      },
+      {
+        "id": "d2",
+        "label": "长难句拆解与语法填空"
+      },
+      {
+        "id": "d3",
+        "label": "阅读理解与七选五策略"
+      },
+      {
+        "id": "d4",
+        "label": "完形填空逻辑链训练"
+      },
+      {
+        "id": "d5",
+        "label": "应用文框架与读后续写"
+      },
+      {
+        "id": "d6",
+        "label": "限时套卷与错题归因"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标高考对英语的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "高考核心词汇与熟词生义",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "长难句分析与语篇逻辑",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "阅读七选五与细节推断",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "完形逻辑与词汇辨析",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "应用文/读后续写得分点",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "方法可迁移",
+      "写作可升格",
+      "题型全覆盖"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "DSE英语培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 DSE 备考",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "DSE英语培训",
+    "categoryLabel": "DSE学科培训",
+    "tagline": "Reading Writing Listening 系统",
+    "catalog": "training",
+    "trainingStage": "dse",
+    "trainingSubject": "english",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "听说互动真实",
+      "作文互评对照",
+      "套卷讲评高效"
+    ],
+    "cons": [
+      "写作逐段升格",
+      "阅读策略定制",
+      "口语模拟陪练"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "DSE 英语考生，目标阅读速度、写作结构、听力策略与口语表达综合提升。",
+    "segments": [
+      "中四至中六",
+      "DSE 英语",
+      "读写薄弱"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "按 DSE English 四卷能力拆分训练，强调可迁移策略而非死背范文。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "学术词汇与搭配网络"
+      },
+      {
+        "id": "d2",
+        "label": "Reading 题型与时间分配"
+      },
+      {
+        "id": "d3",
+        "label": "Writing 体裁框架与升格"
+      },
+      {
+        "id": "d4",
+        "label": "Listening 笔记符号训练"
+      },
+      {
+        "id": "d5",
+        "label": "Speaking 互动与论证"
+      },
+      {
+        "id": "d6",
+        "label": "全卷模考与错题归因"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标香港中学文凭考试（DSE）对英语的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "学术词汇与语篇衔接",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "阅读细节推断与综合",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "写作体裁结构与论证",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "听力笔记与信息整合",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "口语互动与表达连贯",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "四卷全覆盖",
+      "写作可升格",
+      "策略可迁移"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

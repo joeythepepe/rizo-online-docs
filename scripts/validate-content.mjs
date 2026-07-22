@@ -136,19 +136,45 @@ async function main() {
     ok("gaokao-uk uses split layout");
 
     const allIds = listProductIds();
+    let admissionsN = 0;
+    let trainingN = 0;
     for (const id of allIds) {
       const p = loadProduct(id);
       if (!p.product.name || typeof p.product.name !== "string") {
         fail(`${id} name must be Chinese string`);
       }
-      if (!p.product.pathway) {
-        fail(`${id} missing product.pathway`);
-      }
-      if (!p.product.countryCode) {
-        fail(`${id} missing product.countryCode`);
+      const catalog =
+        p.product.catalog ??
+        (p.product.trainingStage || p.product.trainingSubject
+          ? "training"
+          : "admissions");
+      if (catalog === "training") {
+        trainingN++;
+        if (!p.product.trainingStage) {
+          fail(`${id} training missing trainingStage`);
+        }
+        if (!p.product.trainingSubject) {
+          fail(`${id} training missing trainingSubject`);
+        }
+      } else {
+        admissionsN++;
+        if (!p.product.pathway) {
+          fail(`${id} missing product.pathway`);
+        }
+        if (!p.product.countryCode) {
+          fail(`${id} missing product.countryCode`);
+        }
       }
     }
-    ok(`all ${allIds.length} products load with pathway + countryCode`);
+    ok(
+      `all ${allIds.length} products load (admissions=${admissionsN}, training=${trainingN})`,
+    );
+    if (trainingN < 14) {
+      fail(
+        `expected at least 14 training products (9 语数英 + 5 DSE), got ${trainingN}`,
+      );
+    }
+    ok("training catalog has ≥14 products (学段语数英 + DSE 五科)");
 
     const brandResult = brandConfigSchema.safeParse(brand);
     if (!brandResult.success) {

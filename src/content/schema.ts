@@ -73,6 +73,8 @@ export const productSchema = z
       name: productNameSchema,
       categoryLabel: zhStringSchema.optional(),
       tagline: zhStringMax(40).optional(),
+      /** admissions = 升学一站通; training = 课程培训 */
+      catalog: z.enum(["admissions", "training"]).optional(),
       /** ISO 3166-1 alpha-2, e.g. HK / GB / US */
       countryCode: z
         .string()
@@ -83,9 +85,24 @@ export const productSchema = z
       pathway: z
         .enum(["gaokao", "dse", "alevel", "sat", "zhongkao"])
         .optional(),
-      /** 优势 / 劣势小介绍（标题下） */
+      trainingStage: z
+        .enum(["primary", "junior", "senior", "dse"])
+        .optional(),
+      trainingSubject: z
+        .enum([
+          "math",
+          "math2",
+          "english",
+          "chinese",
+          "physics",
+          "chemistry",
+        ])
+        .optional(),
+      /** 优势 / 劣势小介绍（标题下）；培训页可作小组课/一对一 */
       pros: z.array(zhStringMax(36)).min(1).max(3).optional(),
       cons: z.array(zhStringMax(36)).min(1).max(3).optional(),
+      prosLabel: zhStringMax(8).optional(),
+      consLabel: zhStringMax(8).optional(),
     }),
     targetCustomer: z.object({
       title: zhStringSchema.optional(),
@@ -150,6 +167,29 @@ export const productSchema = z
         path: ["timeline"],
         message: "highlights and timeline are mutually exclusive",
       });
+    }
+
+    const catalog =
+      data.product.catalog ??
+      (data.product.trainingStage || data.product.trainingSubject
+        ? "training"
+        : "admissions");
+
+    if (catalog === "training") {
+      if (!data.product.trainingStage) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["product", "trainingStage"],
+          message: "training catalog requires trainingStage",
+        });
+      }
+      if (!data.product.trainingSubject) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["product", "trainingSubject"],
+          message: "training catalog requires trainingSubject",
+        });
+      }
     }
   });
 

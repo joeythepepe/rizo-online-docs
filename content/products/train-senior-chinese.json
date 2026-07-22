@@ -1,0 +1,117 @@
+{
+  "templateId": "a4-service-onepager-v1",
+  "locale": "zh-CN",
+  "meta": {
+    "documentTitle": "高中语文培训-课程说明",
+    "version": "2026.07",
+    "cycleLabel": "2026 高考备考",
+    "priceBand": "面议",
+    "confidential": false,
+    "disclaimer": "本材料为课程培训说明，用于帮助家长了解学习内容与授课形式；不承诺具体提分幅度，最终学习效果因人而异。"
+  },
+  "product": {
+    "name": "高中语文培训",
+    "categoryLabel": "高中学科培训",
+    "tagline": "高考现代文文言与作文升格",
+    "catalog": "training",
+    "trainingStage": "senior",
+    "trainingSubject": "chinese",
+    "prosLabel": "小组课",
+    "consLabel": "一对一",
+    "pros": [
+      "文言共译节奏好",
+      "作文议题讨论深",
+      "答题规范统一"
+    ],
+    "cons": [
+      "文言实词定点补",
+      "作文立意面批",
+      "主观题术语精练"
+    ]
+  },
+  "targetCustomer": {
+    "title": "适合学员",
+    "summary": "高中学生，目标高考语文：文言稳、现代文会答、作文有深度与结构。",
+    "segments": [
+      "高一至高三",
+      "文言吃力",
+      "作文缺思辨"
+    ]
+  },
+  "deliverables": {
+    "title": "培训内容·核心考点",
+    "intro": "把高考语文主观题拆成「读懂—术语—踩分」三步，作文强调思辨与结构。",
+    "items": [
+      {
+        "id": "d1",
+        "label": "文言实词虚词与翻译踩分"
+      },
+      {
+        "id": "d2",
+        "label": "古诗鉴赏意象与手法库"
+      },
+      {
+        "id": "d3",
+        "label": "现代文阅读术语与答题"
+      },
+      {
+        "id": "d4",
+        "label": "议论文思辨结构与素材"
+      },
+      {
+        "id": "d5",
+        "label": "语用与默写过关清单"
+      },
+      {
+        "id": "d6",
+        "label": "高考模拟与踩分复盘"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "阶段能力要求",
+    "intro": "对标高考对语文的能力期待；培训将围绕下列能力逐项打磨。",
+    "items": [
+      {
+        "id": "r1",
+        "label": "文言实词虚词与翻译踩分",
+        "mandatory": true
+      },
+      {
+        "id": "r2",
+        "label": "古诗词鉴赏术语与意象",
+        "mandatory": true
+      },
+      {
+        "id": "r3",
+        "label": "现代文信息与观点分析",
+        "mandatory": true
+      },
+      {
+        "id": "r4",
+        "label": "作文思辨立意与论证结构",
+        "mandatory": true
+      },
+      {
+        "id": "r5",
+        "label": "语用题规范与快速得分",
+        "mandatory": true
+      }
+    ]
+  },
+  "highlights": {
+    "title": "为什么选睿卓",
+    "items": [
+      "术语可背可练",
+      "作文可升格",
+      "踩分路径清晰"
+    ]
+  },
+  "layout": {
+    "variant": "split",
+    "showHighlights": true,
+    "showQr": true,
+    "density": "normal",
+    "softPanelOn": "none"
+  }
+}

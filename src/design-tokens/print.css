@@ -13,6 +13,7 @@ body {
 }
 
 .a4-page {
+  position: relative;
   width: 210mm;
   height: 297mm;
   overflow: hidden; /* preview frame; export measures scroll overflow and fails */
@@ -21,9 +22,36 @@ body {
 }
 
 .a4-safe {
+  position: relative;
+  z-index: 1;
   padding: 14mm;
   box-sizing: border-box;
   height: 100%;
+}
+
+/**
+ * PDF-only watermark (baked SVG matrix of brand logo).
+ * Hidden on web browse / preview; shown only when capture runs with data-export="1"
+ * (client download + Playwright CLI both open /print/:id?export=1).
+ */
+.a4-watermark {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.a4-watermark-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+[data-export="1"] .a4-watermark {
+  display: block;
 }
 
 @media print {

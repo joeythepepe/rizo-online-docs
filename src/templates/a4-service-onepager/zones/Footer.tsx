@@ -19,8 +19,8 @@ export function Footer({ brand, showQr = true }: FooterProps) {
     <footer className="flex h-[16mm] shrink-0 items-center justify-end overflow-hidden">
       <img
         src={brand.qrSrc}
-        alt=""
-        className="h-[14mm] w-[14mm] shrink-0 object-contain"
+        alt="咨询微信二维码"
+        className="h-[14mm] w-[14mm] shrink-0 rounded-[1mm] object-contain"
         width={120}
         height={120}
       />

@@ -1,3 +1,5 @@
+"use client";
+
 import { useRef, type ReactNode } from "react";
 import { useA4FitScale } from "../../hooks/useA4FitScale";
 

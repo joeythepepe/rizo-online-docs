@@ -1,6 +1,6 @@
 # A4 Print Template System
 
-Premium A4 print templates for China-mainland education consulting materials (full bilingual CN+EN). Built with **Bun + Vite + React + TypeScript + Tailwind CSS**.
+Premium A4 print templates for China-mainland education consulting materials (Chinese product copy). Built with **Bun + Next.js (App Router) + React + TypeScript + Tailwind CSS**.
 
 See [DESIGN.md](./DESIGN.md) for the full design specification.
 
@@ -11,13 +11,13 @@ bun install
 bun run dev
 ```
 
-- **Dev server:** Vite on the default port (usually `http://localhost:5173`)
+- **Dev server:** Next.js (`http://localhost:3000`)
 - **Typecheck:** `bun run typecheck`
 - **Print class denylist:** `bun run check:print-classes`
 - **Font subset (Noto SC):** `bun run fonts:subset` — see [fonts/README.md](./fonts/README.md)
 - **Validate product JSON:** `bun run validate:content`
-- **Production build:** `bun run build`
-- **Preview build:** `bun run preview`
+- **Production build:** `bun run build` (SSG product routes via `generateStaticParams`)
+- **Production server:** `bun run start` / export preview: `bun run preview` (`127.0.0.1:4173`)
 - **产品体系：** 画廊顶部切换 **睿卓升学一站通**（考生路线）与 **睿卓课程培训**（小学/初中/高中 × 语数英）。
 - **Download PDF (UI):** gallery / preview 页点 **下载 PDF** 一键保存（浏览器端生成）。
 - **Export PDF (CLI, 印刷级):** `bun run export:pdf --product gaokao-uk` → `output/<id>.pdf`
@@ -93,7 +93,7 @@ bun run export:pdf --product gaokao-uk --force   # debug: write PDF even if over
 bun run export:all
 ```
 
-Pipeline: Zod-validate `content/products/<id>.json` (same `mergeProductContent` → `parseProduct` → `applyChromeDefaults` as the app) → `bun run build` → `vite preview` on `127.0.0.1:4173` → open `/print/<id>?export=1` → wait `load` + `document.fonts.ready` → measure overflow on `[data-page=a4]` → one retry with `?density=compact` (real compact CSS) → on still-overflow write `output/failures/<id>.png` and exit 1 → else write `output/<id>.pdf`, set PDF **Creator** to `poster_business-export`, verify A4 MediaBox via **pdf-lib**.
+Pipeline: Zod-validate `content/products/<id>.json` (same `mergeProductContent` → `parseProduct` → `applyChromeDefaults` as the app) → `bun run build` → `next start` on `127.0.0.1:4173` → open `/print/<id>?export=1` → wait `load` + `document.fonts.ready` → measure overflow on `[data-page=a4]` → one retry with `?density=compact` (real compact CSS) → on still-overflow write `output/failures/<id>.png` and exit 1 → else write `output/<id>.pdf`, set PDF **Creator** to `poster_business-export`, verify A4 MediaBox via **pdf-lib**.
 
 **Metadata note:** pdf-lib overwrites the PDF **Producer** field on every `save()` with its own banner (`pdf-lib (https://github.com/Hopding/pdf-lib)`). The export tool stamps **Creator** (and document title) instead — trust Creator for tool identity.
 
@@ -190,42 +190,33 @@ Accent color defaults to `#0071E3` (`brand.accentColor`) until brand confirms. C
 ├── DESIGN.md                 # Full design document
 ├── package.json
 ├── bun.lock
-├── playwright.config.ts      # webServer → vite preview :4173
+├── next.config.ts
+├── playwright.config.ts      # webServer → next start :4173
 ├── tsconfig.json
-├── tsconfig.node.json        # Vite / scripts / Playwright TS config
-├── vite.config.ts
 ├── tailwind.config.ts        # Frozen color / type / mm-* tokens
 ├── postcss.config.js
-├── index.html
 ├── content/
 │   ├── brand/default.json
-│   └── products/             # service one-pager JSON (gaokao-*, example-*)
+│   └── products/             # service one-pager JSON
 ├── e2e/                      # Playwright screenshot smoke
 ├── fonts/
-│   ├── README.md             # OFL license + re-subset docs
-│   ├── charset/              # GB2312-plus inventory for pyftsubset
-│   └── subset/               # Committed Noto SC WOFF2 (400/500/700)
 ├── public/
 │   ├── brand/
-│   └── fonts/                # Vite-served copies of subset WOFF2
+│   └── fonts/                # subset WOFF2
 ├── scripts/
 │   ├── check-print-classes.sh
-│   ├── fonts-subset.sh
 │   ├── validate-content.mjs
 │   ├── export-pdf.ts         # bun run export:pdf
-│   └── export-all.ts         # bun run export:all
+│   └── export-all.ts
 ├── output/                   # gitignored PDFs + failures/ + smoke/
 ├── src/
-│   ├── main.tsx
-│   ├── App.tsx               # gallery / preview / print routes
-│   ├── index.css
-│   ├── export/pdf.ts         # shared export constants + measure helper
-│   ├── content/              # Zod schema + loader
-│   ├── components/           # A4Page, BiText, Chip, …
+│   ├── app/                  # Next.js App Router (/, /p, /print, /compare)
+│   ├── views/                # Client UI shells (gallery / preview)
+│   ├── export/pdf.ts
+│   ├── content/              # Zod schema + FS product loader
+│   ├── components/
 │   ├── templates/a4-service-onepager/
 │   └── design-tokens/
-│       ├── fonts.css
-│       └── print.css
 └── README.md
 ```
 

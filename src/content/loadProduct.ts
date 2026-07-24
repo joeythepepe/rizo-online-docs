@@ -1,4 +1,10 @@
-import brandDefaultJson from "../../content/brand/default.json";
+/**
+ * Server / Node product loader (filesystem).
+ * Do not import this module from client components — pass data as props instead.
+ */
+
+import { existsSync, readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   applyChromeDefaults,
   mergeProductContent,
@@ -14,18 +20,19 @@ export {
   mergeProductContent,
 } from "./merge";
 
-/**
- * Bundled product JSON via Vite glob.
- * Path is relative to this file → repo `content/products/*.json`.
- */
-const modules = import.meta.glob("../../content/products/*.json", {
-  eager: true,
-  import: "default",
-}) as Record<string, unknown>;
+function projectRoot(): string {
+  return process.cwd();
+}
 
-const brandDefaults = brandConfigSchema.parse(
-  brandDefaultJson,
-) as BrandConfig;
+function productsDir(root = projectRoot()): string {
+  return join(root, "content", "products");
+}
+
+function brandDefaultsPath(root = projectRoot()): string {
+  return join(root, "content", "brand", "default.json");
+}
+
+let cachedBrand: BrandConfig | null = null;
 
 /** Extract product id from a glob key or file path; skips `_`-prefixed templates. */
 export function productIdFromPath(path: string): string | null {
@@ -46,41 +53,51 @@ export function listProductIdsFromKeys(keys: string[]): string[] {
   return Array.from(ids).sort();
 }
 
-/** Product ids available via glob (excludes `_template` and other `_` prefixes). */
-export function listProductIds(): string[] {
-  return listProductIdsFromKeys(Object.keys(modules));
+/** Product ids on disk (excludes `_template` and other `_` prefixes). */
+export function listProductIds(root = projectRoot()): string[] {
+  const dir = productsDir(root);
+  if (!existsSync(dir)) return [];
+  return listProductIdsFromKeys(
+    readdirSync(dir).map((name) => join(dir, name)),
+  );
+}
+
+export function getBrandDefaults(root = projectRoot()): BrandConfig {
+  if (cachedBrand && root === projectRoot()) return cachedBrand;
+  const raw = JSON.parse(readFileSync(brandDefaultsPath(root), "utf8"));
+  const brand = brandConfigSchema.parse(raw) as BrandConfig;
+  if (root === projectRoot()) cachedBrand = brand;
+  return brand;
 }
 
 /**
  * Load, merge brand defaults, validate with Zod, apply chrome defaults.
  * Throws if id unknown (including `_`-prefixed templates) or validation fails.
- * Shares source of truth with `listProductIds` via `productIdFromPath`.
  */
-export function loadProduct(id: string): ServiceOnePagerContent {
-  const key = Object.keys(modules).find((k) => productIdFromPath(k) === id);
-  if (!key) {
+export function loadProduct(
+  id: string,
+  root = projectRoot(),
+): ServiceOnePagerContent {
+  if (id.startsWith("_")) {
     throw new Error(
-      `Unknown product: ${id}. Known: ${listProductIds().join(", ") || "(none)"}`,
+      `Unknown product: ${id} (_-prefixed templates are not loadable)`,
     );
   }
-  const raw = modules[key];
-  if (!raw || typeof raw !== "object") {
-    throw new Error(`Invalid product module for ${id}`);
+  const file = join(productsDir(root), `${id}.json`);
+  if (!existsSync(file)) {
+    throw new Error(
+      `Unknown product: ${id}. Known: ${listProductIds(root).join(", ") || "(none)"}`,
+    );
   }
-  const merged = mergeProductContent(
-    raw as Record<string, unknown>,
-    brandDefaults,
-  );
+  const raw = JSON.parse(readFileSync(file, "utf8")) as Record<string, unknown>;
+  const merged = mergeProductContent(raw, getBrandDefaults(root));
   const parsed = parseProduct(merged);
   return applyChromeDefaults(parsed);
 }
 
-/** Expose brand defaults for tests / CLI. */
-export function getBrandDefaults(): BrandConfig {
-  return brandDefaults;
-}
-
-/** Expose raw module map size for smoke checks. */
-export function getProductModuleCount(): number {
-  return Object.keys(modules).length;
+/** Number of product JSON files including `_` templates (smoke checks). */
+export function getProductModuleCount(root = projectRoot()): number {
+  const dir = productsDir(root);
+  if (!existsSync(dir)) return 0;
+  return readdirSync(dir).filter((n) => n.endsWith(".json")).length;
 }

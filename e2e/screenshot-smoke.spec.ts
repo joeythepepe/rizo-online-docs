@@ -1,6 +1,6 @@
 /**
  * Happy-path screenshot smoke for the example product print route.
- * Prerequisite: `bun run build` (webServer runs vite preview against dist/).
+ * Prerequisite: `bun run build` (webServer runs next start against .next/).
  *
  * Screenshots under `output/smoke/` are human-review artifacts (not visual-diff
  * baselines). Paths are asserted to exist after write.

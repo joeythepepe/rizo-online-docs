@@ -1,5 +1,8 @@
+"use client";
+
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { DocCard } from "../components/gallery/DocCard";
 import { FilterChip } from "../components/gallery/FilterChip";
 import { IconColumns, IconSearch, IconX, IconFileText } from "../components/ui/Icons";
@@ -14,11 +17,15 @@ import {
   availableSubjects,
   filterGalleryCards,
   groupGalleryCards,
-  loadGalleryCards,
   type GalleryCard,
 } from "../content/gallery";
 import { EXAM_PATHWAYS } from "../content/pathways";
-import type { ExamPathway, ProductCatalog, TrainingStage, TrainingSubject } from "../content/types";
+import type {
+  ExamPathway,
+  ProductCatalog,
+  TrainingStage,
+  TrainingSubject,
+} from "../content/types";
 import {
   DEFAULT_GALLERY_FILTERS,
   hasActiveFilters,
@@ -30,14 +37,20 @@ import { readRecentlyViewed } from "../lib/recentlyViewed";
 
 const SCROLL_KEY = "gallery-scroll-y";
 
-export function GalleryPage() {
-  const [searchParams, setSearchParams] = useSearchParams();
+export function GalleryPage({ initialCards }: { initialCards: GalleryCard[] }) {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+
   const filters = useMemo(
-    () => parseGalleryFilters(searchParams),
+    () =>
+      parseGalleryFilters(
+        new URLSearchParams(searchParams?.toString() ?? ""),
+      ),
     [searchParams],
   );
 
-  const allCards = useMemo(() => loadGalleryCards(), []);
+  const allCards = initialCards;
   const [compareIds, setCompareIds] = useState<string[]>([]);
   const [recentIds, setRecentIds] = useState<string[]>([]);
 
@@ -45,7 +58,6 @@ export function GalleryPage() {
     setRecentIds(readRecentlyViewed());
   }, []);
 
-  // Restore scroll after back-navigation
   useEffect(() => {
     try {
       const y = sessionStorage.getItem(SCROLL_KEY);
@@ -64,9 +76,11 @@ export function GalleryPage() {
   const setFilters = useCallback(
     (next: GalleryFilters | ((prev: GalleryFilters) => GalleryFilters)) => {
       const resolved = typeof next === "function" ? next(filters) : next;
-      setSearchParams(serializeGalleryFilters(resolved), { replace: true });
+      const qs = serializeGalleryFilters(resolved).toString();
+      const base = pathname ?? "/";
+      router.replace(qs ? `${base}?${qs}` : base, { scroll: false });
     },
-    [filters, setSearchParams],
+    [filters, pathname, router],
   );
 
   const catalogCards = useMemo(
@@ -143,9 +157,7 @@ export function GalleryPage() {
               type="search"
               placeholder="搜索方案名称、编号、目的地…"
               value={filters.q}
-              onChange={(e) =>
-                setFilters({ ...filters, q: e.target.value })
-              }
+              onChange={(e) => setFilters({ ...filters, q: e.target.value })}
               className="w-full rounded-lg bg-ui-input py-2 pl-9 pr-8 text-sm placeholder:text-ui-muted-foreground focus:outline-none focus:ring-1 focus:ring-ui-foreground/30"
             />
             {filters.q ? (
@@ -163,7 +175,6 @@ export function GalleryPage() {
       </header>
 
       <div className="mx-auto max-w-6xl px-6 pb-1 pt-5">
-        {/* Catalog segmented control */}
         <div
           className="inline-flex max-w-full items-center gap-1 overflow-x-auto rounded-full border border-ui-border bg-ui-muted p-1"
           style={{ scrollbarWidth: "none" }}
@@ -200,7 +211,6 @@ export function GalleryPage() {
           })}
         </div>
 
-        {/* Primary segment: pathway / stage */}
         <div
           className="mt-3 flex items-center gap-2 overflow-x-auto pb-1"
           style={{ scrollbarWidth: "none" }}
@@ -218,7 +228,9 @@ export function GalleryPage() {
                 全部
               </FilterChip>
               {TRAINING_STAGES.map((s) => {
-                const count = catalogCards.filter((c) => c.trainingStage === s.id).length;
+                const count = catalogCards.filter(
+                  (c) => c.trainingStage === s.id,
+                ).length;
                 return (
                   <FilterChip
                     key={s.id}
@@ -271,7 +283,6 @@ export function GalleryPage() {
           )}
         </div>
 
-        {/* Secondary: dest / subject */}
         {filters.catalog === "admissions" && destKeys.length > 1 ? (
           <div
             className="mt-2 flex items-center gap-2 overflow-x-auto pb-1"
@@ -343,7 +354,6 @@ export function GalleryPage() {
           </div>
         ) : null}
 
-        {/* Status row */}
         <div className="mt-3 flex flex-wrap items-center gap-3 text-xs text-ui-muted-foreground">
           <span>
             显示{" "}
@@ -379,22 +389,25 @@ export function GalleryPage() {
             className="flex gap-2 overflow-x-auto pb-1"
             style={{ scrollbarWidth: "none" }}
           >
-            {recentCards.map((c) => (
-              <Link
-                key={c.id}
-                to={`/p/${c.id}${serializeGalleryFilters(filters).toString() ? `?${serializeGalleryFilters(filters)}` : ""}`}
-                onClick={() => {
-                  try {
-                    sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
-                  } catch {
-                    /* ignore */
-                  }
-                }}
-                className="shrink-0 rounded-full border border-ui-border bg-ui-card px-3 py-1.5 text-xs font-medium text-ui-foreground transition-colors hover:border-ui-foreground/25"
-              >
-                {c.name}
-              </Link>
-            ))}
+            {recentCards.map((c) => {
+              const qs = serializeGalleryFilters(filters).toString();
+              return (
+                <Link
+                  key={c.id}
+                  href={`/p/${c.id}${qs ? `?${qs}` : ""}`}
+                  onClick={() => {
+                    try {
+                      sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
+                    } catch {
+                      /* ignore */
+                    }
+                  }}
+                  className="shrink-0 rounded-full border border-ui-border bg-ui-card px-3 py-1.5 text-xs font-medium text-ui-foreground transition-colors hover:border-ui-foreground/25"
+                >
+                  {c.name}
+                </Link>
+              );
+            })}
           </div>
         </section>
       ) : null}
@@ -459,12 +472,10 @@ export function GalleryPage() {
       {compareIds.length > 0 ? (
         <div className="fixed bottom-4 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3 rounded-full border border-ui-border bg-ui-card px-4 py-2.5 shadow-[0_8px_28px_rgba(14,14,13,0.14)]">
           <IconColumns className="h-4 w-4 text-ui-muted-foreground" strokeWidth={1.5} />
-          <span className="text-xs font-medium">
-            对比 {compareIds.length}/2
-          </span>
+          <span className="text-xs font-medium">对比 {compareIds.length}/2</span>
           {compareHref ? (
             <Link
-              to={compareHref}
+              href={compareHref}
               className="rounded-full bg-ui-accent px-3 py-1 text-xs font-semibold text-ui-accent-foreground"
             >
               开始对比

@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { CountryFlag } from "../CountryFlag";
 import { DownloadPdfButton } from "../DownloadPdfButton";
 import {
@@ -79,7 +81,7 @@ export function DocCard({
 }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const href = `/p/${card.id}${gallerySearchString(filters)}`;
+  const href = `/p/${card.id}${gallerySearchString(filters)}` as const;
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -107,7 +109,7 @@ export function DocCard({
   return (
     <div className="group relative flex flex-col rounded-ui border border-ui-border bg-ui-card transition-all duration-200 hover:-translate-y-1 hover:border-ui-foreground/20 hover:shadow-[0_8px_28px_rgba(14,14,13,0.1)]">
       <Link
-        to={href}
+        href={href}
         onClick={saveScroll}
         className="flex flex-1 flex-col gap-4 p-5 active:scale-[0.99]"
       >
@@ -167,7 +169,7 @@ export function DocCard({
             </div>
             <Link
               role="menuitem"
-              to={`/print/${card.id}`}
+              href={`/print/${card.id}`}
               target="_blank"
               rel="noreferrer"
               className="block px-3 py-1.5 text-xs text-ui-foreground hover:bg-ui-muted"

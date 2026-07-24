@@ -8,7 +8,7 @@
  *   bun run export:pdf gaokao-uk
  *
  * Flow: Zod-validate product via FS (same merge/chrome as app loadProduct) →
- * build → vite preview → Chromium → measure overflow → one compact retry →
+ * build → next start → Chromium → measure overflow → one compact retry →
  * PDF + MediaBox check (or fail screenshot).
  */
 
@@ -58,9 +58,9 @@ export interface ExportOptions {
   outPath?: string;
   /** Write PDF even if overflow (logs warning). */
   force?: boolean;
-  /** Skip `bun run build` when dist/ already present. */
+  /** Skip `bun run build` when .next/ already present. */
   skipBuild?: boolean;
-  /** Reuse an already-running preview (do not spawn). */
+  /** Reuse an already-running next start (do not spawn). */
   baseUrl?: string;
   /** Quiet child logs. */
   quiet?: boolean;
@@ -177,36 +177,35 @@ async function waitForServer(url: string, timeoutMs: number): Promise<void> {
   }
   throw new Error(
     `Preview server not ready at ${url} within ${timeoutMs}ms: ${String(lastErr)}. ` +
-      `If the port is stuck, free :${EXPORT_PORT} (previous vite preview may still be running).`,
+      `If the port is stuck, free :${EXPORT_PORT} (previous next start may still be running).`,
   );
 }
 
 /**
- * Spawn vite preview directly (not via `bun run`) in its own process group so
- * teardown can SIGTERM the whole tree and not leave :4173 occupied.
+ * Spawn `next start` in its own process group so teardown can SIGTERM the tree
+ * and not leave :4173 occupied.
  */
 function startPreview(root: string): ChildProcess {
-  const viteJs = join(root, "node_modules", "vite", "bin", "vite.js");
-  if (!existsSync(viteJs)) {
-    fail(`vite binary missing at ${viteJs}; run bun install`);
+  const nextBin = join(root, "node_modules", "next", "dist", "bin", "next");
+  if (!existsSync(nextBin)) {
+    fail(`next binary missing at ${nextBin}; run bun install && bun run build`);
   }
 
   const child = spawn(
     process.execPath,
     [
-      viteJs,
-      "preview",
-      "--port",
-      String(EXPORT_PORT),
-      "--strictPort",
-      "--host",
+      nextBin,
+      "start",
+      "-H",
       "127.0.0.1",
+      "-p",
+      String(EXPORT_PORT),
     ],
     {
       cwd: root,
       stdio: ["ignore", "pipe", "pipe"],
       env: { ...process.env },
-      // Own process group → kill(-pid) reaps vite children
+      // Own process group → kill(-pid) reaps next children
       detached: process.platform !== "win32",
     },
   );
@@ -217,7 +216,7 @@ function startPreview(root: string): ChildProcess {
   child.stderr?.on("data", (buf: Buffer) => {
     const s = buf.toString();
     if (process.env.EXPORT_DEBUG) process.stderr.write(`[preview] ${s}`);
-    if (/EADDRINUSE|already in use|StrictPort/i.test(s)) {
+    if (/EADDRINUSE|already in use|address already/i.test(s)) {
       console.error(
         `ERROR: port ${EXPORT_PORT} in use — stop the other preview or set a free port.`,
       );
@@ -387,8 +386,8 @@ export async function exportProduct(
   if (!options.skipBuild) {
     log("export: building…");
     execSync("bun run build", { cwd: ROOT, stdio: options.quiet ? "pipe" : "inherit" });
-  } else if (!existsSync(join(ROOT, "dist"))) {
-    fail("dist/ missing; run without --skip-build or bun run build first");
+  } else if (!existsSync(join(ROOT, ".next"))) {
+    fail(".next/ missing; run without --skip-build or bun run build first");
   }
 
   let preview: ChildProcess | null = null;
@@ -411,7 +410,7 @@ export async function exportProduct(
         preview = null;
         throw new Error(
           `Preview process exited before export (code/signal=${String(code)}). ` +
-            `Port ${EXPORT_PORT} is likely held by another vite preview — free it and retry.`,
+            `Port ${EXPORT_PORT} is likely held by another next start — free it and retry.`,
         );
       }
       log(`export: preview ready at ${base}`);

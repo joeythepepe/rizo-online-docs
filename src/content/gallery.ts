@@ -6,12 +6,12 @@ import {
   trainingSubjectMeta,
 } from "./catalogs";
 import { compareDestKeys, destLabel, resolveDestKey } from "./destinations";
-import { listProductIds, loadProduct } from "./loadProduct";
 import { EXAM_PATHWAYS } from "./pathways";
 import type { GalleryFilters } from "../lib/galleryQuery";
 import type {
   ExamPathway,
   ProductCatalog,
+  ServiceOnePagerContent,
   TrainingStage,
   TrainingSubject,
 } from "./types";
@@ -30,29 +30,24 @@ export interface GalleryCard {
   version?: string;
 }
 
-export function loadGalleryCards(): GalleryCard[] {
-  return listProductIds()
-    .filter((id) => id !== "_template")
-    .map((id) => {
-      try {
-        const p = loadProduct(id);
-        return {
-          id,
-          name: p.product.name,
-          tagline: p.product.tagline,
-          countryCode: p.product.countryCode,
-          destKey: resolveDestKey(p.product),
-          catalog: resolveProductCatalog(p.product),
-          pathway: p.product.pathway,
-          trainingStage: p.product.trainingStage,
-          trainingSubject: p.product.trainingSubject,
-          cycleLabel: p.meta.cycleLabel,
-          version: p.meta.version,
-        };
-      } catch {
-        return { id, name: id, catalog: "admissions" as const };
-      }
-    });
+/** Build a gallery card from loaded product content (server-side helper). */
+export function galleryCardFromContent(
+  id: string,
+  p: ServiceOnePagerContent,
+): GalleryCard {
+  return {
+    id,
+    name: p.product.name,
+    tagline: p.product.tagline,
+    countryCode: p.product.countryCode,
+    destKey: resolveDestKey(p.product),
+    catalog: resolveProductCatalog(p.product),
+    pathway: p.product.pathway,
+    trainingStage: p.product.trainingStage,
+    trainingSubject: p.product.trainingSubject,
+    cycleLabel: p.meta.cycleLabel,
+    version: p.meta.version,
+  };
 }
 
 export function cardSubtitle(card: GalleryCard): string {

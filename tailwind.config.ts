@@ -5,7 +5,7 @@ import type { Config } from "tailwindcss";
  * Do not add parallel spacing systems or font-weight 600.
  */
 const config: Config = {
-  content: ["./index.html", "./src/**/*.{js,ts,tsx}"],
+  content: ["./src/**/*.{js,ts,tsx}"],
   theme: {
     extend: {
       colors: {

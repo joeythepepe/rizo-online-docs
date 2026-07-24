@@ -1,23 +1,40 @@
 #!/usr/bin/env bash
 # Lightweight denylist for print templates / print shell components.
-# Scans src/templates and src/components (when present). Gallery chrome in App.tsx
-# is intentionally out of scope until print-only paths exist.
+# Screen-only chrome (gallery / preview / UI icons) is out of scope — see README.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
 
-# Paths that must stay print-safe (extend as the tree grows).
+# Paths that must stay print-safe.
 SCAN_GLOBS=(
   "src/templates"
   "src/components"
 )
+
+# Screen chrome under components/ — shadows, semibold, breakpoints allowed here.
+EXCLUDE_ERE='src/components/(gallery|preview|ui)/'
 
 # Patterns forbidden in print template / shell source (ERE).
 # - breakpoints, shadows, rings, gradients, blur
 # - font-semibold (600) — no SemiBold face
 # - min-h-screen / h-screen / vh page heights
 FORBIDDEN_ERE='(sm:|md:|lg:|xl:|2xl:|font-semibold|shadow-|ring-|bg-gradient-|blur-|min-h-screen|h-screen|[0-9]+vh)'
+
+# Download button is gallery-only chrome (never on /print roots).
+ALLOWLIST_FILES=(
+  "src/components/DownloadPdfButton.tsx"
+)
+
+is_allowlisted() {
+  local f="$1"
+  for a in "${ALLOWLIST_FILES[@]}"; do
+    if [[ "$f" == "$a" ]]; then
+      return 0
+    fi
+  done
+  return 1
+}
 
 found=0
 checked_any=0
@@ -26,8 +43,13 @@ for dir in "${SCAN_GLOBS[@]}"; do
   if [[ ! -d "$dir" ]]; then
     continue
   fi
-  # Any source under these trees
   while IFS= read -r -d '' file; do
+    if [[ "$file" =~ $EXCLUDE_ERE ]]; then
+      continue
+    fi
+    if is_allowlisted "$file"; then
+      continue
+    fi
     checked_any=1
     if grep -nE "$FORBIDDEN_ERE" "$file" 2>/dev/null; then
       echo "error: forbidden print utility in $file" >&2
@@ -45,7 +67,7 @@ if [[ "$found" -ne 0 ]]; then
 fi
 
 if [[ "$checked_any" -eq 0 ]]; then
-  echo "check-print-classes: ok (no src/templates or src/components yet — will enforce when added)"
+  echo "check-print-classes: ok (no print paths yet — will enforce when added)"
 else
   echo "check-print-classes: ok"
 fi

@@ -103,6 +103,11 @@ export interface ServiceOnePagerContent {
      */
     countryCode?: string;
     /**
+     * Fine-grained destination when countryCode is too coarse
+     * (e.g. 中考深圳普高 vs 职高 both use CN). Gallery dest filter key.
+     */
+    regionKey?: string;
+    /**
      * 考生路线：gaokao | dse | alevel | sat | zhongkao（中考）
      * Admissions catalog only.
      */

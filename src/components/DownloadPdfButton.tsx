@@ -52,6 +52,7 @@ export function DownloadPdfButton({
     <span className="inline-flex flex-col items-start gap-1">
       <button
         type="button"
+        data-download-pdf
         onClick={handleClick}
         disabled={busy}
         className={[variant === "button" ? baseButton : baseLink, className]

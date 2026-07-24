@@ -54,7 +54,7 @@ const FLAG_BY_CODE: Record<CountryCode, FlagComponent> = {
   IE,
 };
 
-const TITLE_BY_CODE: Record<CountryCode, string> = {
+export const TITLE_BY_CODE: Record<CountryCode, string> = {
   CN: "中国",
   HK: "香港",
   MO: "澳门",
@@ -97,7 +97,7 @@ export function CountryFlag({ code, className = "", title }: CountryFlagProps) {
   return (
     <Flag
       aria-label={label}
-      className={`inline-block shrink-0 rounded-[0.5mm] object-cover shadow-[0_0_0_0.5pt_rgba(0,0,0,0.08)] ${className}`.trim()}
+      className={`inline-block shrink-0 rounded-[0.5mm] object-cover outline outline-[0.5pt] outline-rule ${className}`.trim()}
     />
   );
 }

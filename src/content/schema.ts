@@ -82,6 +82,17 @@ export const productSchema = z
         .regex(/^[A-Za-z]{2}$/, "countryCode must be ISO alpha-2")
         .transform((s) => s.toUpperCase())
         .optional(),
+      /** Fine-grained destination key (e.g. sz-pugao) when countryCode is coarse */
+      regionKey: z
+        .string()
+        .trim()
+        .min(2)
+        .max(24)
+        .regex(
+          /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+          "regionKey must be lowercase kebab-case",
+        )
+        .optional(),
       pathway: z
         .enum(["gaokao", "dse", "alevel", "sat", "zhongkao"])
         .optional(),
